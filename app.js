@@ -8,7 +8,7 @@ const dashboard = require('./routes/dashboard')
 const memberBoard = require("./routes/dashboard");
 const validateEmail = require('./helperRoutes/index');
 const activeAccount = require('./routes/payfast');
-
+const path = require('path');
 
 
 

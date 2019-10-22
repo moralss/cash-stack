@@ -8,27 +8,19 @@ const {
 const env = process.env.NODE_ENV || 'development';
 let pool;
 
-let connectionString = {
-  user: secrets.user,
-  database: secrets.testDb,
-  host: secrets.host
-};
 
 // checking to know the environment and suitable connection string to use
 if (env === 'development') {
   pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'cash-stack',
+    database: 'cash_stack',
     password: 'Moral007',
   })
 }
 if (env === "production") {
   pool = new Pool({
-    user: process.env.PG_USER,
-    host: process.env.HOST,
-    database: process.env.DATABASE_URL,
-    password: PG_PASSWORD,
+    database: process.env.DATABASE_URL
   })
 };
 

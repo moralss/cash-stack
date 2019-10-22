@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 3001;
 const authRoutes = require(".//routes/auth");
 const dashboard = require('./routes/dashboard')
 const memberBoard = require("./routes/dashboard");
@@ -11,7 +10,6 @@ const activeAccount = require('./routes/payfast');
 const path = require('path');
 
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -23,4 +21,17 @@ activeAccount.activeAccount(app)
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static('client/build'));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  })
+}
+
+const PORT = process.env.PORT || 3001
+
+
+app.listen(PORT, () => console.log(`Example app listening on port ${port}!`));

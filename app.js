@@ -9,6 +9,11 @@ const memberBoard = require("./routes/dashboard");
 const validateEmail = require('./helperRoutes/index');
 const activeAccount = require('./routes/payfast');
 
+
+
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.use(bodyParser.json());
 app.use(cors());
 

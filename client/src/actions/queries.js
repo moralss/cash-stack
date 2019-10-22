@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actions from '../actionTypes/index'
 import store from "../store";
-const URL = "";
+const URL = "/api";
 
 
 export const setAxiosHeader = () => {

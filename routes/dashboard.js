@@ -18,7 +18,7 @@ const dashboard = app => {
 
 
 const memberBoard = app => {
-  app.get("/AllMembers", async (req, res) => {
+  app.get("/api/AllMembers", async (req, res) => {
     const {
       _userId
     } = req.query;

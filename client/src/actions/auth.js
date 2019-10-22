@@ -2,7 +2,7 @@ import axios from "axios";
 import history from "../routes/history";
 import * as actions from '../actionTypes/index'
 import jwtDecode from "jwt-decode";
-const URL = "";
+const URL = "/api";
 
 
 export const registerUser = (credentials) => {

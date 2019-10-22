@@ -28,7 +28,7 @@ const {
 
 
 const authRoutes = app => {
-  app.post("/signin", async (req, res) => {
+  app.post("/api/signin", async (req, res) => {
     const data = req.body;
 
     try {
@@ -84,7 +84,7 @@ const authRoutes = app => {
     }
   });
 
-  app.post("/login", async (req, res) => {
+  app.post("/api/login", async (req, res) => {
     const data = req.body;
     try {
       const user = await getUserByEmail(data.email);

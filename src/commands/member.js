@@ -11,7 +11,6 @@ const saveMember = async data => {
       pioneerId,
       ref_number
     } = data;
-    console.log(data.pioneerRefs);
 
     const parameters = [ref_number, pioneerId, userId];
 

@@ -11,16 +11,16 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <footer className="color page-footer">
-          <div class="row">
-            <a
+        {/* <footer className="color page-footer"> */}
+        <div class="row">
+          {/* <a
               target="_blank"
               className="btn"
               href="https://cashstack.simdif.com/contact.html"
             >
               chat
-            </a>
-            {/* <div class="col">
+            </a> */}
+          {/* <div class="col">
               <button
                 class="btn green lighten-1 "
                 onClick={() => this.props.setModelType()}
@@ -47,8 +47,8 @@ class Footer extends Component {
             <div class="col" onClick={() => this.props.setModelType()}>
               <button class="btn green lighten-1 ">profile</button>
             </div> */}
-          </div>
-        </footer>
+        </div>
+        {/* </footer> */}
       </div>
     );
   }

@@ -25,9 +25,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div style={{ textAlign: "center" }} className="profile  card ">
-          <h4>Profile </h4>
-          <hr />
+        <h4 style={{ textAlign: "center" }}>Profile </h4>
+        <div style={{ textAlign: "center" }} className="profile  card md-pa-sm">
           <div>
             <label className=" grey-text">name </label>
             <h6> {this.props.profile.name} </h6>
@@ -45,7 +44,7 @@ class Dashboard extends Component {
         <h4 style={{ textAlign: "center" }} className="primary">
           {!this.isLoading ? this.props.memberCount : "loading.."} active
           members
-        </h4> 
+        </h4>
 
         <Dialog />
         <Footer />

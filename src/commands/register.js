@@ -14,7 +14,6 @@ const creatUser = async data => {
       hashedPassword,
       refNumber
     } = data;
-    console.log(data.email);
 
     const parameters = [email, firstName, lastName, hashedPassword, contact,
       refNumber

@@ -3,8 +3,6 @@
   grid-template-columns: repeat(3, 1fr);
 } */
 
-
-
 .register {
   grid-column-start: 2;
   justify-self: center;
@@ -13,9 +11,7 @@
 .App {
   grid-column-start: 2;
   justify-self: center;
-
 }
-
 
 .date-container {
   margin: 2rem 0rem;
@@ -25,19 +21,15 @@
   color: red;
 }
 
-
 .option {
   margin: 0.5rem 0rem;
   width: 100%;
 }
 
-
 .box {
   width: 50rem !important;
   margin: 0rem !important;
-
 }
-
 
 /* //////////// */
 
@@ -50,7 +42,7 @@
 }
 
 .color {
-  background-color: #2196F3 !important
+  background-color: #2196f3 !important;
 }
 
 .profile {
@@ -88,21 +80,19 @@ width: 40% !important;
   top: 0;
   left: 0;
   position: fixed;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
   vertical-align: top;
   background: rgba(131, 112, 112, 0.376);
   /* /* position: relative; */
 }
 
-
-
 .my-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }
-
 
 .footer {
   /* display: grid; */
@@ -124,11 +114,10 @@ width: 40% !important;
   margin: 5rem 2rem;
 }
 
-
-
 /* //////////////////////////////////// */
 
-.memeber-item {}
+.memeber-item {
+}
 
 label {
   color: white !important;
@@ -143,20 +132,37 @@ body {
   line-height: 2rem !important;
   /* background-image: url('./images/money-1604921.jpg'); */
   /* display: grid; */
-  background-image: linear-gradient(to right bottom, rgba(9, 15, 17, 0.8), rgba(9, 15, 107, 0.8)),
-    url('./images/money-1604921.jpg');
+  /* background-image: linear-gradient(to right bottom, rgba(9, 15, 17, 0.8), rgba(9, 15, 107, 0.8)),
+  url('./images/money-1604921.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+  background-color: rgb(32, 11, 11);
   height: 100%;
   /* background-repeat: no-repeat; */
 }
 
 .member-wrapper {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
 /* ///////////////////////////////////////////////////////// */
+
+@media only screen and (max-width: 768px) {
+  body {
+    /* background-color: lightblue; */
+  }
+
+  .member-wrapper {
+    display: grid;
+    grid-template-columns: auto;
+  }
+
+  .my-wrapper {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}

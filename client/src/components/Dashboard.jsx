@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Dialog from "./Dialog";
 import Footer from "./Footer";
 import * as actions from "../actions/queries";
+import history from "../routes/history";
 
 class Dashboard extends Component {
   constructor() {
@@ -22,6 +23,15 @@ class Dashboard extends Component {
     clearInterval(interval);
   }
 
+  changeRoute(route) {
+    //   console.log("ID", this.props.userId);
+    //   if (route === "users") {
+    //     this.props.getMembers(this.props.userId);
+    //   }
+
+    history.push(route);
+  }
+
   render() {
     return (
       <div>
@@ -39,8 +49,14 @@ class Dashboard extends Component {
             <label className="grey-text">status </label>
             <h6 className="red-text"> not active</h6>
           </div>
+          <button
+            onClick={() => this.changeRoute("/active")}
+            style={{ textAbuttongn: "center" }}
+            className="btn"
+          >
+            ACTIVATE ACCOUNT
+          </button>
         </div>
-
         <h4 style={{ textAlign: "center" }} className="primary">
           {!this.isLoading ? this.props.memberCount : "loading.."} active
           members

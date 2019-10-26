@@ -39,36 +39,56 @@ function HomePage() {
         <div className="my-wrapper">
           <div>
             <h6> Ruby One</h6>
+            <hr />
             <p>
-              Pay R200.00 once off joining fee 6 X members joins under your name
-              Now your Ruby one is now completed Benefits of Ruby One R200.00
-              Cash back 40% x6 bonus = R480.00 Total pay-out R200.00 + R480.00
-              =R680.00
+              Pay R200.00 once off joining fee
+              <br /> 6 X members joins under your name <br /> Now your Ruby one
+              is now completed <br />
+              <p>
+                <p> Benefits of Ruby One</p>
+                R200.00 Cash back <br /> 40% x6 bonus = R480.00 <br /> Total
+                pay-out R200.00 + R480.00 <br /> TP=R680.00
+              </p>
             </p>
           </div>
           <div>
             Ruby Two
+            <hr />
             <p>
-              From the profit you've gained from Ruby one Pay R300.00
+              From the profit you've gained from Ruby one
+              <br /> Pay R300.00 <br />
               Lead/help/teach your six members to recruit their own six members.
-              Once your six members joins you at this stage... You advance to
-              Ruby Three Benefits of Ruby Two R300.00 Cash back 40% x6 bonus
-              =R750.00 Total pay-out R750.00 + R300.00 =R1 020.00
+              <br />
+              Once your six members joins you at this stage... <br />
+              Now you advanced to Ruby Three <br />
+              <p>Benefits of Ruby Two</p>
+              R300.00 Cash back <br />
+              40% x6 bonus =R750.00 <br />
+              Total pay-out R750.00 + R300.00 <br />
+              TP=R1 020.00
             </p>
           </div>
           <div>
             <h6> Ruby Three</h6>
+            <hr />
             <p>
-              Pay R500.00 Once your six members joins you at this stage... You
-              advance to Ruby Four Benefits of Ruby Three R500.00 Cash back 40%
-              x6 bonus =R1 200.00 Total pay-out R1 200.00 + R500.00 =R1 700.00
+              Pay R500.00 <br />
+              Once your six members joins you at this stage... <br />
+              You advance to Ruby Four <p>Benefits of Ruby Three</p> R500.00
+              Cash back <br />
+              40% x6 bonus =R1 200.00 <br />
+              Total pay-out R1 200.00 + R500.00 <br />
+              TP=R1 700.00
             </p>
           </div>
         </div>
       </div>
       <div>
         <h3>About us </h3>
-        <h6>Cash Stack investment Financial freedom 4 all</h6>
+        <h6>
+          Cash Stack investment <br />
+          Financial freedom 4 all
+        </h6>
         <p>
           CA$H $TACK IS A SOUTH AFRICAN MULTI LEVEL MARKETING COMPANY
           ESTABLISHED IN MAY 2019. FOUNDED BY NETWORK MARKETERS, THOSE WHO ARE

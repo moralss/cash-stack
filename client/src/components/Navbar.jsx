@@ -27,9 +27,6 @@ class Navbar extends Component {
 
         <ul id="nav-mobile" className="right hide-on-down">
           <li>
-            <a onClick={() => this.changeRoute("active")}>ACTIVATE ACCOUNT</a>
-          </li>
-          <li>
             <a onClick={() => this.changeRoute("users")}>MEMBER</a>
           </li>
           <li>

@@ -18,7 +18,6 @@ if (env === 'development') {
     database: 'cash_stack',
     password: 'Moral007',
   })
-
 }
 
 if (env === "production") {

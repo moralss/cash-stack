@@ -20,12 +20,33 @@ class Navbar extends Component {
 
   privateNav() {
     return (
-      <div class="nav-wrapper blue">
-        <a href="#" className="brand-logo left">
-          Logo
-        </a>
-
-        <ul id="nav-mobile" className="right hide-on-down">
+      <div class="navbar-fixed">
+        <div class="navbar-fixed">
+          <nav class="teal">
+            <div class="container">
+              <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">
+                  Logo
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                  <li>
+                    <a onClick={() => this.changeRoute("users")}>MEMBER</a>
+                  </li>
+                  <li>
+                    <a onClick={() => this.changeRoute("dashboard")}>PROFILE</a>
+                  </li>
+                  <li>
+                    <a onClick={() => this.logout()}>LOGOUT</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <ul class="sidenav" id="mobile-demo">
           <li>
             <a onClick={() => this.changeRoute("users")}>MEMBER</a>
           </li>
@@ -42,11 +63,35 @@ class Navbar extends Component {
 
   VisitorNav() {
     return (
-      <div class="nav-wrapper blue">
-        <a href="#" className="brand-logo">
-          Logo
-        </a>
-        <ul id="nav-mobile" className="right hide-on-down">
+      <div class="navbar-fixed">
+        <div class="navbar-fixed">
+          <nav class="teal">
+            <div class="container">
+              <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">
+                  Logo
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                  <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                  {/* <ul id="nav-mobile" className="right hide-on-down"> */}
+                  <li>
+                    <a onClick={() => this.changeRoute("")}>HOME</a>
+                  </li>
+                  <li>
+                    <a onClick={() => this.changeRoute("register")}>REGISTER</a>
+                  </li>
+                  <li>
+                    <a onClick={() => this.changeRoute("login")}>LOGIN</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <ul class="sidenav" id="mobile-demo">
+          {/* <ul id="nav-mobile" className="right hide-on-down"> */}
           <li>
             <a onClick={() => this.changeRoute("")}>HOME</a>
           </li>
@@ -64,9 +109,9 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav>
-          {this.props.authenticated ? this.privateNav() : this.VisitorNav()}
-        </nav>
+        {/* <nav> */}
+        {this.props.authenticated ? this.privateNav() : this.VisitorNav()}
+        {/* </nav> */}
       </div>
     );
   }

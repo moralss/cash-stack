@@ -4,6 +4,7 @@ import Dialog from "./Dialog";
 import Footer from "./Footer";
 import * as actions from "../actions/queries";
 import history from "../routes/history";
+import DashoardNav from "./example/DashoardNav";
 
 class Dashboard extends Component {
   constructor() {
@@ -61,7 +62,6 @@ class Dashboard extends Component {
           {!this.isLoading ? this.props.memberCount : "loading.."} active
           members
         </h4>
-
         <Dialog />
         <Footer />
       </div>

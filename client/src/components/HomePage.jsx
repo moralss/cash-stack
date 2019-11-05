@@ -105,27 +105,36 @@ function HomePage() {
         <table className="striped">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th>Ruby Stages</th>
+              <th>Inv/Fee</th>
+              <th>Bonus in %</th>
+              <th>Bonus in Rands</th>
+              <th>Total Payout</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
+              <td>Ruby One</td>
+              <td>R200.00</td>
+              <td>40%</td>
+              <td>R480.00</td>
+              <td>R680.00</td>
             </tr>
             <tr>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>$3.76</td>
+              <td>Ruby Four</td>
+              <td>R1000.00</td>
+              <td>45%</td>
+              <td>R2 700.00</td>
+              <td>R3 700.00</td>
             </tr>
+
             <tr>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
+              <td>Ruby Nine</td>
+              <td>R20 000.00</td>
+              <td>80%</td>
+              <td>R96 000.00</td>
+              <td>R116 000.00</td>
             </tr>
           </tbody>
         </table>

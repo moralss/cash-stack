@@ -382,3 +382,15 @@ body {
 .section-contact h5 {
   margin-bottom: 30px;
 }
+
+
+.image {
+  margin-bottom: 1rem;
+  width: 20rem;
+  height: 6rem;
+}
+
+.brand-logo {
+  width: 3rem !important;
+  height: 3rem !important;
+}

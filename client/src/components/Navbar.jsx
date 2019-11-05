@@ -3,6 +3,7 @@ import history from "../routes/history";
 import { connect } from "react-redux";
 import * as actions from "../actions/system";
 import * as quiers from "./../actions/queries";
+import Img from "../assets/cash-stack.svg";
 
 class Navbar extends Component {
   changeRoute(route) {
@@ -26,7 +27,7 @@ class Navbar extends Component {
             <div class="container">
               <div class="nav-wrapper">
                 <a href="#!" class="brand-logo">
-                  Logo
+                  <img src="./cash-stack.svg" />
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>
@@ -69,7 +70,7 @@ class Navbar extends Component {
             <div class="container">
               <div class="nav-wrapper">
                 <a href="#!" class="brand-logo">
-                  Logo
+                  {/* <img className="image" src={`${Img}`} /> */}
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>

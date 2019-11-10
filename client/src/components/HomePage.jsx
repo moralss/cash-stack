@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import LoginForm from "./forms/LoginForm";
 import { checkAuth } from "../routes/checker";
+import Salary from "../images/salary.svg";
+import Coins from "../images/coins.svg";
 import axios from "axios";
+import CreditCard from "../images/credit-card.svg";
+import TTT from "../images/notes.svg";
+
+// salary.svg
 
 class Homepage extends Component {
   componentDidMount() {
@@ -18,24 +24,20 @@ class Homepage extends Component {
       <div className="custom-container">
         <div>
           <h3>Be your own boss</h3>
-          <p>
-            R200.00 once off joining fee Can change your life to the better.You
-            can be your own boss.This is an opportunity to grab and never let
-            go... A wise man once said, "Why work to make someone else
-            successful when you can work and make yourself successful." We all
-            have a choice. We can either choose to live life on our own terms or
-            we can choose to live life on the terms of others. Trust me, go for
-            the first option Do you love the sound of a ringing alarm clock?
-            Does it rescue you from your lazy night of time-wasting slumber? And
-            are you excited every day to jump out of bed, rush through your
-            morning routine, and make a mad dash to get to work on time? Then,
-            once you arrive, does your boss always greet you with a warm smile?
-            Does he or she shower you with tons of respect and endless praise
-            for all you do? And you become so filled with gratitude and
-            appreciation, that you just can’t wait to embark upon another
-            glorious day of doing the work you love so much? Well if you’re
-            anything like me, your answer would be “HECK NO” to all of the above
-          </p>
+          <div className="grid-2">
+            <p>
+              <p>
+                R200.00 once off joining fee Can change your life to the better.
+              </p>
+              This is an opportunity to grab and never let go... A wise man once
+              A wise man once said, "Why work to make someone else successful
+              when you can work and make yourself successful". We all have a
+              choice. We can either choose to live life on our own terms or we
+              can choose to live life on the terms of others.
+            </p>
+
+            <img src={`${Coins}`} alt=" no image" style={{ width: "150px" }} />
+          </div>
         </div>
         <div>
           <h3>How it works </h3>
@@ -53,37 +55,49 @@ class Homepage extends Component {
                   pay-out R200.00 + R480.00 <br /> TP=R680.00
                 </p>
               </p>
+
+              <img
+                src={`${Salary}`}
+                alt=" no image"
+                style={{ width: "150px " }}
+              />
             </div>
             <div>
               Ruby Two
               <hr />
               <p>
                 From the profit you've gained from Ruby one
-                <br /> Pay R300.00 <br />
+                <br /> Pay R400.00 <br />
                 Lead/help/teach your six members to recruit their own six
                 members.
                 <br />
                 Once your six members joins you at this stage... <br />
                 Now you advanced to Ruby Three <br />
                 <p>Benefits of Ruby Two</p>
-                R300.00 Cash back <br />
+                R400.00 Cash back <br />
                 40% x6 bonus =R750.00 <br />
-                Total pay-out R750.00 + R300.00 <br />
-                TP=R1 020.00
+                Total pay-out R950.00 + R400.00 <br />
+                TP=R1 360.00
               </p>
+              <img src={`${TTT}`} alt=" no image" style={{ width: "150px " }} />
             </div>
             <div>
               <h6> Ruby Three</h6>
               <hr />
               <p>
-                Pay R500.00 <br />
+                Pay R800.00 <br />
                 Once your six members joins you at this stage... <br />
                 You advance to Ruby Four <p>Benefits of Ruby Three</p> R500.00
                 Cash back <br />
-                40% x6 bonus =R1 200.00 <br />
-                Total pay-out R1 200.00 + R500.00 <br />
-                TP=R1 700.00
+                45% x6 bonus =R2 160.00 <br />
+                Total pay-out R2 160.00 + R800.00 <br />
+                TP=R2 960.00
               </p>
+              <img
+                src={`${CreditCard}`}
+                alt=" no image"
+                style={{ width: "150px " }}
+              />
             </div>
           </div>
         </div>
@@ -94,7 +108,7 @@ class Homepage extends Component {
             Financial freedom 4 all
           </h6>
           <p>
-            CA$H $TACK IS A SOUTH AFRICAN MULTI LEVEL MARKETING COMPANY
+            CA$H $TACK is a South AFRICAN MULTI LEVEL MARKETING COMPANY
             ESTABLISHED IN MAY 2019. FOUNDED BY NETWORK MARKETERS, THOSE WHO ARE
             TIRED OF ILLIGAL PYRAMID SCHEMES. WE ARE A TEAM DRIVEN BY PASSION TO
             DELIVER THE ATMOST IN NETWORK MARKERTING. TO BE DREAM ACHIEVERS THAT

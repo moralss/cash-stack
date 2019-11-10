@@ -100,8 +100,7 @@
 
 /* //////////////////////////////////// */
 
-.memeber-item {
-}
+.memeber-item {}
 
 label {
   color: white !important;
@@ -142,6 +141,18 @@ body {
     display: grid;
     grid-template-columns: auto;
   }
+}
+
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-2 img {
+  justify-self: center;
+  align-self: center;
+
 }
 
 /* ////////////////////////////////////////////// */
@@ -264,12 +275,13 @@ body {
   background-color: green;
   height: 8vh;
 }
+
 .custom-container {
   margin: 5px 5px !important;
 }
 
 .sidenav-overlay {
-  opacity: 0 !important ;
+  opacity: 0 !important;
   /* display: block; */
   /* styling for it hide-on-med-and-down */
 }

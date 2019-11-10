@@ -53,8 +53,8 @@ class Users extends Component {
                     <span>{member.total}</span>
                   </div>
                   <div>
-                    <label className=" grey-text">status </label>{" "}
-                    <h6 className="red-text"> not active</h6>
+                    {/* <label className=" grey-text">status </label>{" "} */}
+                    {/* <h6 className="red-text"> not active</h6> */}
                   </div>
                   <button
                     className="btn"

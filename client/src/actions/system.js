@@ -5,6 +5,7 @@ import * as actions from '../actionTypes/index'
 
 export const logout = () => {
   history.push('/');
+  localStorage.clear("persist:root")
   localStorage.clear("user")
   return {
     type: actions.AUTHENTICATED,

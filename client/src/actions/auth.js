@@ -1,4 +1,8 @@
 import axios from "axios";
+import {
+  reset
+} from "redux-form";
+
 import history from "../routes/history";
 import * as actions from '../actionTypes/index'
 import jwtDecode from "jwt-decode";
@@ -28,6 +32,10 @@ export const registerUser = (credentials) => {
           auth: true
         }
       });
+      dispatch(reset('form1'))
+      dispatch(reset('login'))
+      dispatch(reset('form2'))
+      dispatch(reset('object Object'))
       history.push("/dashboard")
     } catch (error) {
       console.log(error);
@@ -41,7 +49,6 @@ export const login = (credentials) => {
     try {
       const res = await axios.post(`${URL}/login`, credentials);
       const decodedToken = jwtDecode(res.data.token);
-      console.log("decodeToken", decodedToken)
       dispatch({
         type: actions.SET_USER,
         payload: {
@@ -60,6 +67,10 @@ export const login = (credentials) => {
           auth: true
         }
       });
+      dispatch(reset('login'))
+      dispatch(reset('form1'))
+      dispatch(reset('form2'))
+      dispatch(reset('object Object'))
       history.push("/dashboard")
       return
     } catch (e) {

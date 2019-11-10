@@ -48,14 +48,14 @@ class Dashboard extends Component {
           </div>
           <div>
             <label className="grey-text">status </label>
-            <h6 className="red-text"> not active</h6>
+            {/* <h6 className="red-text"> not active</h6> */}
           </div>
           <button
             onClick={() => this.changeRoute("/active")}
             style={{ textAbuttongn: "center" }}
             className="btn"
           >
-            ACTIVATE ACCOUNT
+            CHECK ACCOUNT STATUS
           </button>
         </div>
         <h4 style={{ textAlign: "center" }} className="primary">

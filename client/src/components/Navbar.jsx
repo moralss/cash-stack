@@ -7,6 +7,7 @@ import Img from "../assets/cash-stack.svg";
 
 class Navbar extends Component {
   changeRoute(route) {
+    console.log(route);
     //   console.log("ID", this.props.userId);
     //   if (route === "users") {
     //     this.props.getMembers(this.props.userId);
@@ -29,10 +30,10 @@ class Navbar extends Component {
                 <a href="#!" class="brand-logo">
                   <img src="./cash-stack.svg" />
                 </a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>
-                </a>
-                <ul class="right hide-on-med-and-down">
+                </a> */}
+                <ul class="right">
                   <li>
                     <a onClick={() => this.changeRoute("users")}>MEMBER</a>
                   </li>
@@ -47,7 +48,7 @@ class Navbar extends Component {
             </div>
           </nav>
         </div>
-        <ul class="sidenav" id="mobile-demo">
+        {/* <ul class="sidenav" id="mobile-demo">
           <li>
             <a onClick={() => this.changeRoute("users")}>MEMBER</a>
           </li>
@@ -57,7 +58,7 @@ class Navbar extends Component {
           <li>
             <a onClick={() => this.logout()}>LOGOUT</a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     );
   }
@@ -72,10 +73,10 @@ class Navbar extends Component {
                 <a href="#!" class="brand-logo">
                   {/* <img className="image" src={`${Img}`} /> */}
                 </a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>
-                </a>
-                <ul class="right hide-on-med-and-down">
+                </a> */}
+                <ul class="right ">
                   {/* <ul id="nav-mobile" className="right hide-on-down"> */}
                   <li>
                     <a onClick={() => this.changeRoute("")}>HOME</a>
@@ -91,18 +92,22 @@ class Navbar extends Component {
             </div>
           </nav>
         </div>
-        <ul class="sidenav" id="mobile-demo">
-          {/* <ul id="nav-mobile" className="right hide-on-down"> */}
+        {/* <ul
+          onClick={() => this.changeRoute("register")}
+          class="sidenav"
+          id="mobile-demo"
+        >
+
           <li>
             <a onClick={() => this.changeRoute("")}>HOME</a>
           </li>
-          <li>
+          <li onClick={() => this.changeRoute("register")}>
             <a onClick={() => this.changeRoute("register")}>REGISTER</a>
           </li>
           <li>
             <a onClick={() => this.changeRoute("login")}>LOGIN</a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     );
   }

@@ -1,3 +1,4 @@
+import { reset } from "redux-form";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import validate from "../../Utils/validations/form4Validations";
@@ -13,13 +14,16 @@ class Form3 extends Component {
     try {
       const error = await validateEmail(data.email);
 
-      if (error.email) {
+      if (error.data.email) {
         throw new SubmissionError({
-          error
+          email: "Email already in use"
         });
       }
     } catch (e) {
       console.log(e);
+      throw new SubmissionError({
+        email: "Email already in use"
+      });
     }
 
     this.props.registerUser({
@@ -27,8 +31,6 @@ class Form3 extends Component {
       ...this.props.form.form2.values,
       ...data
     });
-
-    console.log("data", this.props);
     history.push("/dashboard");
   };
 

@@ -46,8 +46,6 @@
 }
 
 .profile {
-  /* margin: 0 ; */
-  /* margin-left: 2rem !important; */
   margin: auto 20% !important;
   padding: 1rem !important;
   color: rgba(40, 100, 70, 0.664);
@@ -60,21 +58,9 @@
 .tree {
   text-align: center;
   margin: 0rem;
-  /* width: 100%; */
-  /* margin-left: 20rem !important; */
 }
 
-/* /* 
-
-.show {
-  text-align: center;
-}
-
-/* .center {
-
-width: 40% !important;
-} */
-*/ */ .my-model {
+.my-model {
   height: 100vh;
   width: 100vw;
   top: 0;
@@ -85,7 +71,6 @@ width: 40% !important;
   border-radius: 4px;
   vertical-align: top;
   background: rgba(131, 112, 112, 0.376);
-  /* /* position: relative; */
 }
 
 .my-wrapper {
@@ -95,7 +80,6 @@ width: 40% !important;
 }
 
 .footer {
-  /* display: grid; */
   position: absolute;
   right: 0;
   bottom: 0;
@@ -116,7 +100,8 @@ width: 40% !important;
 
 /* //////////////////////////////////// */
 
-.memeber-item {}
+.memeber-item {
+}
 
 label {
   color: white !important;
@@ -129,15 +114,8 @@ input {
 body {
   color: white;
   line-height: 2rem !important;
-  /* background-image: url('./images/money-1604921.jpg'); */
-  /* display: grid; */
-  /* background-image: linear-gradient(to right bottom, rgba(9, 15, 17, 0.8), rgba(9, 15, 107, 0.8)),
-  url('./images/money-1604921.jpg');
-  background-size: cover;
-  background-position: center; */
-  background-color: rgb(32, 11, 11);
+  background-color: rgb(5, 18, 34);
   height: 100%;
-  /* background-repeat: no-repeat; */
 }
 
 .member-wrapper {
@@ -166,7 +144,6 @@ body {
   }
 }
 
-
 /* ////////////////////////////////////////////// */
 /* #nav-mobile {
   display: grid;
@@ -183,8 +160,6 @@ body {
 
 .nav {
   display: grid;
-
-
 }
 
 .nav {
@@ -211,14 +186,12 @@ body {
   display: block;
 }
 
-
 .nav {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: 4fr repeat(4, 120px);
   justify-content: center;
   align-content: center;
-
 }
 
 .nav__list {
@@ -291,11 +264,32 @@ body {
   background-color: green;
   height: 8vh;
 }
+.custom-container {
+  margin: 5px 5px !important;
+}
 
+.sidenav-overlay {
+  opacity: 0 !important ;
+  /* display: block; */
+  /* styling for it hide-on-med-and-down */
+}
 
 @media only screen and (max-width: 900px) {
   .brand-logo {
     display: none !important;
+  }
+
+  th {
+    padding: 0px 0px;
+  }
+
+  p {
+    font-size: 11px;
+  }
+
+  th,
+  td {
+    font-size: 11px;
   }
 
   /* .nav {
@@ -363,7 +357,6 @@ body {
 /* ///////////////////////////////////////// */
 /* ////////////////////////////////////////////// */
 
-
 .slider .btn {
   margin-top: 20px;
 }
@@ -382,7 +375,6 @@ body {
 .section-contact h5 {
   margin-bottom: 30px;
 }
-
 
 .image {
   margin-bottom: 1rem;

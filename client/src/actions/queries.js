@@ -18,8 +18,6 @@ export const setAxiosHeader = () => {
 export const getMembers = (id) => {
   return async dispatch => {
     try {
-      console.log("in action ", id)
-
       var query = `?_userId=${id}`
       const res = await axios.get(`${URL}/AllMembers` + query,
         setAxiosHeader());

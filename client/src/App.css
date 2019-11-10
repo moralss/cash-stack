@@ -111,9 +111,10 @@ input {
 }
 
 body {
-  color: white;
+  color: rgb(88, 29, 29);
   line-height: 2rem !important;
-  background-color: rgb(5, 18, 34);
+  background-color: white;
+  /* background-color: rgb(5, 18, 34); */
   height: 100%;
 }
 

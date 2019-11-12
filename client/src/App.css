@@ -107,7 +107,11 @@ label {
 }
 
 input {
-  color: white !important;
+  color: rgb(88, 29, 29) !important;
+}
+
+label {
+  color: rgb(88, 29, 29) !important;
 }
 
 body {

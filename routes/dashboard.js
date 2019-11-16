@@ -45,5 +45,5 @@ const memberBoard = app => {
 
 module.exports = {
   dashboard,
-  memberBoard
+  memberBoard,
 };

@@ -1,41 +1,109 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ImageUploader from "react-images-upload";
+import Button from "@material-ui/core/Button";
+import DefaultImg from "../images/index";
+import axios from "axios";
+import FileBase from "react-file-base64";
+import { imagePic } from "./baseImage";
+import { storage } from "../firebase";
 
-const Active = () => {
-  return (
-    <div>
-      <div className="card">
-        <h3 className="grey-text">Method 1</h3>
-        <label className="grey-text">Account</label>
-        <select class="browser-default">
-          <option value="" disabled selected>
-            Choose your Payment options
-          </option>
-          <option value="1">EFT</option>
-          <option value="2"> DEBIT CARD</option>
-          <option value="3">MASTER CARD</option>
-        </select>
-        <input type="text" placeholder="account number" />
-        <label htmlFor="" className="grey-text">
-          Payment required R200.00
-        </label>
-        <div className="col">
-          <button className="btn block">Send</button>
-        </div>
-      </div>
-      <div className="card">
-        <h3 className="grey-text">Method 2</h3>
-        <label className="grey-text">
-          cash stack acount number 7767675675565
-        </label>
-        <h6 className="grey-text">send prove of payment</h6>
-        {/* <button>upload photo</button> */}
-        <input id="fileInput" type="file" />
-        <div>
-          <button className="btn">Send prove of payment</button>
-        </div>
-      </div>
-    </div>
-  );
-};
+const API_URL = "http://localhost:3001/";
 
-export default Active;
+class Upload extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      multerImage: DefaultImg,
+      firebaseImage: DefaultImg,
+      baseImage: DefaultImg
+    };
+  }
+
+  setDefaultImage(uploadType) {
+    if (uploadType === "firebase") {
+      this.setState({
+        firebaseImage: DefaultImg
+      });
+    } else {
+      this.setState({
+        baseImage: DefaultImg
+      });
+    }
+  }
+
+  uploadImage(e, method) {
+    if (method === "firebase") {
+      let currentImageName = "firebase-image-" + Date.now();
+      let folder = "images";
+      storage
+        .ref(folder + "/" + currentImageName)
+        .put(e.target.files[0])
+        .then(res => {
+          res.ref.getDownloadURL().then(url => {
+            console.log("done", url);
+            this.setState({
+              firebaseImage: url
+            });
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      // let uploadImage = storage
+      //   .ref(`images/${currentImageName}`)
+      //   .put(e.target.files[0]);
+
+      // uploadImage.on(
+      //   "state_changed",
+      //   snapshot => {},
+      //   error => {
+      //     alert(error);
+      //   },
+      //   () => {
+      //     storage
+      //       .ref("images")
+      //       .child(currentImageName)
+      //       .getDownloadURL()
+      //       .then(url => {
+      //         this.setState({
+      //           firebaseImage: url
+      //         });
+
+      //         // store image object in the database
+      //       });
+      //   }
+      // );
+    }
+  }
+
+  // function to capture base64 format of an image
+
+  render() {
+    return (
+      <div className="image-container">
+        <div className="process">
+          <h4 className="process__heading">Capture Receipt</h4>
+          <p className="process__details"></p>
+          <input
+            style={{ display: "block" }}
+            type="file"
+            className="process__upload-btn"
+            onChange={e => this.uploadImage(e, "firebase")}
+          />
+          <img
+            src={this.state.firebaseImage}
+            alt="upload-image"
+            className="process__image"
+          />
+        </div>
+
+        <button> Confirm </button>
+      </div>
+    );
+  }
+}
+
+export default Upload;

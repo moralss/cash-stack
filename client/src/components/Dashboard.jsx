@@ -55,7 +55,7 @@ class Dashboard extends Component {
             style={{ textAbuttongn: "center" }}
             className="btn"
           >
-            CHECK ACCOUNT STATUS
+            ACCOUNT STATUS
           </button>
         </div>
         <h4 style={{ textAlign: "center" }} className="primary">
@@ -84,7 +84,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -9,6 +9,7 @@ const validateEmail = require('./helperRoutes/index');
 const activeAccount = require('./routes/payfast');
 const path = require('path');
 const sendGrid = require("./routes/sendgrid");
+// const imageUpload = require("./routes/image-upload");
 
 
 app.use(bodyParser.json());
@@ -20,6 +21,9 @@ dashboard.dashboard(app);
 validateEmail.validateEmail(app);
 memberBoard.memberBoard(app);
 activeAccount.activeAccount(app)
+// imageUpload.uploader(app);  
+// imageUpload.uploaderMulter(app);
+// imageUpload.sendImage(app);
 
 app.get("/api", (req, res) => res.send("Hello World!"));
 

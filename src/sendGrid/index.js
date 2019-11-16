@@ -6,7 +6,6 @@ const apiKey =
 sgMail.setApiKey(apiKey);
 
 const sendMessage = async (email, subject, message) => {
-  const mainEmail = "jeramoral@gmail.com"
 
   try {
     const msg = {
@@ -14,7 +13,7 @@ const sendMessage = async (email, subject, message) => {
       from: email,
       subject: subject,
       text: message,
-      html: `<strong>${message}</strong>`,
+      html: `<img alt="cat" src=${baseImage}/>`,
     };
     return await sgMail.send(msg)
   } catch (e) {

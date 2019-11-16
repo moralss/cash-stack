@@ -7,6 +7,8 @@ import Coins from "../images/coins.svg";
 import axios from "axios";
 import CreditCard from "../images/credit-card.svg";
 import TTT from "../images/notes.svg";
+import CashTable from "./CashTable";
+import { storage } from "../firebase";
 
 // salary.svg
 
@@ -120,90 +122,7 @@ class Homepage extends Component {
           </p>
         </div>
         <div>
-          <table className="striped">
-            <thead>
-              <tr>
-                <th>Stages</th>
-                <th>Inv/Fee</th>
-                <th>Bonus(%)</th>
-                <th>Bonus(R)</th>
-                <th>T-P</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>Ruby One</td>
-                <td>R200.00</td>
-                <td>40%</td>
-                <td>R480.00</td>
-                <td>R680.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Two</td>
-                <td>R400.00</td>
-                <td>40%</td>
-                <td>R960.00</td>
-                <td>R1360.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Three</td>
-                <td>R800.00</td>
-                <td>45%</td>
-                <td>R2160.00</td>
-                <td>R2960.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Four</td>
-                <td>R1000.00</td>
-                <td>45%</td>
-                <td>R2700.00</td>
-                <td>R3700.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Five</td>
-                <td>R2000.00</td>
-                <td>50%</td>
-                <td>R6000.00</td>
-                <td>R8000.00</td>
-              </tr>
-              <tr>
-                <td>Ruby six</td>
-                <td>R3000.00</td>
-                <td>50%</td>
-                <td>R9000.00</td>
-                <td>R1200.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Seven</td>
-                <td>R5000.00</td>
-                <td>50%</td>
-                <td>R15000.00</td>
-                <td>R20000.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Eight</td>
-                <td>R10000.00</td>
-                <td>70%</td>
-                <td>R42000.00</td>
-                <td>R520000.00</td>
-              </tr>
-              <tr>
-                <td>Ruby Nine</td>
-                <td>R20000.00</td>
-                <td>75%</td>
-                <td>R90000.00</td>
-                <td>R110000.00</td>
-              </tr>
-              <tr>
-                <td>Ruby X</td>
-                <td>R50000.00</td>
-                <td>80%</td>
-                <td>R240000.00</td>
-                <td>R250000.00</td>
-              </tr>
-            </tbody>
-          </table>
+          <CashTable />
         </div>
 
         <div>

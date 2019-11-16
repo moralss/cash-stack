@@ -10,6 +10,8 @@
   "author": "moral and Njabulo",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.6.1",
+    "@rmwc/data-table": "^5.7.0",
     "@sendgrid/mail": "^6.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -18,7 +20,9 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
     "lodash": "^4.17.15",
+    "multer": "^1.4.2",
     "nodemon": "^1.19.1",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "rmwc": "^5.7.1"
   }
 }

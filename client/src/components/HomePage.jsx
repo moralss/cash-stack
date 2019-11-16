@@ -21,6 +21,7 @@ class Homepage extends Component {
     console.log("state state", this.state);
     axios.post("http://localhost:3001/send-email", this.state);
   }
+
   render() {
     return (
       <div className="custom-container">
@@ -110,19 +111,24 @@ class Homepage extends Component {
             Financial freedom 4 all
           </h6>
           <p>
-            CA$H $TACK is a South AFRICAN MULTI LEVEL MARKETING COMPANY
-            ESTABLISHED IN MAY 2019. FOUNDED BY NETWORK MARKETERS, THOSE WHO ARE
-            TIRED OF ILLIGAL PYRAMID SCHEMES. WE ARE A TEAM DRIVEN BY PASSION TO
-            DELIVER THE ATMOST IN NETWORK MARKERTING. TO BE DREAM ACHIEVERS THAT
-            WILL CONTINUE TO SEARCH OUTWAYS TO BUILD A GREAT ORGANISATION TO
-            ACHIEVE A HIGH QUALITY OF LIFE STYLE, WITH A PERFECT IN NETWORKING
-            BY CREATING AN ATMOSPHERE OF POSITIVE BEHAVIOUR FOR ALL PARTNERS TO
-            ACHIEVE ALL THEIR DREAMS. WE FOUND A POSSIBLE WAY OF CHANGING LIVES.
-            NO SELLING OF PRODUCTS REQUIRED, NO SWEATING.
+            CA$H $TACK is a South african multi level marketing company
+            established in May 2019. Founded by network marketers, those who are
+            tired of illegal pyramid schemes. We are a team driven by passion to
+            deliver the outmost in network marketing. To be a dream achievers
+            that will continue to search out ways to build a great organization
+            to achieve a highly quality of lifestyle, with a perfect in network
+            marketing by creating an atmosphere of positiveE behavior for all
+            partners to achieve all their dreams. We found a possible way of
+            changing lives . No selling of products required, no sweating.
           </p>
         </div>
         <div>
+          <h3>Ruby Stages</h3>
           <CashTable />
+          <p>Your Ruby stages are now completed</p>
+          <p>At this point, you are qualified to Ruby STAR Stages</p>
+          <p>Where dreams comes true</p>
+          <p>More MONEY, more INSENTIVES</p>
         </div>
 
         <div>

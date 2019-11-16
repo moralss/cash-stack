@@ -28,13 +28,19 @@ const rows = [
   createData("Ruby One", "200.00", "40%", "480.00", "680.00"),
   createData("Ruby two", "400.00", "40%", "960.00", "1360.00"),
   createData("Ruby Three", "800.00", "45%", "2160.00", "2960.00"),
-  createData("Ruby Four", "1000.00", "45%", "2700.00", "3700.00"),
+  createData("Ruby Four", "1000.00", "-", "Grocery Hamper Worth 1k", "2700.00"),
   createData("Ruby Five", "2000.00", "50%", "6000.00", "8000.00"),
-  createData("Ruby Six", "3000.00", "50%", "9000.00", "12000.00"),
+  createData("Ruby Six", "3000.00", "-", "IOS Phone Worth 3k", "9000.00"),
   createData("Ruby Seven", "5000.00", "50%", "15000.00", "20000.00"),
-  createData("Ruby Eight", "10000.00", "70%", "42000.00%", "52000.00"),
+  createData(
+    "Ruby Eight",
+    "10000.00",
+    "-",
+    "Bedroom Set Worth 20k",
+    "32000.00"
+  ),
   createData("Ruby Nine", "20000.00", "75%", "90000.00", "110000.00"),
-  createData("Ruby X", "50000.00", "80%", "240000.00", "250000.00")
+  createData("Ruby X", "50000.00", "-", "Car Insentive", "150000.00")
 ];
 
 function desc(a, b, orderBy) {

@@ -15,10 +15,20 @@ const validate = values => {
     errors.password = "Required";
   }
 
+  if (!values.OTP) {
+    errors.OTP = "Required";
+  }
+
   if (values.confirmPassword !== values.password && values.password !== "" &&
     values
-    .confirmPassword !== "") {
+      .confirmPassword !== "") {
     errors.confirmPassword = "password should match!";
+  }
+
+
+
+  if (!values.emailConfirm) {
+    errors.emailConfirm = "Required";
   }
 
 

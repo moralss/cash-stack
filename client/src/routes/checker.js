@@ -13,3 +13,9 @@ export const checkAuth = () => {
   }
 
 }
+
+
+export const checkId = () => {
+  var userId = store.getState().user.profile.id;
+  return userId;
+}

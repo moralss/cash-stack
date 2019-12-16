@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import * as actions from "../actions/queries";
 import history from "../routes/history";
 import DashoardNav from "./example/DashoardNav";
+// import getApprovalType from '../actions/queries'
 
 class Dashboard extends Component {
   constructor() {
@@ -22,14 +23,13 @@ class Dashboard extends Component {
       this.setState({ isLoading: false });
     }, 4000);
     clearInterval(interval);
+    this.props.getApprovalType()
+    if (this.props.approvalType !== "ACCESS") {
+      history.push("/active");
+    }
   }
 
   changeRoute(route) {
-    //   console.log("ID", this.props.userId);
-    //   if (route === "users") {
-    //     this.props.getMembers(this.props.userId);
-    //   }
-
     history.push(route);
   }
 
@@ -73,14 +73,16 @@ Dashboard.propTypes = {};
 
 function mapDispatchToProps(dispatch) {
   return {
-    getMembers: data => dispatch(actions.getMembers(data))
+    getMembers: data => dispatch(actions.getMembers(data)),
+    getApprovalType: data => dispatch(actions.getApprovalType(data))
   };
 }
 
 function mapStateToProps(state) {
   return {
     profile: state.user.profile,
-    memberCount: state.user.memberCount
+    memberCount: state.user.memberCount,
+    approvalType: state.approval.approvalType
   };
 }
 

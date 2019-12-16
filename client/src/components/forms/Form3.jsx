@@ -6,23 +6,34 @@ import history from "../../routes/history";
 import renderField from "./RenderField";
 import { connect } from "react-redux";
 import * as thunks from "../../actions/auth";
-import { validateEmail } from "../../Utils/validations/asyncValidation";
+import { validateEmail, checkConfirmation } from "../../Utils/validations/asyncValidation";
 import { SubmissionError } from "redux-form";
+import { sendConfirmation } from '../../actions/queries'
+// import EmailConfirmation from "";
+
 
 class Form3 extends Component {
+
   handleSubmit = async data => {
     try {
-      const error = await validateEmail(data.email);
+      const error = await validateEmail(data.email)
+      const errorOTP = await checkConfirmation({ email: data.email, code: data.OTP });
 
-      if (error.data.email) {
+      if (error.data.email == "user exists") {
         throw new SubmissionError({
-          email: "Email already in use"
+          email: "Email exists"
+        });
+      }
+
+      if (errorOTP.data.code == "incorrect code") {
+        throw new SubmissionError({
+          OTP: "Invalid code"
         });
       }
     } catch (e) {
-      console.log(e);
+      const error = JSON.parse(JSON.stringify(e));
       throw new SubmissionError({
-        email: "Email already in use"
+        ...error.errors
       });
     }
 
@@ -33,6 +44,12 @@ class Form3 extends Component {
     });
     history.push("/dashboard");
   };
+
+
+  sendConfirmations() {
+    const enteredEmail = this.props.form['object Object'].values.email;
+    this.props.sendConfirmation(enteredEmail)
+  }
 
   render() {
     const { handleSubmit, pristine, previousPage, submitting } = this.props;
@@ -56,18 +73,28 @@ class Form3 extends Component {
           />
 
           <Field
-            type="password"
-            name="confirmPassword"
-            component={renderField}
-            label="confirm password"
-            placeholder="Enter password"
-          />
-          <Field
+            name="password"
             type="password"
             component={renderField}
             label="Password"
-            name="password"
             placeholder="Password"
+          />
+
+          <Field
+            name="confirmPassword"
+            type="password"
+            component={renderField}
+            label="confirm password"
+            placeholder="confirm password"
+          />
+
+          <button onClick={() => this.sendConfirmations()}>Send OTP code</button>
+          <Field
+            name="OTP"
+            component={renderField}
+            type="text"
+            // label="Enter email confirm P code"
+            placeholder="Enter email confirmation OTP code"
           />
 
           <div>
@@ -76,7 +103,7 @@ class Form3 extends Component {
               className="btn btn-block space"
               disabled={pristine || submitting}
             >
-              Submit
+              Send
             </button>
             <button
               type="button"
@@ -103,9 +130,12 @@ const reduxForm3 = reduxForm({
   validate
 })(Form3);
 
+
 function mapDispatchToProps(dispatch) {
   return {
-    registerUser: data => dispatch(thunks.registerUser(data))
+    registerUser: data => dispatch(thunks.registerUser(data)),
+    sendConfirmation: data => dispatch(sendConfirmation(data)),
+    // checkConfirmation: data => dispatch(checkConfirmation(data))
   };
 }
 

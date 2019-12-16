@@ -36,7 +36,7 @@ export const registerUser = (credentials) => {
       dispatch(reset('login'))
       dispatch(reset('form2'))
       dispatch(reset('object Object'))
-      history.push("/dashboard")
+      history.push("/active")
     } catch (error) {
       console.log(error);
     }

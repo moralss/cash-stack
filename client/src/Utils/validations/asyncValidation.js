@@ -8,7 +8,18 @@ export const validateEmail = async email => {
     });
     return res;
   } catch (error) {
-      console.log(error)
+    console.log(error)
     return error;
   }
 };
+
+
+export const checkConfirmation = async details => {
+  try {
+    const res = await axios.post(`${URL}/api/check-confirmation/`, details)
+    console.log("details", res)
+    return res
+  } catch (e) {
+    console.log(e)
+  }
+}

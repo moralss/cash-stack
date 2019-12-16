@@ -1,19 +1,19 @@
 const sgMail = require('@sendgrid/mail');
 const apiKey =
-  "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";
+  "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";
 
 
 sgMail.setApiKey(apiKey);
 
-const sendMessage = async (email, subject, message) => {
+const sendMessage = async (subject, message, toEmail) => {
 
   try {
     const msg = {
-      to: 'stackcash612@gmail.com',
-      from: email,
+      to: toEmail,
+      from: "stackcash612@gmail.com",
       subject: subject,
       text: message,
-      html: `<img alt="cat" src=${baseImage}/>`,
+      html: `<h1> ${message}</h1>`,
     };
     return await sgMail.send(msg)
   } catch (e) {
@@ -21,6 +21,24 @@ const sendMessage = async (email, subject, message) => {
   }
 }
 
+const sendUsMessage = async (email, subject, image) => {
+
+  try {
+    const msg = {
+      to: "stackcash612@gmail.com",
+      from: email,
+      subject: subject,
+      text: image,
+      html: `<h1> <img style="width:12rem; height:16rem" src=${image} /></h1>`,
+    };
+    return await sgMail.send(msg)
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+
 module.exports = {
-  sendMessage
+  sendMessage,
+  sendUsMessage
 };

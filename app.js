@@ -9,6 +9,8 @@ const validateEmail = require('./helperRoutes/index');
 const activeAccount = require('./routes/payfast');
 const path = require('path');
 const sendGrid = require("./routes/sendgrid");
+const receipt = require("./routes/receipt");
+
 // const imageUpload = require("./routes/image-upload");
 
 
@@ -17,6 +19,7 @@ app.use(cors());
 
 sendGrid.sendEmail(app);
 authRoutes.authRoutes(app);
+receipt.receipt(app);
 dashboard.dashboard(app);
 validateEmail.validateEmail(app);
 memberBoard.memberBoard(app);

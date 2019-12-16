@@ -8,10 +8,12 @@ import axios from "axios";
 import CreditCard from "../images/credit-card.svg";
 import TTT from "../images/notes.svg";
 import CashTable from "./CashTable";
+import Ranger from '../assets/range.jpg'
+import House from '../assets/modern.jpeg';
+import Package from "../assets/package1320x742.jpg";
 import { storage } from "../firebase";
 
 // salary.svg
-
 class Homepage extends Component {
   componentDidMount() {
     checkAuth();
@@ -50,7 +52,8 @@ class Homepage extends Component {
               <hr />
               <p>
                 Pay R200.00 once off joining fee
-                <br /> 6 X members joins under your name <br /> Now your Ruby
+                <br /> Recruit Six members under your name<br />
+                6 X members joins under your name <br /> Your Ruby
                 one is now completed <br />
                 <p>
                   <p> Benefits of Ruby One</p>
@@ -71,15 +74,16 @@ class Homepage extends Component {
               <p>
                 From the profit you've gained from Ruby one
                 <br /> Pay R400.00 <br />
-                Lead/help/teach your six members to recruit their own six
+                Lead/Help/Teach your six members to recruit their own six
                 members.
                 <br />
                 Once your six members joins you at this stage... <br />
-                Now you advanced to Ruby Three <br />
+                You advanced to Ruby Three
+                Your Ruby Two is now completed <br />
                 <p>Benefits of Ruby Two</p>
                 R400.00 Cash back <br />
                 40% x6 bonus =R750.00 <br />
-                Total pay-out R950.00 + R400.00 <br />
+                Total pay-out R400.00 + R950.00 <br />
                 TP=R1 360.00
               </p>
               <img src={`${TTT}`} alt=" no image" style={{ width: "150px " }} />
@@ -90,7 +94,9 @@ class Homepage extends Component {
               <p>
                 Pay R800.00 <br />
                 Once your six members joins you at this stage... <br />
-                You advance to Ruby Four <p>Benefits of Ruby Three</p> R500.00
+                You advance to Ruby Four
+                Your Ruby Three is now completed
+                 <p>Benefits of Ruby Three</p> R500.00
                 Cash back <br />
                 45% x6 bonus =R2 160.00 <br />
                 Total pay-out R2 160.00 + R800.00 <br />
@@ -117,9 +123,9 @@ class Homepage extends Component {
             deliver the outmost in network marketing. To be a dream achievers
             that will continue to search out ways to build a great organization
             to achieve a highly quality of lifestyle, with a perfect in network
-            marketing by creating an atmosphere of positiveE behavior for all
+            marketing by creating an atmosphere of a positive behavior for all
             partners to achieve all their dreams. We found a possible way of
-            changing lives . No selling of products required, no sweating.
+            changing lives . No selling of products is required, no sweating.
           </p>
         </div>
         <div>
@@ -127,32 +133,44 @@ class Homepage extends Component {
           <CashTable />
           <p>Your Ruby stages are now completed</p>
           <p>At this point, you are qualified to Ruby STAR Stages</p>
-          <p>Where dreams comes true</p>
+          <p>Where all dreams comes true</p>
           <p>More MONEY, more INSENTIVES</p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3 , 1fr)" }}>
+          <img class="col 6" src={`${Ranger}`} style={{
+            width: "11rem",
+            height: "10rem",
+            margin: "auto",
+          }} alt="" />
+
+
+          <img class="col 6" src={`${House}`} style={{
+            width: "11rem",
+            margin: "auto",
+            height: "10rem"
+          }} alt="" />
+
+          <img class="col 6" src={`${Package}`} style={{
+            width: "11rem",
+            margin: "auto",
+            height: "10rem"
+          }} alt="" />
+
         </div>
 
         <div>
           <h3>Contact us </h3>
-          <h6>Your email address</h6>
-          <input
-            onChange={e => this.setState({ email: e.target.value })}
-            type="email"
-            placeholder="email"
-          />
-          <input
-            onChange={e => this.setState({ subject: e.target.value })}
-            type="text"
-            placeholder="Subject"
-          />
-          <input
-            onChange={e => this.setState({ message: e.target.value })}
-            type="text"
-            placeholder="Your message"
-          />
-          <button onClick={() => this.sendMesage()} className="btn">
-            send
-          </button>
+          <div class="row">
+            <h6 class="col">cashstack email address</h6>
+            <h6 class="col">stackcash612@gmail.com</h6>
+          </div>
+          <div class="row">
+            <h6 class="col">WhatsApp number</h6>
+            <h6 class="col">(+27)79 341 7339</h6>
+          </div>
+
         </div>
+
       </div>
     );
   }

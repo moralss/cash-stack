@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as actions from '../actionTypes/index'
 import store from "../store";
+import { checkId } from '../routes/checker';
 const URL = "/api";
 
 
@@ -32,4 +33,65 @@ export const getMembers = (id) => {
       console.log(error);
     }
   };
-};
+}
+  ;
+
+export const saveReceiptUrl = (receiptUrl, userId) => {
+  return async dispatch => {
+    try {
+      const userId = checkId();
+      await axios.post(`${URL}/receipt`, {
+        receiptUrl,
+        userId
+      }, setAxiosHeader())
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}
+
+// send-confirmation
+
+
+export const sendConfirmation = (email) => {
+  console.log("details ", email);
+  return async dispatch => {
+    try {
+      const { data } = await axios.post(`${URL}/send-confirmation/`, { email }, setAxiosHeader())
+      console.log(" request status", data);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+export const getApprovalType = (userId) => {
+  return async dispatch => {
+    try {
+      const userId = checkId();
+      const { data } = await axios.get(`${URL}/receipt/${userId}`, setAxiosHeader())
+      if (data.active == true) {
+        dispatch({
+          type: actions.CHANGE_APPROVAL,
+          payload: "ACCESS"
+        });
+      }
+      if (data.active == false) {
+        dispatch({
+          type: actions.CHANGE_APPROVAL,
+          payload: "WAITING"
+        });
+      }
+      if (data.length == 0) {
+        dispatch({
+          type: actions.CHANGE_APPROVAL,
+          payload: "FIRST_TIME"
+        });
+      }
+
+      dispatch();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+}

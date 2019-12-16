@@ -1,12 +1,17 @@
 import * as actions from "../actionTypes";
 
+const values = [
+  "ACCESS",
+  "FIRST_TIME",
+  "WAITING"
+]
+
 const initalState = {
   profile: {},
-  latestBlog: [],
   auth: false,
   error: {},
   allMembers: [],
-  memberCount: 0
+  memberCount: 0,
 };
 
 export const userReducer = (state = initalState, action) => {
@@ -19,23 +24,23 @@ export const userReducer = (state = initalState, action) => {
       return {
         ...state, error: action.payload
       }
-      case actions.SAVE_MEMBERS:
-        const {
-          allMembers
-        } = action.payload
-        return {
-          ...state,
-          allMembers: [
-              ...allMembers
-            ],
-            memberCount: action.payload.allMembers.length
-        }
-        case actions.SET_USER:
-          return {
-            ...state,
-            profile: action.payload.profile
-          }
-          default:
-            return state;
+    case actions.SAVE_MEMBERS:
+      const {
+        allMembers
+      } = action.payload
+      return {
+        ...state,
+        allMembers: [
+          ...allMembers
+        ],
+        memberCount: action.payload.allMembers.length
+      }
+    case actions.SET_USER:
+      return {
+        ...state,
+        profile: action.payload.profile
+      }
+    default:
+      return state;
   }
 };

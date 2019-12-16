@@ -15,6 +15,20 @@ const getUserByEmail = async email => {
   }
 };
 
+const getUserById = async userId => {
+  console.log("userId", userId)
+  const client = await getClient();
+  let statement = `SELECT email FROM users WHERE id = $1`;
+  const res = await client.query(statement, [userId]);
+  try {
+    await client.release();
+    return res.rows[0];
+  } catch (e) {
+    await client.release();
+    return;
+  }
+};
+
 
 const compareRefNumber = async refNumer => {
   const client = await getClient();
@@ -48,5 +62,6 @@ const getRefs = async email => {
 module.exports = {
   getUserByEmail,
   compareRefNumber,
-  getRefs
+  getRefs,
+  getUserById
 };

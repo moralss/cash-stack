@@ -7,6 +7,7 @@ export const logout = () => {
   history.push('/');
   localStorage.clear("persist:root")
   localStorage.clear("user")
+  localStorage.clear()
   return {
     type: actions.AUTHENTICATED,
     payload: {

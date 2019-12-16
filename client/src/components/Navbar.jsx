@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions/system";
 import * as quiers from "./../actions/queries";
 import Img from "../assets/cash-stack.svg";
+import Logo from "../assets/cash-stack.svg";
 
 class Navbar extends Component {
   changeRoute(route) {
@@ -27,19 +28,20 @@ class Navbar extends Component {
           <nav class="teal">
             <div class="container">
               <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">
-                  <img src="./cash-stack.svg" />
-                </a>
+                {/* <a href="#!" class="brand-logo">
+                  <img src="./assets/FB_IMG_15764186964302054.jpg" alt="images" />
+                </a> */}
+                <img src={`${Logo}`} alt="images" className="cash-stack-logo" />
                 {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>
                 </a> */}
                 <ul class="right">
-                  <li>
+                  {this.props.approvalType == "ACCESS" ? <li>
                     <a onClick={() => this.changeRoute("users")}>MEMBER</a>
-                  </li>
-                  <li>
+                  </li> : null}
+                  {this.props.approvalType == "ACCESS" ? <li>
                     <a onClick={() => this.changeRoute("dashboard")}>PROFILE</a>
-                  </li>
+                  </li> : null}
                   <li>
                     <a onClick={() => this.logout()}>LOGOUT</a>
                   </li>
@@ -68,11 +70,14 @@ class Navbar extends Component {
       <div class="navbar-fixed">
         <div class="navbar-fixed">
           <nav class="teal">
-            <div class="container">
-              <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">
-                  {/* <img className="image" src={`${Img}`} /> */}
-                </a>
+            <div class="container" style={{ width: "98%" }}>
+              <div class="nav-wrapper" style={{ marginLeft: "1rem", marginRight: "1rem" }}>
+                {/* <a href="#!" class="brand-logo"> */}
+                {/* <div>    */}
+                <img src={`${Logo}`} alt="images" className="cash-stack-logo" />
+                {/* </div> */}
+                {/* <img className="image" src={`${Img}`} /> */}
+                {/* </a> */}
                 {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="material-icons">menu</i>
                 </a> */}
@@ -108,7 +113,7 @@ class Navbar extends Component {
             <a onClick={() => this.changeRoute("login")}>LOGIN</a>
           </li>
         </ul> */}
-      </div>
+      </div >
     );
   }
 
@@ -135,7 +140,9 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     authenticated: state.user.auth,
-    userId: state.user.profile.id
+    userId: state.user.profile.id,
+    profile: state.user.profile,
+    approvalType: state.approval.approvalType
   };
 }
 

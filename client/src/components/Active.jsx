@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ImageUploader from "react-images-upload";
 import Button from "@material-ui/core/Button";
 import DefaultImg from "../images/index";
 import axios from "axios";
-import FileBase from "react-file-base64";
-import { imagePic } from "./baseImage";
 import { storage } from "../firebase";
+import { saveReceiptUrl, getApprovalType } from '../actions/queries';
+import history from '../routes/history';
 
 const API_URL = "http://localhost:3001/";
 
@@ -15,95 +14,96 @@ class Upload extends Component {
     super(props);
 
     this.state = {
-      multerImage: DefaultImg,
-      firebaseImage: DefaultImg,
-      baseImage: DefaultImg
+      imageDetails: '',
     };
   }
 
-  setDefaultImage(uploadType) {
-    if (uploadType === "firebase") {
-      this.setState({
-        firebaseImage: DefaultImg
-      });
-    } else {
-      this.setState({
-        baseImage: DefaultImg
-      });
-    }
+  componentWillMount() {
+    this.props.getApprovalType()
+    console.log("approvaldfdsfdfsdfdfsdfdfsd", this.props.approvalType);
+    // if (this.props.approvalType == "ACCESS") {
+    //   console.log("dfsdfdfs", history)
+    //   history.push("/dashboard");
+    //   // this.props.history.push("/dashboard")
+    // }
   }
 
-  uploadImage(e, method) {
-    if (method === "firebase") {
-      let currentImageName = "firebase-image-" + Date.now();
-      let folder = "images";
-      storage
-        .ref(folder + "/" + currentImageName)
-        .put(e.target.files[0])
-        .then(res => {
-          res.ref.getDownloadURL().then(url => {
-            console.log("done", url);
-            this.setState({
-              firebaseImage: url
-            });
-          });
-        })
-        .catch(err => {
-          console.log(err);
+
+
+  confirmImage() {
+    const { refNumber, id } = this.props.profile;
+    let currentImageName = "firebase-image-" + "/" + refNumber + "/" + new Date().getTime() + "-" + id;
+    let folder = "images";
+    storage
+      .ref(folder + "/" + currentImageName)
+      .put(this.state.imageDetails)
+      .then(res => {
+        res.ref.getDownloadURL().then(url => {
+          this.props.saveReceiptUrl(url)
+          this.props.getApprovalType()
         });
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-      // let uploadImage = storage
-      //   .ref(`images/${currentImageName}`)
-      //   .put(e.target.files[0]);
-
-      // uploadImage.on(
-      //   "state_changed",
-      //   snapshot => {},
-      //   error => {
-      //     alert(error);
-      //   },
-      //   () => {
-      //     storage
-      //       .ref("images")
-      //       .child(currentImageName)
-      //       .getDownloadURL()
-      //       .then(url => {
-      //         this.setState({
-      //           firebaseImage: url
-      //         });
-
-      //         // store image object in the database
-      //       });
-      //   }
-      // );
-    }
+    this.setState({ imageDetails: '' })
+    this.fileInput.value = "";
+    this.props.getApprovalType()
   }
 
-  // function to capture base64 format of an image
+
+  uploadImage(e) {
+    this.setState({ imageDetails: e.target.files[0] });
+  }
+
+  cancel() {
+    this.setState({ imageDetails: '' })
+    this.fileInput.value = "";
+
+  }
 
   render() {
     return (
       <div className="image-container">
-        <div className="process">
-          <h4 className="process__heading">Capture Receipt</h4>
-          <p className="process__details"></p>
-          <input
-            style={{ display: "block" }}
-            type="file"
-            className="process__upload-btn"
-            onChange={e => this.uploadImage(e, "firebase")}
-          />
-          <img
-            src={this.state.firebaseImage}
-            alt="upload-image"
-            className="process__image"
-          />
-        </div>
+        {this.props.approvalType === "WAITING" ?
+          <h1>Waiting for approval</h1> :
+          <div>
+            <h4 className="process__heading">Capture Receipt</h4>
+            <input
+              style={{ display: "block" }}
+              type="file"
+              className="process__upload-btn"
+              onChange={e => this.uploadImage(e)}
+              ref={ref => this.fileInput = ref}
+            />
+            <p>
+              {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
+            </p>
+            <button onClick={() => this.cancel()}> Cancel </button>
+            <button onClick={() => this.confirmImage()}> Confirm </button>
+          </div>
+        }
 
-        <button> Confirm </button>
-      </div>
+      </div >
     );
   }
 }
 
-export default Upload;
+function mapDispatchToProps(dispatch) {
+  return {
+    saveReceiptUrl: id => dispatch(saveReceiptUrl(id)),
+    getApprovalType: userId => dispatch(getApprovalType(userId))
+  };
+
+}
+
+function mapStateToProps(state) {
+  return {
+    profile: state.user.profile,
+    approvalType: state.approval.approvalType
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Upload);
+

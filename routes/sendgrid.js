@@ -2,24 +2,90 @@ const {
   sendMessage
 } = require("../src/sendGrid");
 const sgMail = require('@sendgrid/mail');
+var Chance = require('chance');
+
+
 
 const sendEmail = app => {
-  app.post("/send-email", async (req, res) => {
+  app.post("/api/send-email", async (req, res) => {
     try {
       const {
         email,
         subject,
         message
       } = req.body;
-      sendMessage(email,
+      sendMessage(
         subject,
-        message);
+        message,
+        email,
+      );
       return res.status(200).json("hello");
     } catch (e) {
       console.log(e);
       return res.status(500).json(e);
     }
   });
+
+
+
+  const listOfComfirms = [];
+
+  app.post("/api/check-confirmation", async (req, res) => {
+    try {
+      const {
+        email,
+        code,
+      } = req.body;
+
+      console.log("body body", req.body)
+
+      for (var i in listOfComfirms) {
+        if (listOfComfirms[i].email == email) {
+          if (listOfComfirms[i].code == code) {
+            delete listOfComfirms[i];
+            return res.json({ message: "correct" })
+          }
+        }
+      }
+
+      return res.status(201).json({ code: "incorrect code" });
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json(e);
+    }
+  });
+
+
+  app.post("/api/send-confirmation", async (req, res) => {
+
+    try {
+      const data = req.body;
+      console.log("data", data.email);
+
+      const generatedCode = () => {
+        const confirmCode = Math.floor(1000 + Math.random() * 900000)
+        return confirmCode;
+      }
+
+      const newcode = generatedCode();
+      const pattern = { email: data.email, code: newcode }
+      listOfComfirms.push(pattern);
+
+
+      console.log("list", listOfComfirms)
+      sendMessage(
+        "confirmation code",
+        `${newcode}`,
+        data.email
+      );
+      return res.status(200).json({ message: "success" });
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json(e);
+    }
+  });
+
+
 
 };
 

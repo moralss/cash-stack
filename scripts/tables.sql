@@ -33,21 +33,37 @@ CREATE TABLE IF NOT EXISTS memeber(
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 ); 
 
-                                                                                                                                                     
-CREATE TABLE IF NOT EXISTS personal_info(
+
+
+CREATE TABLE IF NOT EXISTS receipts(
     id serial PRIMARY KEY,
-    country varchar(255) NOT NULL UNIQUE,   
-    city varchar(22) NOT NULL UNIQUE,
-    dob varchar(22) NOT NULL UNIQUE,
-    sex varchar(225) NOT NULL UNIQUE,
+    image_url varchar(255) NOT NULL,
+    user_id INT REFERENCES users(id) NOT NULL,
+    active BOOLEAN NOT NULL,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
-);                                                                                                                                                               
+); 
+
+update receipts
+  set active = true
+where receipts.user_id = 35;
+                                                                                                                                                     
+-- CREATE TABLE IF NOT EXISTS personal_info(
+--     id serial PRIMARY KEY,
+--     country varchar(255) NOT NULL UNIQUE,   
+--     city varchar(22) NOT NULL UNIQUE,
+--     dob varchar(22) NOT NULL UNIQUE,
+--     sex varchar(225) NOT NULL UNIQUE,
+--     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
+--     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
+-- );                                                                                                                                                               
 
 
 
 INSERT INTO memeber (email , pioneerRefs , user_id)
 VALUES ('storage services' , '085704553' , 1);
+
+
 
  customers.email from customer_purchases
   inner join  customers on customer_purchases.customer_id = customers.id

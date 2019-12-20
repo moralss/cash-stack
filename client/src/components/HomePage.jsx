@@ -106,7 +106,7 @@ class Homepage extends Component {
                 src={`${CreditCard}`}
                 alt=" no image"
                 style={{ width: "150px " }}
-              />
+              />  
             </div>
           </div>
         </div>

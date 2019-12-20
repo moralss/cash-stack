@@ -9,7 +9,6 @@ const saveReceipt = async data => {
 
         const parameters = [receiptUrl, userId, false];
 
-
         let statement =
             `INSERT INTO receipts(image_url , user_id , active)
      VALUES($1 , $2 , $3) RETURNING id`;

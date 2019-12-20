@@ -13,7 +13,6 @@ const receipt = require("./routes/receipt");
 
 // const imageUpload = require("./routes/image-upload");
 
-
 app.use(bodyParser.json());
 app.use(cors());
 

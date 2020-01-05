@@ -4,8 +4,9 @@ import Button from "@material-ui/core/Button";
 import DefaultImg from "../images/index";
 import axios from "axios";
 import { storage } from "../firebase";
-import { saveReceiptUrl, getApprovalType } from '../actions/queries';
+import { saveReceiptUrl, getApprovalType, getRugbyStage } from '../redux/approval/actions/approvals';
 import history from '../routes/history';
+import CustomButton from '../components/button/CustomButton';
 
 const API_URL = "http://localhost:3001/";
 
@@ -20,7 +21,7 @@ class Upload extends Component {
 
   componentWillMount() {
     this.props.getApprovalType()
-    console.log("approvaldfdsfdfsdfdfsdfdfsd", this.props.approvalType);
+    this.props.getRugbyStage(this.props.profile.id)
     // if (this.props.approvalType == "ACCESS") {
     //   console.log("dfsdfdfs", history)
     //   history.push("/dashboard");
@@ -50,6 +51,11 @@ class Upload extends Component {
     this.setState({ imageDetails: '' })
     this.fileInput.value = "";
     this.props.getApprovalType()
+
+  }
+
+  testCode() {
+    this.props.saveReceiptUrl("url");
   }
 
 
@@ -66,25 +72,62 @@ class Upload extends Component {
   render() {
     return (
       <div className="image-container">
+        {/* <input type="text" placeholder="Enter Refs no" value={this.state.refs}
+          onChange={(e) => this.setState({ refs: e.target.value })} /> */}
         {this.props.approvalType === "WAITING" ?
-          <h1>Waiting for approval</h1> :
-          <div>
-            <h4 className="process__heading">Capture Receipt</h4>
-            <input
-              style={{ display: "block" }}
-              type="file"
-              className="process__upload-btn"
-              onChange={e => this.uploadImage(e)}
-              ref={ref => this.fileInput = ref}
-            />
-            <p>
-              {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
-            </p>
-            <button onClick={() => this.cancel()}> Cancel </button>
-            <button onClick={() => this.confirmImage()}> Confirm </button>
-          </div>
+          <h1>Waiting for approval</h1> : this.props.approvalType == "ACCESS" ?
+            <div>
+              <h4 className="process__heading">Next Receipt</h4>
+              {this.props.stage !== this.props.prodectedStage ?
+                <div>
+                  <h6> pay for rubystage {this.props.prodectedStage}</h6>
+                </div>
+                : null}
+              <input
+                style={{ display: "block" }}
+                type="file"
+                className="process__upload-btn"
+                onChange={e => this.uploadImage(e)}
+                ref={ref => this.fileInput = ref}
+              />
+              <p>
+                {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
+              </p>
+
+              <Button variant="contained"
+                onClick={() => this.cancel()}
+                color="primary"
+                style={{ marginRight: "2rem" }}
+              >
+                Confirm
+              </Button>
+              <Button onClick={() => this.testCode()}
+                variant="contained" color="secondary">
+                Cancel
+              </Button>
+              {/* <button onClick={() => this.cancel()}> Cancel </button> */}
+              {/* <button onClick={() => this.testCode()}> Confirm </button> */}
+
+            </div>
+            : <div>
+              <h4 className="process__heading">Capture Receipt</h4>
+              <input
+                style={{ display: "block" }}
+                type="file"
+                className="process__upload-btn"
+                onChange={e => this.uploadImage(e)}
+                ref={ref => this.fileInput = ref}
+              />
+              <p>
+                {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
+              </p>
+              <button onClick={() => this.cancel()}> Cancel </button>
+              <button onClick={() => this.testCode()}> Confirm </button>
+
+            </div>
         }
 
+        {/* <CustomButton text="hello" /> */}
       </div >
     );
   }
@@ -93,7 +136,8 @@ class Upload extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     saveReceiptUrl: id => dispatch(saveReceiptUrl(id)),
-    getApprovalType: userId => dispatch(getApprovalType(userId))
+    getApprovalType: userId => dispatch(getApprovalType(userId)),
+    getRugbyStage: userId => dispatch(getRugbyStage(userId))
   };
 
 }
@@ -101,7 +145,9 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     profile: state.user.profile,
-    approvalType: state.approval.approvalType
+    approvalType: state.approval.approvalType,
+    prodectedStage: state.approval.prodectedStage,
+    stage: state.approval.stage
   };
 }
 

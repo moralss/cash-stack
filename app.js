@@ -10,18 +10,21 @@ const activeAccount = require('./routes/payfast');
 const path = require('path');
 const sendGrid = require("./routes/sendgrid");
 const receipt = require("./routes/receipt");
-
+const members = require("./routes/members");
+const roles = require("./routes/roles");
 // const imageUpload = require("./routes/image-upload");
 
 app.use(bodyParser.json());
 app.use(cors());
 
 sendGrid.sendEmail(app);
+members.memberBoard(app);
 authRoutes.authRoutes(app);
 receipt.receipt(app);
+roles.roles(app);
 dashboard.dashboard(app);
 validateEmail.validateEmail(app);
-memberBoard.memberBoard(app);
+// memberBoard.memberBoard(app);
 activeAccount.activeAccount(app)
 // imageUpload.uploader(app);  
 // imageUpload.uploaderMulter(app);

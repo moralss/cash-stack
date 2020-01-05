@@ -3,8 +3,8 @@ import {
   reset
 } from "redux-form";
 
-import history from "../routes/history";
-import * as actions from '../actionTypes/index'
+import history from "../../../routes/history";
+import * as actions from '../../actionTypes/index'
 import jwtDecode from "jwt-decode";
 const URL = "/api";
 
@@ -71,7 +71,6 @@ export const login = (credentials) => {
       dispatch(reset('form1'))
       dispatch(reset('form2'))
       dispatch(reset('object Object'))
-      history.push("/dashboard")
       return
     } catch (e) {
       const data = !e.response ? null : e.response.data.error;
@@ -84,4 +83,46 @@ export const login = (credentials) => {
       return
     }
   };
-};
+}
+
+export const changePassword = (newPassword, userId) => {
+  return async dispatch => {
+    try {
+      const res = await axios.put(`${URL}/change-password`, { newPassword, userId });
+      dispatch({
+        type: actions.PASSWORD_CHANGED,
+      });
+
+      return
+    } catch (e) {
+      dispatch({
+        type: actions.AUTH_ERROR,
+      });
+      return
+    }
+  }
+}
+
+export const recoverPassword = (email) => {
+  return async dispatch => {
+    try {
+
+      var query = `?_email=${email}`
+      const { data } = await axios.get(`${URL}/password-recovery/` + query);
+      console.log(data);
+      dispatch({
+        type: actions.CHANGE_PAGE_PASSWORD,
+        payload: data.userId
+      });
+
+      history.push(`/recoverpassword`)
+
+      return
+    } catch (e) {
+      dispatch({
+        type: actions.AUTH_ERROR,
+      });
+      return
+    }
+  }
+}

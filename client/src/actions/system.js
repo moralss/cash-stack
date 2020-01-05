@@ -1,7 +1,5 @@
 import history from "../routes/history";
-import * as actions from '../actionTypes/index'
-
-
+import * as actions from '../redux/actionTypes/index'
 
 export const logout = () => {
   history.push('/');
@@ -24,7 +22,6 @@ export const setModelType = () => {
     }
   };
 }
-
 
 export const setProfile = (decodeToken) => {
   return {

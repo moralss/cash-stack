@@ -34,20 +34,47 @@ CREATE TABLE IF NOT EXISTS memeber(
 ); 
 
 
+CREATE TABLE IF NOT EXISTS roles(
+    id serial PRIMARY KEY,
+    user_role varchar(255) NOT NULL,
+    user_id INT REFERENCES users(id) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
+    updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
+); 
+
+
+
 
 CREATE TABLE IF NOT EXISTS receipts(
     id serial PRIMARY KEY,
     image_url varchar(255) NOT NULL,
     user_id INT REFERENCES users(id) NOT NULL,
+    stage INT NOT NULL,
     active BOOLEAN NOT NULL,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 ); 
 
+
+DELETE FROM roles
+where roles.user_id = 2;
+
+DELETE FROM memeber
+where user_id = 28;
+
+update receipts
+  set stage = 1  
+where receipts.user_id = 2;
+
+
 update receipts
   set active = true
-where receipts.user_id = 35;
-                                                                                                                                                     
+where receipts.user_id = 2;
+
+    UPDATE receipts
+    SET stage = $1, active = $2 WHERE user_id = $3       
+
+DELETE FROM receipts
 -- CREATE TABLE IF NOT EXISTS personal_info(
 --     id serial PRIMARY KEY,
 --     country varchar(255) NOT NULL UNIQUE,   

@@ -5,10 +5,11 @@ import validate from "../../Utils/validations/form4Validations";
 import history from "../../routes/history";
 import renderField from "./RenderField";
 import { connect } from "react-redux";
-import * as thunks from "../../actions/auth";
+import * as auth from "../../redux/user/actions/auth";
 import { validateEmail, checkConfirmation } from "../../Utils/validations/asyncValidation";
 import { SubmissionError } from "redux-form";
-import { sendConfirmation } from '../../actions/queries'
+// import { sendConfirmation } from '../../actions/queries'
+import * as approvals from '../../redux/approval/actions/approvals'
 // import EmailConfirmation from "";
 
 
@@ -56,13 +57,7 @@ class Form3 extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleSubmit)}>
-          <Field
-            name="pioneerRefs"
-            component={renderField}
-            type="text"
-            label="Pioneer Refs no"
-            placeholder="Enter Refs no"
-          />
+
 
           <Field
             name="email"
@@ -133,8 +128,8 @@ const reduxForm3 = reduxForm({
 
 function mapDispatchToProps(dispatch) {
   return {
-    registerUser: data => dispatch(thunks.registerUser(data)),
-    sendConfirmation: data => dispatch(sendConfirmation(data)),
+    registerUser: data => dispatch(auth.registerUser(data)),
+    sendConfirmation: data => dispatch(approvals.sendConfirmation(data)),
     // checkConfirmation: data => dispatch(checkConfirmation(data))
   };
 }

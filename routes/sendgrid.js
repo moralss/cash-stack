@@ -2,6 +2,7 @@ const {
   sendMessage
 } = require("../src/sendGrid");
 const sgMail = require('@sendgrid/mail');
+const { getUserByEmail } = require("../src/queries/user");
 var Chance = require('chance');
 
 
@@ -29,6 +30,7 @@ const sendEmail = app => {
 
 
   const listOfComfirms = [];
+
 
   app.post("/api/check-confirmation", async (req, res) => {
     try {
@@ -78,6 +80,35 @@ const sendEmail = app => {
         `${newcode}`,
         data.email
       );
+      return res.status(200).json({ message: "success" });
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json(e);
+    }
+  });
+
+  app.get("/api/password-recovery", async (req, res) => {
+
+    try {
+      const { _email } = req.query;
+      const user = await getUserByEmail(_email);
+      if (user) {
+        return res.send({ userId: user.id })
+      }
+
+      if (!user) {
+        return res.status(400);
+      }
+
+
+      // const link = `http://localhost:3000/passwordRecovery/${userId}`;
+
+      console.log(_email, user);
+      // sendMessage(
+      //   "confirmation code",
+      //   `${newcode}`,
+      //   data.email
+      // );
       return res.status(200).json({ message: "success" });
     } catch (e) {
       console.log(e);

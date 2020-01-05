@@ -10,8 +10,9 @@ const initalState = {
   profile: {},
   auth: false,
   error: {},
-  allMembers: [],
-  memberCount: 0,
+  role: false,
+  passwordChangeInfo: {
+  }
 };
 
 export const userReducer = (state = initalState, action) => {
@@ -24,22 +25,22 @@ export const userReducer = (state = initalState, action) => {
       return {
         ...state, error: action.payload
       }
-    case actions.SAVE_MEMBERS:
-      const {
-        allMembers
-      } = action.payload
+    case actions.SET_ROLE:
       return {
-        ...state,
-        allMembers: [
-          ...allMembers
-        ],
-        memberCount: action.payload.allMembers.length
+        ...state, role: action.payload
       }
+
     case actions.SET_USER:
       return {
         ...state,
         profile: action.payload.profile
       }
+    case actions.CHANGE_PAGE_PASSWORD:
+      return {
+        ...state,
+        passwordChangeInfo: { userId: action.payload }
+      }
+
     default:
       return state;
   }

@@ -9,23 +9,17 @@ const {
   creatUser
 } = require("../src/commands/register");
 const {
-  saveMember
-} = require("../src/commands/member");
-const {
   validateNewUser
 } = require("../src/validations/registerError");
 const {
   getUserByEmail,
-  compareRefNumber,
   getRefs
 } = require("../src/queries/user");
 const {
   generateRef
 } = require("../src/utils/refs");
-const {
-  getAllMembers
-} = require("../src/queries/member");
-
+const { changePassword }
+  = require("../src/updates/password");
 
 const authRoutes = app => {
   app.post("/api/signin", async (req, res) => {
@@ -54,22 +48,6 @@ const authRoutes = app => {
 
 
       let user = await getUserByEmail(data.email);
-      if (data.pioneerRefs) {
-        const value = await compareRefNumber(data.pioneerRefs.trim())
-        const members = await getAllMembers(value.id);
-        if (value && !(members.length > 6)) {
-          const {
-            id: pioneerId,
-            ref_number
-          } = value;
-          const savedId = await saveMember({
-            pioneerId,
-            userId,
-            ref_number
-          })
-        }
-      }
-
 
       let token = await createToken(userId, user.email, user.first_name,
         refNumber);
@@ -110,6 +88,22 @@ const authRoutes = app => {
       return res.status(200).json({
         token
       });
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json();
+    }
+  });
+
+  app.put("/api/change-password", async (req, res) => {
+    const { newPassword, userId } = req.body;
+    console.log(req.body);
+    try {
+      let hashedPassword = await bycryptPassword(
+        newPassword
+      );
+      changePassword(hashedPassword, userId)
+      return res.send(201)
+
     } catch (e) {
       console.log(e);
       return res.status(500).json();

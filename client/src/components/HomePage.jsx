@@ -34,7 +34,7 @@ class Homepage extends Component {
               <p>
                 R200.00 once off joining fee Can change your life to the better.
               </p>
-              This is an opportunity to grab and never let go... A wise man once
+              This is an opportunity to grab and never let go...
               A wise man once said, "Why work to make someone else successful
               when you can work and make yourself successful". We all have a
               choice. We can either choose to live life on our own terms or we
@@ -82,7 +82,7 @@ class Homepage extends Component {
                 Your Ruby Two is now completed <br />
                 <p>Benefits of Ruby Two</p>
                 R400.00 Cash back <br />
-                40% x6 bonus =R750.00 <br />
+                40% x6 bonus =R950.00 <br />
                 Total pay-out R400.00 + R950.00 <br />
                 TP=R1 360.00
               </p>
@@ -106,7 +106,7 @@ class Homepage extends Component {
                 src={`${CreditCard}`}
                 alt=" no image"
                 style={{ width: "150px " }}
-              />  
+              />
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@ class Homepage extends Component {
           <p>Where all dreams comes true</p>
           <p>More MONEY, more INSENTIVES</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3 , 1fr)" }}>
+        {/* <div style={{ display: "grid", gridTemplateColumns: "repeat(3 , 1fr)" }}>
           <img class="col 6" src={`${Ranger}`} style={{
             width: "11rem",
             height: "10rem",
@@ -156,7 +156,7 @@ class Homepage extends Component {
             height: "10rem"
           }} alt="" />
 
-        </div>
+        </div> */}
 
         <div>
           <h3>Contact us </h3>
@@ -165,12 +165,17 @@ class Homepage extends Component {
             <h6 class="col">stackcash612@gmail.com</h6>
           </div>
           <div class="row">
-            <h6 class="col">WhatsApp number</h6>
-            <h6 class="col">(+27)79 341 7339</h6>
+            <h6 class="col">WhatsApp Link</h6>
+            <h6 class="col">https//:chatwhatsapp.com/D2YgZdV4r2079QilYuzMiy</h6>
+            <h6 class="col">(+27)68 373 4006</h6>
+            <div>
+              <h6 class="col">Account Number</h6>
+              <h6 class="col">20004717956</h6>
+            </div>
+
           </div>
 
         </div>
-
       </div>
     );
   }

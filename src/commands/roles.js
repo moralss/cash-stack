@@ -1,17 +1,20 @@
-const { getClient } = require("../db");
+const {
+    getClient
+} = require("../db");
 
-const saveReceipt = async data => {
+
+const saveRole = async data => {
     const client = await getClient();
 
     try {
         console.log("data", data);
-        const { userId, receiptUrl } = data;
+        const { role, userId } = data;
 
-        const parameters = [receiptUrl, userId, 1, false];
+        const parameters = [role, userId];
 
         let statement =
-            `INSERT INTO receipts(image_url , user_id , stage ,  active )
-     VALUES($1 , $2 , $3 , $4) RETURNING id`;
+            `INSERT INTO roles(user_role , user_id )
+     VALUES($1 , $2 ) RETURNING id`;
         let res = await client.query(statement, parameters);
         const id = res.rows[0].id;
         await client.release();
@@ -23,6 +26,9 @@ const saveReceipt = async data => {
     }
 };
 
+
+
+
 module.exports = {
-    saveReceipt
+    saveRole
 };

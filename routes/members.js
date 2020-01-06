@@ -69,7 +69,6 @@ const memberBoard = app => {
 
         try {
             const stages = await getRubyStage(_userId)
-            console.log(stages);
             return res.status(200).json({
                 ...stages
             });

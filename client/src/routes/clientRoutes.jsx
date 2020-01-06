@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Redirect } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import Register from "../components/Register";
 import history from "./history.js";
 import Navbar from "../components/Navbar";
@@ -10,9 +10,13 @@ import Profile from "../components/Profile";
 import { PrivateRoute } from "./privateRoute";
 import Members from "../components/Members";
 import MemberProfile from "../components/MemberProfile";
-import Active from "../components/Active";
-import Settiings from "../components/Settings"
+import Account from "../components/Account";
+import Settings from "../components/Settings"
 import PasswordRecovery from "../components/PasswordRecovery"
+import Step1 from '../components/Register/Step1'
+import Step2 from '../components/Register/Step2'
+import MainForm from '../components/Register/MainForm';
+
 export const callCheck = async () => {
   // const check = await checkUser();
   // return check
@@ -25,6 +29,11 @@ const mainRoute = () => {
       <div>
         <Route
           exact
+          path="/new-register"
+          component={props => <MainForm {...props} />}
+        />
+        <Route
+          exact
           path="/register"
           component={props => <Register {...props} />}
         />
@@ -32,13 +41,11 @@ const mainRoute = () => {
         <Route exact path="/login" component={props => <Login {...props} />} />
         <Route
           exact
-          // strict
           path="/memberprofile"
           component={props => <MemberProfile {...props} />}
         />
         <Route
           exact
-          // strict
           path="/recoverpassword/"
           component={props => <PasswordRecovery {...props} />}
         />
@@ -46,7 +53,6 @@ const mainRoute = () => {
         <PrivateRoute
           exact
           path="/users"
-          // strict
           component={props => <Members {...props} />}
         />
         <PrivateRoute
@@ -59,16 +65,17 @@ const mainRoute = () => {
         <PrivateRoute
           exact
           // strict
-          path="/active"
-          component={props => <Active {...props} />}
+          path="/account"
+          component={props => <Account {...props} />}
         />
 
         <PrivateRoute
           exact
           // strict
           path="/setting"
-          component={props => <Settiings {...props} />}
+          component={props => <Settings {...props} />}
         />
+
       </div>
     </Router>
   );

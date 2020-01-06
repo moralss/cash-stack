@@ -22,7 +22,6 @@ class Settings extends Component {
         return (
             <div class="row">
                 <h6> Settings </h6>
-
                 <PasswordPanel />
 
             </div>

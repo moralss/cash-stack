@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { reduxForm, Field } from "redux-form";
 import validate from "../../Utils/validations/form1Validations";
 import renderField from "./RenderField";
@@ -48,8 +47,6 @@ class Form1 extends Component {
     );
   }
 }
-
-Form1.propTypes = {};
 
 export default reduxForm({
   form: "form1", // <------ same form name

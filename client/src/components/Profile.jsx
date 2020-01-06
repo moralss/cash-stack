@@ -41,7 +41,6 @@ class Profile extends Component {
   }
 
   submit(value) {
-    console.log(this.props);
     if (value === "standAlone") {
       this.props.updateRole(value, this.props.profile.id)
       this.props.getRole(this.props.profile.id)
@@ -56,12 +55,9 @@ class Profile extends Component {
 
   handleChange(e) {
     this.setState({ status: e.target.value })
-
   }
 
   render() {
-    console.log("show me roles ", this.props.role);
-
     return (
       <div>
         <h4 style={{ textAlign: "center" }}>Profile </h4>
@@ -81,7 +77,6 @@ class Profile extends Component {
 
           <div>
             <label className="grey-text">status </label>
-            {/* <h6 className="red-text"> not active</h6> */}
           </div>
           <button
             onClick={() => this.changeRoute("/active")}

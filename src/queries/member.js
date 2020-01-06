@@ -7,7 +7,7 @@ const getAllMembers = async userId => {
 
   try {
     let statement =
-      `select * from users inner join memeber on 
+      `select users.id, users.first_name , users.last_name , memeber.created_at , memeber.memeber_id  from users inner join memeber on 
     memeber.memeber_id = users.id where memeber.user_id = $1;`;
     const res = await client.query(statement, [userId]);
     await client.release();

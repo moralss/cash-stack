@@ -14,11 +14,10 @@ class PasswordRecovery extends Component {
     }
 
     componentWillMount() {
-        console.log("props props", this.props);
     }
 
     changePassword() {
-            this.props.changePassword(this.state.password, this.props.userIdPasswordChange);
+        this.props.changePassword(this.state.password, this.props.userIdPasswordChange);
     }
 
     render() {

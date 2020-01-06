@@ -6,11 +6,11 @@ import axios from "axios";
 import { storage } from "../firebase";
 import { saveReceiptUrl, getApprovalType, getRugbyStage } from '../redux/approval/actions/approvals';
 import history from '../routes/history';
-import CustomButton from '../components/button/CustomButton';
+import CustomButton from './button/CustomButton';
 
 const API_URL = "http://localhost:3001/";
 
-class Upload extends Component {
+class Account extends Component {
   constructor(props) {
     super(props);
 
@@ -127,7 +127,6 @@ class Upload extends Component {
             </div>
         }
 
-        {/* <CustomButton text="hello" /> */}
       </div >
     );
   }
@@ -151,5 +150,5 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Upload);
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
 

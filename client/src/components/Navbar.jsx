@@ -1,9 +1,7 @@
 import React, { Component, useEffect } from "react";
-import { useSelector, connect, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import history from "../routes/history";
 import * as members from '../redux/members/actions/members';
-import Img from "../assets/cash-stack.svg";
-import Logo from "../assets/cash-stack.svg";
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar'
@@ -11,8 +9,6 @@ import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -21,13 +17,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { logout } from "../actions/system";
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
-import SvgIcon from '@material-ui/core/SvgIcon';
-
+import { ProfileIcon, RegisterIcon, MemberIcon, SettingIcon, AccountIcon, HomeIcon } from '../components/Icons'
+import Profile from "./Profile";
 
 const drawerWidth = 240;
 
@@ -87,15 +81,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-
-function HomeIcon(props) {
-  return (
-    <SvgIcon style={{ margin: "0rem 1.5rem" }} {...props}>
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </SvgIcon>
-  );
-}
 
 const Navbar = () => {
   const classes = useStyles();
@@ -167,11 +152,14 @@ const Navbar = () => {
                   Logout
                   </Button>
                 : null}
-            <IconButton aria-label="show 11 new notifications" color="inherit">
+
+            {user.authenticated ? <IconButton aria-label="show 11 new notifications" color="inherit">
               <Badge badgeContent={11} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+              : null}
+
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -193,7 +181,6 @@ const Navbar = () => {
             paper: classes.drawerPaper,
           }}
         >
-
           <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -203,7 +190,7 @@ const Navbar = () => {
           {
             user.authenticated && user.approvalType == "ACCESS" ?
               < ListItem onClick={() => changeRoute("profile")} button key={"profile"} >
-                <ListItemIcon />
+                <ProfileIcon />
                 <ListItemText primary={"Profile"} />
               </ListItem>
               : null}
@@ -211,7 +198,7 @@ const Navbar = () => {
           {
             user.authenticated && user.approvalType == "ACCESS" ?
               < ListItem onClick={() => changeRoute("users")} button key={"users"} >
-                <ListItemIcon />
+                <MemberIcon />
                 <ListItemText primary={"Member"} />
               </ListItem>
               : null}
@@ -219,7 +206,7 @@ const Navbar = () => {
           {
             user.authenticated ?
               < ListItem onClick={() => changeRoute("setting")} button key={"setting"} >
-                <ListItemIcon />
+                <SettingIcon />
                 <ListItemText primary={"Setting"} />
               </ListItem>
               : null}
@@ -227,7 +214,7 @@ const Navbar = () => {
           {
             !user.authenticated ?
               < ListItem onClick={() => changeRoute("register")} button key={"register"} >
-                <ListItemIcon />
+                <RegisterIcon />
                 <ListItemText primary={"Register"} />
               </ListItem>
               : null}
@@ -240,10 +227,16 @@ const Navbar = () => {
               </ListItem>
               : null}
           <Divider />
-
+          {
+            user.authenticated ?
+              < ListItem onClick={() => changeRoute("account")} button key={"account"} >
+                <AccountIcon />
+                <ListItemText primary={"Account"} />
+              </ListItem>
+              : null}
+          <Divider />
         </Drawer>
       </div>
-
     </div >
   );
 }

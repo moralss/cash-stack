@@ -5,10 +5,8 @@ import Footer from "./Footer";
 import MemberProfile from './MemberProfile';
 // import * as quiers from "../actions/queries";
 import * as members from '../redux/members/actions/members';
-// import Link from
 import history from '../routes/history';
 import { Link } from "react-router-dom";
-// import { setNextMembers } from '../actions/queries'
 import Chip from '@material-ui/core/Chip';
 import { textAlign } from "@material-ui/system";
 
@@ -16,7 +14,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+
 
 
 class Users extends Component {
@@ -40,9 +38,10 @@ class Users extends Component {
     showProfile(id) {
         const { members } = this.props;
 
+        console.log("members icon ", members)
         for (var i in members) {
             if (members[i].id == id) {
-                console.log("eeea", members[i])
+                console.log("show me Ids ", members[i].id, id);
                 this.props.setNextMembers(members[i])
             }
         }
@@ -113,13 +112,12 @@ class Users extends Component {
                                             }
                                             variant="contained" color="primary">
                                             Show Member Profile
-                                 </Button>
+                                    </Button>
                                     </CardActions>
                                 </Card>
                             </div>
                         )) : null
                     } </div>
-                <Footer />
             </div>
         );
     }

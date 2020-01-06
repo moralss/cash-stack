@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Ex from "./components/example/DashoardNav";
-import mainRoute from "./routes";
+import mainRoute from "./routes/clientRoutes";
 
 class App extends Component {
   render() {
@@ -9,7 +8,6 @@ class App extends Component {
     return (
       <div>
         {value}
-        {/* <Ex /> */}
       </div>
     );
   }

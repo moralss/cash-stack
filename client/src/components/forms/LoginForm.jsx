@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import * as thunks from "../../redux/user/actions/auth";
 import history from "../../routes/history";
 import { recoverPassword } from '../../redux/user/actions/auth';
+import Button from '@material-ui/core/Button';
+
 
 
 class LoginForm extends Component {
@@ -27,9 +29,7 @@ class LoginForm extends Component {
   };
 
   recoverPassword = () => {
-    console.log("email", this.props)
     this.props.recoverPassword(this.state.email)
-    console.log("userId ", this.props.userIdPasswordChange);
     if (this.props.userIdPasswordChange !== undefined) {
     }
   }
@@ -59,13 +59,12 @@ class LoginForm extends Component {
         </span>
 
         <span onClick={() => this.recoverPassword()}> password recover </span>
-        <button
-          type="submit"
+        <Button
+          variant="contained"
           className="btn-block btn col "
-        >
-          send
-        </button>
-
+          type="submit" color="primary">
+          Send
+           </Button>
       </form>
     );
   }

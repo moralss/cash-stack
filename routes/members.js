@@ -13,9 +13,8 @@ const memberBoard = app => {
         } = req.query;
         try {
             const members = await getTreeData(_userId)
-            console.log(members)
             return res.status(200).json({
-                members: members
+                members
             });
 
         } catch (e) {

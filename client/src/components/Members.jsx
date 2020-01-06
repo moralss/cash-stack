@@ -30,7 +30,7 @@ class Users extends Component {
         this.getMembers();
         var interval = setInterval(() => {
             this.getMembers();
-        }, 10000);
+        }, 20000);
     }
 
     getMembers() {
@@ -56,50 +56,6 @@ class Users extends Component {
             <div class="row">
                 <h4>Currently members</h4>
                 <div className="member-wrapper blue-text">
-                    {/* <Card >
-                        <CardContent>
-                            <div style={{ display: "grid", gridTemplateColumns: "repeat(2 , 1fr)" }}>
-                                <Typography color="" gutterBottom>
-                                    <label htmlFor="">First Name</label>
-                                    <span> moral</span >
-                                </Typography>
-                                <Typography color="textSecondary" gutterBottom>
-                                    <label htmlFor=""> email </label>
-                                    <span> sur </span >
-                                </Typography>
-                            </div>
-
-                            <Typography variant="body2" component="p">
-
-                                <br />
-                                {'"a benevolent smile"'}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card> */}
-                    {/* <Card className={classes.card}>
-                        <CardContent>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                Word of the Day
-                            </Typography>
-                            <Typography variant="h5" component="h2">
-                                be{bull}nev{bull}o{bull}lent
-                            </Typography>
-                            <Typography className={classes.pos} color="textSecondary">
-                                adjective
-                             </Typography>
-                            <Typography variant="body2" component="p">
-                                well meaning and kindly.
-                               <br />
-                                {'"a benevolent smile"'}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card> */}
                     {
                         this.props.members ? this.props.members.map(member => (
                             <div className="col err card memeber-item"
@@ -110,60 +66,56 @@ class Users extends Component {
                                         padding: "1rem"
                                     }
                                 }>
-                                <div>
-                                    <label className=" grey-text">
-                                        First Name</label>
-                                    <h6>{
-                                        member.first_name
-                                    }</h6>
-                                </div>
-                                <div>
-                                    <label className=" grey-text">
-                                        email</label>
-                                    <br />
-                                    <span>{
-                                        member.email
-                                    }</span>
-                                </div>
-                                <div>
-                                    <label className=" grey-text">
-                                        join date</label>
-                                    <br />
-                                    <span>{member.created_at ? new Date(member.created_at).toDateString() : null}</span>
-                                </div>
-                                <div>
-                                    <label className=" grey-text">member count</label>
-                                    <span>{
-                                        member.downliner ? member.downliner.length : null
-                                    } </span>
-                                    <br />
-                                    <span>{
-                                        member.downliner ? member.downliner.map(member =>
-                                            <div style={{ margin: "1rem 0rem;" }}>
-                                                <span>
-                                                    {member.email}
+                                <Card >
+                                    <CardContent>
+                                        <div style={{ display: "grid", gridTemplateColumns: "repeat(2 , 1fr)" }}>
+                                            <div>
+                                                <label className="margin-right grey-text">
+                                                    First Name</label>
+                                                <br />
+                                                <span className="blue-text">
+                                                    {
+                                                        member.first_name
+                                                    }
                                                 </span>
-                                                <span style={{ position: "absolute", right: 5, marginBottom: '1rem' }}>
-                                                    <Chip
-                                                        // icon={<FaceIcon />}
-                                                        label={`${member.downliner ? member.downliner.length : 0}`}
-                                                        color="secondary"
-                                                    />
-                                                    {/* {member.downliner ? member.downliner.length : 0} */}
+                                            </div>
+                                            <div>
+                                                <label className="margin-right grey-text"> Last Name </label>
+                                                <br />
+                                                <span className="blue-text">
+                                                    {
+                                                        member.last_name
+                                                    }
                                                 </span>
-
-                                            </div>)
-                                            : null}</span>
-                                </div>
-                                <div> {/* <label className=" grey-text">status </label>{" "} */}
-                                    {/* <h6 className="red-text"> not active</h6> */} </div>
-                                <Button
-                                    onClick={
-                                        () => this.showProfile(member.id)
-                                    }
-                                    variant="contained" color="primary">
-                                    Show Member Profile
+                                            </div>
+                                            <div>
+                                                <label className="margin-right grey-text"> Join Date</label>
+                                                <br />
+                                                <span className="blue-text">
+                                                    {member.created_at ? new Date(member.created_at).toDateString() : null}
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <label className="margin-right grey-text"> Member count </label>
+                                                <br />
+                                                <span className="blue-text">
+                                                    {
+                                                        member.downliner ? member.downliner.length : null
+                                                    }
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                    <CardActions>
+                                        <Button
+                                            onClick={
+                                                () => this.showProfile(member.id)
+                                            }
+                                            variant="contained" color="primary">
+                                            Show Member Profile
                                  </Button>
+                                    </CardActions>
+                                </Card>
                             </div>
                         )) : null
                     } </div>

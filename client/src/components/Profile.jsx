@@ -28,7 +28,7 @@ class Profile extends Component {
     clearInterval(interval);
     this.props.getApprovalType()
     if (this.props.approvalType !== "ACCESS") {
-      history.push("/active");
+      history.push("/account");
     }
   }
 

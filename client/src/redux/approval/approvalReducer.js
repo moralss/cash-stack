@@ -9,7 +9,8 @@ const values = [
 const initalState = {
     approvalType: 'FIRST_TIME',
     stage: 0,
-    prodectedStage: 0
+    prodectedStage: 0,
+    isNextPayment: false
 };
 
 export const approvalReducer = (state = initalState, action) => {
@@ -20,7 +21,9 @@ export const approvalReducer = (state = initalState, action) => {
             };
         case actions.SAVE_PRODECTED_RUBY_STAGE:
             return {
-                ...state, prodectedStage: action.payload.prodectedStage
+                ...state,
+                prodectedStage: action.payload.prodectedStage,
+                isNextPayment: action.payload.status
             };
 
 

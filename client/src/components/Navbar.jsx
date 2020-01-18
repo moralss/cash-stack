@@ -153,12 +153,12 @@ const Navbar = () => {
                   </Button>
                 : null}
 
-            {user.authenticated ? <IconButton aria-label="show 11 new notifications" color="inherit">
+            {/* {user.authenticated ? <IconButton aria-label="show 11 new notifications" color="inherit">
               <Badge badgeContent={11} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-              : null}
+              : null} */}
 
             <IconButton
               color="inherit"

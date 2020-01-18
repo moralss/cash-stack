@@ -75,16 +75,16 @@ class Profile extends Component {
             <h6 className="red-text"> {this.props.stage}</h6>
           </div>
 
-          <div>
+          {/* <div>
             <label className="grey-text">status </label>
-          </div>
-          <button
+          </div> */}
+          {/* <button
             onClick={() => this.changeRoute("/active")}
             style={{ textAbuttongn: "center" }}
             className="btn"
           >
             ACCOUNT STATUS
-          </button>
+          </button> */}
         </div>
         <h4 style={{ textAlign: "center" }} className="primary">
           {!this.isLoading ? this.props.memberCount : "loading.."} active

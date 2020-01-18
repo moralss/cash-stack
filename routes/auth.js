@@ -94,6 +94,39 @@ const authRoutes = app => {
     }
   });
 
+
+  app.get("/api/validateEmail", async (req, res) => {
+    // const { email } = req.params;
+
+    try {
+      const {
+        isValid,
+        errors
+      } = await validateNewUser(req.query);
+
+      if (isValid) {
+        return res.status(200).end()
+      }
+
+      console.log(errors, !isValid);
+      if (!isValid) {
+        return res.status(200).json({
+          ...errors
+        }).end();
+      }
+
+
+
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json({
+        ...e
+      }).end()
+    }
+
+  })
+
+
   app.put("/api/change-password", async (req, res) => {
     const { newPassword, userId } = req.body;
     console.log(req.body);

@@ -77,7 +77,6 @@ class Form2 extends Component {
             value="female"
           />
         </div>
-
         <div className="col">
           <button className="btn col btn-block space" type="submit">
             Next

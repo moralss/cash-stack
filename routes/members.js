@@ -32,10 +32,11 @@ const memberBoard = app => {
             if (pioneerRefs) {
                 const value = await compareRefNumber(pioneerRefs.trim())
                 const members = await getAllMembers(value.id);
-                // if (members.length == 5) {
-                //     const id = value.id
-                //     updateStage({ stage: 2, userId: id })
-                // }
+                if (members.length == 6) {
+                    const id = value.id
+                    updateStage({ stage: 2, userId: id })
+
+                }
 
 
                 if (value && members.length !== 6) {
@@ -52,10 +53,9 @@ const memberBoard = app => {
                 }
 
                 return res.status(200).json({
-
                 });
-
             }
+
         } catch (e) {
             console.log(e);
             return res.status(200).json();

@@ -168,10 +168,7 @@ class Homepage extends Component {
             <h6 class="col">WhatsApp Link</h6>
             <h6 class="col">https//:chatwhatsapp.com/D2YgZdV4r2079QilYuzMiy</h6>
             <h6 class="col">(+27)68 373 4006</h6>
-            <div>
-              <h6 class="col">Account Number</h6>
-              <h6 class="col">20004717956</h6>
-            </div>
+
 
           </div>
 

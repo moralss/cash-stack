@@ -8,9 +8,8 @@ import { connect } from "react-redux";
 import * as auth from "../../redux/user/actions/auth";
 import { validateEmail, checkConfirmation } from "../../Utils/validations/asyncValidation";
 import { SubmissionError } from "redux-form";
-// import { sendConfirmation } from '../../actions/queries'
 import * as approvals from '../../redux/approval/actions/approvals'
-// import EmailConfirmation from "";
+
 
 
 class Form3 extends Component {
@@ -20,10 +19,12 @@ class Form3 extends Component {
       const error = await validateEmail(data.email)
       const errorOTP = await checkConfirmation({ email: data.email, code: data.OTP });
 
-      if (error.data.email == "user exists") {
+      console.log("error", errorOTP);
+      if (error.data.email == "email already exists") {
         throw new SubmissionError({
           email: "Email exists"
         });
+        return
       }
 
       if (errorOTP.data.code == "incorrect code") {
@@ -33,9 +34,11 @@ class Form3 extends Component {
       }
     } catch (e) {
       const error = JSON.parse(JSON.stringify(e));
+      console.log(error, e);
       throw new SubmissionError({
         ...error.errors
       });
+      return
     }
 
     this.props.registerUser({
@@ -88,7 +91,6 @@ class Form3 extends Component {
             name="OTP"
             component={renderField}
             type="text"
-            // label="Enter email confirm P code"
             placeholder="Enter email confirmation OTP code"
           />
 

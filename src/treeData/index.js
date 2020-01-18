@@ -49,26 +49,37 @@ const getRubyStage = async userId => {
 
     try {
         const members = await getAllMembers(userId);
-        if (members.length == 6) {
+        const receipt = await getReceipt(userId);
+        if (receipt[0].active == false) {
+            return { rubyStage: receipt[0].stage, status: true }
+        }
+
+        if (members.length == 6 && receipt[0].stage == 1 && receipt[0].active == true) {
+            console.log("rubyStage 2")
             return { rubyStage: 2 };
         }
 
         for (var i in members) {
-            const stage2Members = await getAllMembers(members[i].id);
-            if (stage2Members.length === 6) {
+            const stage2Members = await getAllMembers(members[i].memeber_id);
+            if (stage2Members.length === 6 && receipt[0].stage == 2 && receipt[0].active == true) {
+                console.log("rubyStage 3")
                 return { rubyStage: 3 }
             }
-        }
-        for (var i in stage2Members) {
-            const stage3Members = await getAllMembers(members[i].id);
-            if (stage3Members.length === 6) {
-                return { rubyStage: 4 }
-            }
+
+            //     for (var i in stage2Members) {
+            //         const stage3Members = await getAllMembers(members[i].memeber_id);
+            //         console.log(stage3Members)
+            //         if (stage3Members.length === 6 && receipt[0].stage == 3 && receipt[0].active == true) {
+            //             console.log("rubyStage 4")
+            //             return { rubyStage: 4 }
+            //         }
+            //     }
         }
 
+        if (receipt[0].active == true) {
+            return { rubyStage: receipt[0].stage }
+        }
     } catch (e) {
-
-
         console.log(e);
     }
 }

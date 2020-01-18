@@ -4,7 +4,6 @@ import Form2 from "./forms/Form2";
 import Form3 from "./forms/Form3";
 import history from "../routes/history";
 import { checkAuth } from "../routes/checker";
-
 class Register extends Component {
   constructor() {
     super();

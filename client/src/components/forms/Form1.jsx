@@ -10,7 +10,6 @@ class Form1 extends Component {
 
   async handleSubmit(data) {
     // Todo
-
     this.props.nextPage();
   }
 

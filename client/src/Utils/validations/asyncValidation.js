@@ -3,9 +3,11 @@ const URL = "http://localhost:3001";
 
 export const validateEmail = async email => {
   try {
-    const res = await axios.get(`${URL}/validateEmail`, {
+    const res = await axios.get(`${URL}/api/validateEmail`, {
       params: { email: email }
     });
+
+    console.log("show", res);
     return res;
   } catch (error) {
     console.log(error)

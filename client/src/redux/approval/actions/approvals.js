@@ -47,8 +47,18 @@ export const getRugbyStage = (userId) => {
         try {
             const userId = checkId();
             console.log("userID", userId)
-            const { data } = await axios.get(`${URL}/rugby-stage/${userId}`
-            );
+            const { data } = await axios.get(`${URL}/rugby-stage/${userId}`);
+            if (data.status) {
+                console.log("status", data.status)
+                dispatch({
+                    type: actions.SAVE_PRODECTED_RUBY_STAGE,
+                    payload: { prodectedStage: data.rubyStage - 1 }
+                });
+                return
+
+
+            }
+
             dispatch({
                 type: actions.SAVE_PRODECTED_RUBY_STAGE,
                 payload: { prodectedStage: data.rubyStage }
@@ -84,8 +94,21 @@ export const getApprovalType = (userId) => {
             if (data.active == true) {
                 dispatch({
                     type: actions.CHANGE_APPROVAL,
-                    payload: { approvalType: "ACCESS", stage: data.stage }
+                    payload: {
+                        approvalType: "ACCESS",
+                        stage: data.stage,
+                    }
                 });
+
+                // dispatch({
+                //     type: actions.SAVE_PRODECTED_RUBY_STAGE,
+                //     payload: {
+                //         status: true,
+                //         prodectedStage: data.stage,
+                //     }
+                // });
+
+
             }
 
             if (data.active == false && data.stage > 1) {
@@ -93,6 +116,15 @@ export const getApprovalType = (userId) => {
                     type: actions.CHANGE_APPROVAL,
                     payload: { approvalType: "ACCESS", stage: data.stage - 1 }
                 });
+
+
+                //     dispatch({
+                //         type: actions.SAVE_PRODECTED_RUBY_STAGE,
+                //         payload: {
+                //             status: false,
+                //             prodectedStage: data.stage,
+                //         }
+                //     });
             }
 
 
@@ -102,6 +134,14 @@ export const getApprovalType = (userId) => {
                     payload: { approvalType: "WAITING", stage: 0 }
 
                 });
+
+                //     dispatch({
+                //         type: actions.SAVE_PRODECTED_RUBY_STAGE,
+                //         payload: {
+                //             status: false,
+                //             prodectedStage: data.stage,
+                //         }
+                //     });
             }
             if (data.length == 0) {
                 dispatch({
@@ -109,6 +149,13 @@ export const getApprovalType = (userId) => {
                     payload: { approvalType: "FIRST_TIME", stage: 0 }
 
                 });
+                //     dispatch({
+                //         type: actions.SAVE_PRODECTED_RUBY_STAGE,
+                //         payload: {
+                //             status: false,
+                //             prodectedStage: data.stage,
+                //         }
+                //     });
             }
 
         } catch (e) {

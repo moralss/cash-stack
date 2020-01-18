@@ -7,6 +7,7 @@ import { storage } from "../firebase";
 import { saveReceiptUrl, getApprovalType, getRugbyStage } from '../redux/approval/actions/approvals';
 import history from '../routes/history';
 import CustomButton from './button/CustomButton';
+import CashTable from "./CashTable";
 
 const API_URL = "http://localhost:3001/";
 
@@ -71,9 +72,7 @@ class Account extends Component {
 
   render() {
     return (
-      <div className="image-container">
-        {/* <input type="text" placeholder="Enter Refs no" value={this.state.refs}
-          onChange={(e) => this.setState({ refs: e.target.value })} /> */}
+      <div className="image-container" style={{ margin: "0rem 1rem" }}>
         {this.props.approvalType === "WAITING" ?
           <h1>Waiting for approval</h1> : this.props.approvalType == "ACCESS" ?
             <div>
@@ -83,12 +82,17 @@ class Account extends Component {
                   <h6> pay for rubystage {this.props.prodectedStage}</h6>
                 </div>
                 : null}
+              <h7>Branch Name: FNB</h7>
+              <br />
+              <h7>Account Number: 62791005442</h7>
+              <br />
               <input
-                style={{ display: "block" }}
+                style={{ marginTop: "1rem", display: "block" }}
                 type="file"
                 className="process__upload-btn"
                 onChange={e => this.uploadImage(e)}
                 ref={ref => this.fileInput = ref}
+
               />
               <p>
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
@@ -105,12 +109,11 @@ class Account extends Component {
                 variant="contained" color="secondary">
                 Cancel
               </Button>
-              {/* <button onClick={() => this.cancel()}> Cancel </button> */}
-              {/* <button onClick={() => this.testCode()}> Confirm </button> */}
-
+              <CashTable />
             </div>
             : <div>
               <h4 className="process__heading">Capture Receipt</h4>
+              <h3>Account Number: 62791005442</h3>
               <input
                 style={{ display: "block" }}
                 type="file"
@@ -123,7 +126,7 @@ class Account extends Component {
               </p>
               <button onClick={() => this.cancel()}> Cancel </button>
               <button onClick={() => this.testCode()}> Confirm </button>
-
+              <CashTable />
             </div>
         }
 

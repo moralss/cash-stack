@@ -1,9 +1,9 @@
 import axios from "axios";
-const URL = "http://localhost:3001";
+const URL = "api/"
 
 export const validateEmail = async email => {
   try {
-    const res = await axios.get(`${URL}/api/validateEmail`, {
+    const res = await axios.get(`${URL}/validateEmail`, {
       params: { email: email }
     });
 
@@ -18,7 +18,7 @@ export const validateEmail = async email => {
 
 export const checkConfirmation = async details => {
   try {
-    const res = await axios.post(`${URL}/api/check-confirmation/`, details)
+    const res = await axios.post(`${URL}/check-confirmation/`, details)
     console.log("details", res)
     return res
   } catch (e) {

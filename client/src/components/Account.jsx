@@ -84,6 +84,8 @@ class Account extends Component {
                 : null}
               <h7>Branch Name: FNB</h7>
               <br />
+              <h7>Account Name: Cash Stack</h7>
+              <br />
               <h7>Account Number: 62791005442</h7>
               <br />
               <input
@@ -113,7 +115,12 @@ class Account extends Component {
             </div>
             : <div>
               <h4 className="process__heading">Capture Receipt</h4>
-              <h3>Account Number: 62791005442</h3>
+              <h7>Branch Name: FNB</h7>
+              <br />
+              <h7>Account Name: Cash Stack</h7>
+              <br />
+              <h7>Account Number: 62791005442</h7>
+              <br />
               <input
                 style={{ display: "block" }}
                 type="file"

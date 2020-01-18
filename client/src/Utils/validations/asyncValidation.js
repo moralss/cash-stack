@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "api/"
+const URL = "/api"
 
 export const validateEmail = async email => {
   try {

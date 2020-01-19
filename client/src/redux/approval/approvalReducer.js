@@ -25,6 +25,10 @@ export const approvalReducer = (state = initalState, action) => {
                 prodectedStage: action.payload.prodectedStage,
                 isNextPayment: action.payload.status
             };
+        case actions.REST_STATE:
+            return {
+                ...initalState,
+            }
 
 
         default:

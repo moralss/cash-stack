@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import validate from "../../Utils/validations/form1Validations";
 import renderField from "./RenderField";
+import Button from '@material-ui/core/Button';
 
 class Form1 extends Component {
   constructor() {
@@ -16,7 +17,9 @@ class Form1 extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(data => this.handleSubmit(data))}>
+      <form
+        onSubmit={handleSubmit(data => this.handleSubmit(data))}
+      >
         <Field
           name="firstName"
           component={renderField}
@@ -39,9 +42,18 @@ class Form1 extends Component {
           label="Contact"
           placeholder="Enter Contacts"
         />
-        <button type="submit" className="btn  col btn-block">
+
+        <Button
+          variant="contained"
+          className="btn-block btn col "
+          type="submit"
+          color="primary">
           Next
-        </button>
+           </Button>
+
+        {/* <button type="submit" className="btn  col btn-block">
+          Next
+        </button> */}
       </form>
     );
   }

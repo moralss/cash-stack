@@ -46,25 +46,19 @@ export const getRugbyStage = (userId) => {
     return async dispatch => {
         try {
             const userId = checkId();
-            console.log("userID", userId)
             const { data } = await axios.get(`${URL}/rugby-stage/${userId}`);
             if (data.status) {
-                console.log("status", data.status)
                 dispatch({
                     type: actions.SAVE_PRODECTED_RUBY_STAGE,
                     payload: { prodectedStage: data.rubyStage - 1 }
                 });
                 return
-
-
             }
 
             dispatch({
                 type: actions.SAVE_PRODECTED_RUBY_STAGE,
                 payload: { prodectedStage: data.rubyStage }
             });
-
-            console.log(data)
 
         } catch (e) {
             console.log(e);
@@ -89,8 +83,30 @@ export const sendConfirmation = (email) => {
 export const getApprovalType = (userId) => {
     return async dispatch => {
         try {
+
             const userId = checkId();
             const { data } = await axios.get(`${URL}/receipt/${userId}`, setAxiosHeader())
+            console.log("show pres", data.active, data.stage)
+            if (data.active == false && data.stage == 1) {
+                dispatch({
+                    type: actions.CHANGE_APPROVAL,
+                    payload: { approvalType: "WAITING", stage: 0 }
+
+                });
+                // return
+            }
+
+            if (data.length == 0) {
+                dispatch({
+                    type: actions.CHANGE_APPROVAL,
+                    payload: { approvalType: "FIRST_TIME", stage: 0 }
+
+                });
+                // return
+            }
+
+
+
             if (data.active == true) {
                 dispatch({
                     type: actions.CHANGE_APPROVAL,
@@ -99,16 +115,7 @@ export const getApprovalType = (userId) => {
                         stage: data.stage,
                     }
                 });
-
-                // dispatch({
-                //     type: actions.SAVE_PRODECTED_RUBY_STAGE,
-                //     payload: {
-                //         status: true,
-                //         prodectedStage: data.stage,
-                //     }
-                // });
-
-
+                // return
             }
 
             if (data.active == false && data.stage > 1) {
@@ -116,47 +123,11 @@ export const getApprovalType = (userId) => {
                     type: actions.CHANGE_APPROVAL,
                     payload: { approvalType: "ACCESS", stage: data.stage - 1 }
                 });
-
-
-                //     dispatch({
-                //         type: actions.SAVE_PRODECTED_RUBY_STAGE,
-                //         payload: {
-                //             status: false,
-                //             prodectedStage: data.stage,
-                //         }
-                //     });
+                // return
             }
 
 
-            if (data.active == false && data.stage == 1) {
-                dispatch({
-                    type: actions.CHANGE_APPROVAL,
-                    payload: { approvalType: "WAITING", stage: 0 }
 
-                });
-
-                //     dispatch({
-                //         type: actions.SAVE_PRODECTED_RUBY_STAGE,
-                //         payload: {
-                //             status: false,
-                //             prodectedStage: data.stage,
-                //         }
-                //     });
-            }
-            if (data.length == 0) {
-                dispatch({
-                    type: actions.CHANGE_APPROVAL,
-                    payload: { approvalType: "FIRST_TIME", stage: 0 }
-
-                });
-                //     dispatch({
-                //         type: actions.SAVE_PRODECTED_RUBY_STAGE,
-                //         payload: {
-                //             status: false,
-                //             prodectedStage: data.stage,
-                //         }
-                //     });
-            }
 
         } catch (e) {
             console.log(e);

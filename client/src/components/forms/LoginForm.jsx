@@ -6,7 +6,7 @@ import * as thunks from "../../redux/user/actions/auth";
 import history from "../../routes/history";
 import { recoverPassword } from '../../redux/user/actions/auth';
 import Button from '@material-ui/core/Button';
-
+import TextField from '@material-ui/core/TextField';
 
 
 class LoginForm extends Component {
@@ -38,21 +38,23 @@ class LoginForm extends Component {
     const { authError } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          label="email"
+        <TextField
+          style={{ width: "100%", margin: "0.6rem 0rem" }}
+          id="standard-basic"
+          type="email"
+          label="Email"
           name="email"
           value={this.state.email}
-          placeholder="Enter email"
           onChange={(e) => this.setState({ email: e.target.value })}
         />
-        <input component={renderField}
+        <TextField
+          style={{ width: "100%", margin: "0.6rem 0rem" }}
+          id="standard-basic"
           label="Password"
           name="password"
           type="password"
           value={this.state.password}
           onChange={(e) => this.setState({ password: e.target.value })}
-          placeholder="Enter password"
         />
         <span className="error">
           {authError !== undefined ? authError.error : null}

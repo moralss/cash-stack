@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
-import DefaultImg from "../images/index";
+import DefaultImg from "../../../images/index";
 import axios from "axios";
-import { storage } from "../firebase";
-import { saveReceiptUrl, getApprovalType, getRugbyStage } from '../redux/approval/actions/approvals';
-import history from '../routes/history';
-import CustomButton from './button/CustomButton';
-import CashTable from "./CashTable";
+import { storage } from "../../../firebase";
+import { saveReceiptUrl, getApprovalType, getRugbyStage } from '../../../redux/approval/actions/approvals';
+import history from '../../../routes/history';
+import CustomButton from '../../button/CustomButton';
+import CashTable from "../../CashTable";
+import WaitingApprovalSpinner from '../../progessLoader/WaitingApprovalSpinner'
 
 const API_URL = "http://localhost:3001/";
 
@@ -57,6 +58,7 @@ class Account extends Component {
 
   testCode() {
     this.props.saveReceiptUrl("url");
+    this.props.getApprovalType()
   }
 
 
@@ -74,7 +76,13 @@ class Account extends Component {
     return (
       <div className="image-container" style={{ margin: "0rem 1rem" }}>
         {this.props.approvalType === "WAITING" ?
-          <h1 style={{ marginTop: "5rem" }}>Waiting for approval</h1> : this.props.approvalType == "ACCESS" ?
+          <div>
+            <h1 style={{ marginTop: "5rem" }}>Waiting for approval</h1>
+            <WaitingApprovalSpinner />
+            This will take several minutes before your account has been approved...
+
+          </div>
+          : this.props.approvalType == "ACCESS" ?
             <div>
               <h4 className="process__heading">Next Receipt</h4>
               {this.props.stage !== this.props.prodectedStage ?

@@ -10,7 +10,7 @@ import Profile from "../components/Profile";
 import { PrivateRoute } from "./privateRoute";
 import Members from "../components/Members";
 import MemberProfile from "../components/MemberProfile";
-import Account from "../components/Account";
+import Account from "../components/Register/Account/Account";
 import Settings from "../components/Settings"
 import PasswordRecovery from "../components/PasswordRecovery"
 import Step1 from '../components/Register/Step1'

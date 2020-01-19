@@ -10,7 +10,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div
+        style={{ margin: "0rem 2rem" }}
+        className="container">
         <h3> Login </h3>
         <LoginForm />
       </div>

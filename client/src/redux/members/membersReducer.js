@@ -25,6 +25,11 @@ export const membersReducer = (state = initalState, action) => {
         ...state,
         nextMembers: action.payload
       }
+    case actions.REST_STATE:
+      return {
+        ...initalState,
+      }
+
     default:
       return state;
   }

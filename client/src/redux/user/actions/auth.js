@@ -12,9 +12,10 @@ const URL = "/api";
 export const registerUser = (credentials) => {
   return async dispatch => {
     try {
-      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
+      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
       const res = await axios.post(`${URL}/signin`, credentials);
       const decodedToken = jwtDecode(res.data.token);
+      localStorage.setItem("user", res.data.token);
       dispatch({
         type: actions.SET_USER,
         payload: {
@@ -26,8 +27,6 @@ export const registerUser = (credentials) => {
           }
         }
       });
-      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
-      localStorage.setItem("user", res.data.token);
       dispatch({
         type: actions.AUTHENTICATED,
         payload: {
@@ -39,6 +38,7 @@ export const registerUser = (credentials) => {
       dispatch(reset('form2'))
       dispatch(reset('object Object'))
       history.push("/account")
+      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
     } catch (error) {
       dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       console.log(error);
@@ -50,10 +50,10 @@ export const registerUser = (credentials) => {
 export const login = (credentials) => {
   return async dispatch => {
     try {
-      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
+      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
       const res = await axios.post(`${URL}/login`, credentials);
       const decodedToken = jwtDecode(res.data.token);
-      console.log(decodedToken);
+
       dispatch({
         type: actions.SET_USER,
         payload: {
@@ -66,7 +66,7 @@ export const login = (credentials) => {
           }
         }
       });
-      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
+      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       localStorage.setItem("user", res.data.token);
       dispatch({
         type: actions.AUTHENTICATED,

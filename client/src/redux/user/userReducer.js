@@ -40,6 +40,10 @@ export const userReducer = (state = initalState, action) => {
         ...state,
         passwordChangeInfo: { userId: action.payload }
       }
+    case actions.REST_STATE:
+      return {
+        ...initalState,
+      }
 
     default:
       return state;

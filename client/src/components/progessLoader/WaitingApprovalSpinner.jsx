@@ -11,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function LinearQuery() {
+
+export default function WaitingApprovalSpinner() {
     const classes = useStyles();
 
     return (

@@ -53,10 +53,12 @@ class Register extends Component {
 
   render() {
     return (
-      <div class="container">
-        <h3>Register</h3>
+      <div
+        style={{ margin: "0rem 2rem" }}
+        class="container">
+        <h3> Register</h3>
         {this.renderPage()}
-      </div>
+      </div >
     );
   }
 }

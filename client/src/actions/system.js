@@ -2,18 +2,25 @@ import history from "../routes/history";
 import * as actions from '../redux/actionTypes/index'
 
 export const logout = () => {
-  history.push('/');
-  localStorage.clear("persist:root")
-  localStorage.clear("user")
-  localStorage.clear()
-  return {
-    type: actions.AUTHENTICATED,
-    payload: {
-      auth: false
-    }
-  };
-}
+  return async dispatch => {
+    localStorage.clear("persist:root")
+    history.push('/');
+    localStorage.clear("user")
+    localStorage.clear("persist:root")
+    localStorage.clear("")
 
+    dispatch({
+      type: actions.AUTHENTICATED,
+      payload: {
+        auth: true
+      }
+    });
+    dispatch({
+      type: actions.REST_STATE,
+    })
+
+  }
+}
 export const setModelType = () => {
   return {
     type: actions.SET_MODEL_TYPE,

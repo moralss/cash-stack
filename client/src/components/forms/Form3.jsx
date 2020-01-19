@@ -9,6 +9,7 @@ import * as auth from "../../redux/user/actions/auth";
 import { validateEmail, checkConfirmation } from "../../Utils/validations/asyncValidation";
 import { SubmissionError } from "redux-form";
 import * as approvals from '../../redux/approval/actions/approvals'
+import Button from '@material-ui/core/Button';
 
 
 
@@ -41,7 +42,7 @@ class Form3 extends Component {
       return
     }
 
-    
+
     this.props.registerUser({
       ...this.props.form.form1.values,
       ...this.props.form.form2.values,
@@ -96,20 +97,24 @@ class Form3 extends Component {
           />
 
           <div>
-            <button
+            <Button
+              style={{ marginBottom: "1rem" }}
+              variant="contained"
+              className="btn-block btn col "
               type="submit"
-              className="btn btn-block space"
+              color="primary"
               disabled={pristine || submitting}
             >
               Send
-            </button>
-            <button
-              type="button"
-              className="btn btn-block space"
+           </Button>
+            <Button
+              className="btn-block btn col "
+              onClick={previousPage}
+              color="primary"
               onClick={previousPage}
             >
               Previous
-            </button>
+           </Button>
           </div>
         </form>
       </div>

@@ -43,8 +43,6 @@ CREATE TABLE IF NOT EXISTS roles(
 ); 
 
 
-
-
 CREATE TABLE IF NOT EXISTS receipts(
     id serial PRIMARY KEY,
     image_url varchar(255) NOT NULL,
@@ -69,8 +67,8 @@ where receipts.user_id = 2;
 
 update receipts
   set active = true
-where receipts.user_id = 2;
 
+where receipts.user_id = 2;
     UPDATE receipts
     SET stage = $1, active = $2 WHERE user_id = $3       
 
@@ -91,10 +89,8 @@ INSERT INTO memeber (email , pioneerRefs , user_id)
 VALUES ('storage services' , '085704553' , 1);
 
 
-
  customers.email from customer_purchases
   inner join  customers on customer_purchases.customer_id = customers.id
-
 
 
 CREATE TABLE IF NOT EXISTS registered_users(

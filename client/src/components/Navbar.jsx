@@ -123,7 +123,7 @@ const Navbar = () => {
   }
 
   return (
-    <div class="navbar-fixed">
+    <div class="navbar-fixed" style={{ marginBottom: "4rem" }}>
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
@@ -152,13 +152,6 @@ const Navbar = () => {
                   Logout
                   </Button>
                 : null}
-
-            {/* {user.authenticated ? <IconButton aria-label="show 11 new notifications" color="inherit">
-              <Badge badgeContent={11} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-              : null} */}
 
             <IconButton
               color="inherit"

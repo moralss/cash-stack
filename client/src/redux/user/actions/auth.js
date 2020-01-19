@@ -12,6 +12,7 @@ const URL = "/api";
 export const registerUser = (credentials) => {
   return async dispatch => {
     try {
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
       const res = await axios.post(`${URL}/signin`, credentials);
       const decodedToken = jwtDecode(res.data.token);
       dispatch({
@@ -25,6 +26,7 @@ export const registerUser = (credentials) => {
           }
         }
       });
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       localStorage.setItem("user", res.data.token);
       dispatch({
         type: actions.AUTHENTICATED,
@@ -38,6 +40,7 @@ export const registerUser = (credentials) => {
       dispatch(reset('object Object'))
       history.push("/account")
     } catch (error) {
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       console.log(error);
     }
   };
@@ -47,8 +50,10 @@ export const registerUser = (credentials) => {
 export const login = (credentials) => {
   return async dispatch => {
     try {
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
       const res = await axios.post(`${URL}/login`, credentials);
       const decodedToken = jwtDecode(res.data.token);
+      console.log(decodedToken);
       dispatch({
         type: actions.SET_USER,
         payload: {
@@ -56,10 +61,12 @@ export const login = (credentials) => {
             id: decodedToken.sub,
             name: decodedToken.name,
             email: decodedToken.email,
-            refNumber: decodedToken.refNumber
+            refNumber: decodedToken.refNumber,
+            createdAt: decodedToken.createdAt
           }
         }
       });
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       localStorage.setItem("user", res.data.token);
       dispatch({
         type: actions.AUTHENTICATED,
@@ -80,6 +87,7 @@ export const login = (credentials) => {
           error: data
         }
       });
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       return
     }
   };

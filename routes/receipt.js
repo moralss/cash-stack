@@ -30,6 +30,7 @@ const receipt = app => {
         for (var i in members) {
             const stage3Members = await getAllMembers(members[i].id);
             members[i].downliner = stage3Members;
+
             if (stage3Members.length == 6) {
                 counterStage3++;
             }

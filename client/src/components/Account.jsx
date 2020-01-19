@@ -74,7 +74,7 @@ class Account extends Component {
     return (
       <div className="image-container" style={{ margin: "0rem 1rem" }}>
         {this.props.approvalType === "WAITING" ?
-          <h1>Waiting for approval</h1> : this.props.approvalType == "ACCESS" ?
+          <h1 style={{ marginTop: "5rem" }}>Waiting for approval</h1> : this.props.approvalType == "ACCESS" ?
             <div>
               <h4 className="process__heading">Next Receipt</h4>
               {this.props.stage !== this.props.prodectedStage ?
@@ -101,13 +101,13 @@ class Account extends Component {
               </p>
 
               <Button variant="contained"
-                onClick={() => this.cancel()}
+                onClick={() => this.testCode()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >
                 Confirm
               </Button>
-              <Button onClick={() => this.testCode()}
+              <Button onClick={() => this.cancel()}
                 variant="contained" color="secondary">
                 Cancel
               </Button>
@@ -131,8 +131,17 @@ class Account extends Component {
               <p>
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
-              <button onClick={() => this.cancel()}> Cancel </button>
-              <button onClick={() => this.testCode()}> Confirm </button>
+              <Button variant="contained"
+                onClick={() => this.testCode()}
+                color="primary"
+                style={{ marginRight: "2rem" }}
+              >
+                Confirm
+              </Button>
+              <Button onClick={() => this.cancel()}
+                variant="contained" color="secondary">
+                Cancel
+                </Button>
               <CashTable />
             </div>
         }

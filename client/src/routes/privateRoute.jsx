@@ -27,7 +27,8 @@ const authenticatedUser = () => {
                         id: decodedToken.sub,
                         name: decodedToken.name,
                         email: decodedToken.email,
-                        refNumber: decodedToken.refNumber
+                        refNumber: decodedToken.refNumber,
+                        createdAt: decodedToken.createdAt
                     }
                 }
             });

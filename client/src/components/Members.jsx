@@ -53,7 +53,7 @@ class Users extends Component {
     render() {
         return (
             <div class="row">
-                <h4>Currently members</h4>
+                <h4 style={{ textAlign: "center" }}>Currently Members </h4>
                 <div className="member-wrapper blue-text">
                     {
                         this.props.members ? this.props.members.map(member => (
@@ -69,7 +69,7 @@ class Users extends Component {
                                     <CardContent>
                                         <div style={{ display: "grid", gridTemplateColumns: "repeat(2 , 1fr)" }}>
                                             <div>
-                                                <label className="margin-right grey-text">
+                                                <label className="margin-right label-text">
                                                     First Name</label>
                                                 <br />
                                                 <span className="blue-text">
@@ -79,7 +79,7 @@ class Users extends Component {
                                                 </span>
                                             </div>
                                             <div>
-                                                <label className="margin-right grey-text"> Last Name </label>
+                                                <label className="margin-right label-text"> Last Name </label>
                                                 <br />
                                                 <span className="blue-text">
                                                     {
@@ -88,14 +88,14 @@ class Users extends Component {
                                                 </span>
                                             </div>
                                             <div>
-                                                <label className="margin-right grey-text"> Join Date</label>
+                                                <label className="margin-right label-text"> Join Date</label>
                                                 <br />
                                                 <span className="blue-text">
                                                     {member.created_at ? new Date(member.created_at).toDateString() : null}
                                                 </span>
                                             </div>
                                             <div>
-                                                <label className="margin-right grey-text"> Member count </label>
+                                                <label className="margin-right label-text"> Member count </label>
                                                 <br />
                                                 <span className="blue-text">
                                                     {

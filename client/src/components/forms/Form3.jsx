@@ -41,6 +41,7 @@ class Form3 extends Component {
       return
     }
 
+    
     this.props.registerUser({
       ...this.props.form.form1.values,
       ...this.props.form.form2.values,

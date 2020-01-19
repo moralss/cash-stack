@@ -50,7 +50,7 @@ const authRoutes = app => {
       let user = await getUserByEmail(data.email);
 
       let token = await createToken(userId, user.email, user.first_name,
-        refNumber);
+        refNumber, user.created_at);
       return res.status(200).json({
         refNumber: refNumber,
         token: token
@@ -84,7 +84,7 @@ const authRoutes = app => {
       }
       let userFound = await getRefs(data.email);
       let token = await createToken(user.id, user.email, user
-        .first_name, userFound.ref_number);
+        .first_name, userFound.ref_number, user.created_at);
       return res.status(200).json({
         token
       });

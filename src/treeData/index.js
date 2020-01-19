@@ -50,6 +50,11 @@ const getRubyStage = async userId => {
     try {
         const members = await getAllMembers(userId);
         const receipt = await getReceipt(userId);
+
+        if (receipt[0] == undefined) {
+            return { rubyStage: 1, }
+        }
+
         if (receipt[0].active == false) {
             return { rubyStage: receipt[0].stage, status: true }
         }
@@ -65,7 +70,6 @@ const getRubyStage = async userId => {
                 console.log("rubyStage 3")
                 return { rubyStage: 3 }
             }
-
             //     for (var i in stage2Members) {
             //         const stage3Members = await getAllMembers(members[i].memeber_id);
             //         console.log(stage3Members)

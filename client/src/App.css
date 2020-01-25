@@ -1,3 +1,4 @@
+
 /* .root {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -127,8 +128,19 @@ body {
 
 @media only screen and (max-width: 768px) {
   body {
-    /* background-color: lightblue; */
+    background-color: lightblue;
   }
+
+.contact-grid{
+  display: grid;
+  grid-template-columns: repeat(1 , 1fr) !important;
+}
+
+.contact-item{
+   justify-self: start !important;
+}
+
+
 
   .member-wrapper {
     display: grid;
@@ -252,7 +264,7 @@ body {
 }
 
 .custom-container {
-  margin: 5px 5px !important;
+  margin: 5px 15px !important;
 }
 
 .sidenav-overlay {
@@ -278,6 +290,7 @@ body {
   }
 
 }
+
 
 /* ///////////////////////////////////////// */
 /* ////////////////////////////////////////////// */
@@ -360,4 +373,70 @@ body {
 
 .card-margin{
   margin: 2rem 2rem;
+}
+
+.hero-wrapper{
+  display: grid;
+  justify-content: center;
+}
+
+.hero-img{
+  width: 300px;
+  margin-top: 1rem;
+}
+
+.hero-header{
+  text-align: center;
+  font-weight: normal;
+  font-size: 3rem;
+  color:orange;
+}
+
+p{
+  opacity: 0.6;
+}
+
+.hero-stand{
+  color: red;
+  font-weight: bold;
+      line-height: 1.5;
+}
+
+
+
+/* //////////////////// how it works */
+
+.header-header{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+/* //////////////////////// contact us*/
+
+
+.contact-grid{
+  display: grid;
+  grid-template-columns: repeat(3 , 1fr);
+
+  justify-content: center;
+  margin:2rem 0rem;
+}
+
+
+.contact-item{
+  display: grid;
+  justify-self: center;
+  /* grid-template-columns: repeat(2 , 1fr); */
+}
+
+.contact-item > h6{
+   margin: 0rem;
+}
+
+.contact-img{
+  display:inline-block;
+  margin-top:0.5rem;
 }

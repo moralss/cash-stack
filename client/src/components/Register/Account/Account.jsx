@@ -44,6 +44,7 @@ class Account extends Component {
         res.ref.getDownloadURL().then(url => {
           this.props.saveReceiptUrl(url)
           this.props.getApprovalType()
+          console.log("show me mmmmmmmmmmmmmmmmmmmmmmmmmmmme", url);
         });
       })
       .catch(err => {
@@ -75,6 +76,7 @@ class Account extends Component {
   render() {
     return (
       <div className="image-container" style={{ margin: "0rem 1rem" }}>
+
         {this.props.approvalType === "WAITING" ?
           <div>
             <h1 style={{ marginTop: "5rem" }}>Waiting for approval</h1>
@@ -84,7 +86,11 @@ class Account extends Component {
           </div>
           : this.props.approvalType == "ACCESS" ?
             <div>
-              <h4 className="process__heading">Next Receipt</h4>
+              <h3 className="header-header" style={{
+                marginTop: "5rem",
+                marginBottom: "1rem"
+              }}> Next Receipt</h3>
+
               {this.props.stage !== this.props.prodectedStage ?
                 <div>
                   <h6> pay for rubystage {this.props.prodectedStage}</h6>
@@ -109,7 +115,7 @@ class Account extends Component {
               </p>
 
               <Button variant="contained"
-                onClick={() => this.testCode()}
+                onClick={() => this.confirmImage()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >
@@ -122,7 +128,11 @@ class Account extends Component {
               <CashTable />
             </div>
             : <div>
-              <h4 className="process__heading">Capture Receipt</h4>
+              <h3 className="header-header" style={{
+                marginTop: "5rem",
+                marginBottom: "1rem"
+              }}> Capture Receipt</h3>
+
               <h7>Branch Name: FNB</h7>
               <br />
               <h7>Account Name: Cash Stack</h7>
@@ -140,7 +150,7 @@ class Account extends Component {
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
               <Button variant="contained"
-                onClick={() => this.testCode()}
+                onClick={() => this.confirmImage()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >

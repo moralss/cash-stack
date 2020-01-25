@@ -22,6 +22,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Badge from '@material-ui/core/Badge';
 import { ProfileIcon, RegisterIcon, MemberIcon, SettingIcon, AccountIcon, HomeIcon } from '../components/Icons'
 import Profile from "./Profile";
+import Logo from '../assets/CASH-STACK.svg'
 
 const drawerWidth = 240;
 
@@ -134,8 +135,11 @@ const Navbar = () => {
           })}
         >
           <Toolbar>
-
-            <span> Logo </span>
+            <img
+              src={`${Logo}`}
+              alt=" no image"
+              style={{ width: "67px " }}
+            />
             {
               !user.authenticated ?
                 <Button onClick={() => changeRoute("login")}

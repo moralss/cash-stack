@@ -12,8 +12,11 @@ import Ranger from '../assets/range.jpg'
 import House from '../assets/modern.jpeg';
 import Package from "../assets/package1320x742.jpg";
 import { storage } from "../firebase";
+import HeroImg from '../assets/CASH-STACK.svg'
+import Phone from '../assets/icons/phone.svg'
+import WhatsApp from '../assets/icons/whatsapp.svg'
+import Gmail from '../assets/icons/gmail.svg'
 
-// salary.svg
 class Homepage extends Component {
   componentDidMount() {
     checkAuth();
@@ -27,8 +30,15 @@ class Homepage extends Component {
   render() {
     return (
       <div className="custom-container">
+        <div className="hero-wrapper"
+        >
+          <img src={`${HeroImg}`} alt=" no image"
+            className="hero-img" />
+        </div>
         <div>
-          <h3>Be your own boss</h3>
+          <h3 className="hero-header">Be your own
+          <span className="hero-stand"> BOSS </span>
+          </h3>
           <div className="grid-2">
             <p>
               <p>
@@ -44,78 +54,75 @@ class Homepage extends Component {
             <img src={`${Coins}`} alt=" no image" style={{ width: "150px" }} />
           </div>
         </div>
+
         <div>
-          <h3>How it works </h3>
+          <h3 className="header-header">How it works </h3>
           <div className="my-wrapper">
             <div>
-              <h6> Ruby One</h6>
+              <h4> Ruby One</h4>
               <hr />
-              <p>
-                Pay R200.00 once off joining fee
-                <br /> Recruit Six members under your name<br />
-                6 X members joins under your name <br /> Your Ruby
-                one is now completed <br />
-                <p>
-                  <p> Benefits of Ruby One</p>
-                  R200.00 Cash back <br /> 40% x6 bonus = R480.00 <br /> Total
-                  pay-out R200.00 + R480.00 <br /> TP=R680.00
-                </p>
-              </p>
-
               <img
                 src={`${Salary}`}
                 alt=" no image"
                 style={{ width: "150px " }}
               />
+              <p>
+                Pay R200.00 once off joining fee
+                <br /> Recruit Six members under your name<br />
+                6 X members joins under your name <br />
+                Your Ruby one is now completed <br />
+                <p>
+                  <p> Benefits of Ruby One</p>
+                  R200.00 Cash back <br /> 40% x6 bonus = R480.00 <br /> Total
+                  pay-out = R200.00 + R480.00 <br /> TP=R680.00
+                </p>
+              </p>
             </div>
             <div>
-              Ruby Two
+              <h4> Ruby Two</h4>
               <hr />
+              <img src={`${TTT}`} alt=" no image" style={{ width: "150px " }} />
               <p>
                 From the profit you've gained from Ruby one
                 <br /> Pay R400.00 <br />
                 Lead/Help/Teach your six members to recruit their own six
                 members.
                 <br />
-                Once your six members joins you at this stage... <br />
+                Once your six members joins you at this stage...
+                <br />
                 You advanced to Ruby Three
-                Your Ruby Two is now completed <br />
+                <br />Your Ruby Two is now completed <br />
                 <p>Benefits of Ruby Two</p>
                 R400.00 Cash back <br />
                 40% x6 bonus =R950.00 <br />
                 Total pay-out R400.00 + R950.00 <br />
                 TP=R1 360.00
               </p>
-              <img src={`${TTT}`} alt=" no image" style={{ width: "150px " }} />
             </div>
             <div>
-              <h6> Ruby Three</h6>
+              <h4> Ruby Three</h4>
               <hr />
-              <p>
-                Pay R800.00 <br />
-                Once your six members joins you at this stage... <br />
-                You advance to Ruby Four
-                Your Ruby Three is now completed
-                 <p>Benefits of Ruby Three</p> R500.00
-                Cash back <br />
-                45% x6 bonus =R2 160.00 <br />
-                Total pay-out R2 160.00 + R800.00 <br />
-                TP=R2 960.00
-              </p>
               <img
                 src={`${CreditCard}`}
                 alt=" no image"
                 style={{ width: "150px " }}
               />
+              <p>
+                Pay R800.00 <br />
+                Once your six members joins you at this stage... <br />
+                You advance to Ruby Four
+                <br />Your Ruby Three is now completed
+                 <p>Benefits of Ruby Three</p> R800.00
+                Cash back <br />
+                45% x6 bonus = R2 160.00 <br />
+                Total pay-out = R800.00 + R2 160.00  <br />
+                TP=R2 960.00
+              </p>
             </div>
           </div>
         </div>
         <div>
-          <h3>About us </h3>
-          <h6>
-            Cash Stack investment <br />
-            Financial freedom 4 all
-          </h6>
+          <h3 className="header-header">About us </h3>
           <p>
             CA$H $TACK is a South african multi level marketing company
             established in May 2019. Founded by network marketers, those who are
@@ -129,12 +136,8 @@ class Homepage extends Component {
           </p>
         </div>
         <div>
-          <h3>Ruby Stages</h3>
+          <h3 className="header-header">Ruby Stages</h3>
           <CashTable />
-          <p>Your Ruby stages are now completed</p>
-          <p>At this point, you are qualified to Ruby STAR Stages</p>
-          <p>Where all dreams comes true</p>
-          <p>More MONEY, more INSENTIVES</p>
         </div>
         {/* <div style={{ display: "grid", gridTemplateColumns: "repeat(3 , 1fr)" }}>
           <img class="col 6" src={`${Ranger}`} style={{
@@ -159,21 +162,39 @@ class Homepage extends Component {
         </div> */}
 
         <div>
-          <h3>Contact us </h3>
-          <div class="row">
-            <h6 class="col">cashstack email address</h6>
-            <h6 class="col">stackcash612@gmail.com</h6>
-          </div>
-          <div class="row">
-            <h6 class="col">WhatsApp Link</h6>
-            <h6 class="col">https//:chatwhatsapp.com/D2YgZdV4r2079QilYuzMiy</h6>
-            <h6 class="col">(+27)68 373 4006</h6>
+          <h3 className="header-header">Contact us </h3>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <img class="contact-img" src={`${Gmail}`} style={{
+                width: "2rem",
+                height: "1rem",
+              }} alt="" />
+              <h6 >stackcash612@gmail.com</h6>
+            </div>
+            <div class="contact-item">
 
+              <a href="https://chat.whatsapp.com/D2YgZdV4r2079QiIYuzMiy"
+                target="_blank"
+              >
+                <img class="contact-img" src={`${WhatsApp}`} style={{
+                  width: "2rem",
+                  height: "1rem",
+                }} alt="" />
 
+              </a>
+            </div>
+            <div class="contact-item">
+              <img class="contact-img" src={`${Phone}`} style={{
+                width: "2rem",
+                height: "1rem",
+              }} alt="" />
+
+              <h6>(+27)68 373 4006</h6>
+            </div>
           </div>
 
         </div>
-      </div>
+      </div >
     );
   }
 }

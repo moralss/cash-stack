@@ -63,9 +63,13 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <h4 style={{ textAlign: "center" }}>Profile </h4>
+        <h3 className="header-header" style={{
+          marginTop: "5rem",
+          marginBottom: "1rem"
+        }}>
+          Profile </h3>
         <div className="card-margin">
-          <Card >
+          <Card>
             <CardContent>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
                 <div>
@@ -113,21 +117,19 @@ class Profile extends Component {
               </div>
             </CardContent>
             <CardActions>
-
             </CardActions>
           </Card>
         </div>
 
         {
           !this.props.role ?
-            <div>
+            <div style={{ marginLeft: " 2rem" }}>
               <label htmlFor="">Pioneer Ref/Stand Alone </label>
               <br />
               <Select
                 native
                 value={this.state.age}
                 onChange={(e) => this.handleChange(e)}
-                // placeholder=""
                 inputProps={{
                   name: 'age',
                   id: 'filled-age-native-simple',

@@ -23,6 +23,15 @@ CREATE TABLE IF NOT EXISTS users(
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 );          
 
+CREATE TABLE IF NOT EXISTS personal_info(
+    id serial PRIMARY KEY,
+    user_id INT REFERENCES users(id) NOT NULL
+    contact varchar(255) NOT NULL,
+    date_of_birth varchar(255) NOT NULL,
+    sex varchar(255) NOT NULL,
+    city varchar(255) NOT NULL,
+); 
+
 
 CREATE TABLE IF NOT EXISTS memeber(
     id serial PRIMARY KEY,
@@ -51,7 +60,14 @@ CREATE TABLE IF NOT EXISTS receipts(
     active BOOLEAN NOT NULL,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS personal_info(
+    id serial PRIMARY KEY,
+    contact varchar(255) NOT NULL,
+    user_id INT REFERENCES users(id) NOT NULL
 ); 
+
 
 
 DELETE FROM roles
@@ -61,8 +77,8 @@ DELETE FROM memeber
 where user_id = 28;
 
 update receipts
-  set stage = 1  
-where receipts.user_id = 2;
+  set active = true  
+where receipts.user_id =  6;
 
 
 update receipts

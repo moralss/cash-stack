@@ -5,9 +5,15 @@ const {
 const {
   createToken
 } = require("../src/auth/jwtHelper");
+
 const {
   creatUser
 } = require("../src/commands/register");
+
+const {
+  savePersonalInfo
+} = require("../src/commands/personalInfo");
+
 const {
   validateNewUser
 } = require("../src/validations/registerError");
@@ -21,10 +27,14 @@ const {
 const { changePassword }
   = require("../src/updates/password");
 
+
+
+
 const authRoutes = app => {
   app.post("/api/signin", async (req, res) => {
     const data = req.body;
 
+    console.log("new data ", data);
     try {
       const {
         isValid,
@@ -46,6 +56,7 @@ const authRoutes = app => {
         refNumber
       });
 
+      let ID = await savePersonalInfo(data, userId);
 
       let user = await getUserByEmail(data.email);
 

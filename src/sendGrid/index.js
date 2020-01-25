@@ -25,12 +25,13 @@ const sendUsMessage = async (email, subject, image) => {
 
   try {
     const msg = {
-      to: "stackcash612@gmail.com",
+      to: "jeramoral@gmail.com",
       from: email,
       subject: subject,
       text: image,
       html: `<h1> <img style="width:12rem; height:16rem" src=${image} /></h1>`,
     };
+    console.log("show us email")
     return await sgMail.send(msg)
   } catch (e) {
     console.log(e);

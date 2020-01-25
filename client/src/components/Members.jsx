@@ -53,7 +53,11 @@ class Users extends Component {
     render() {
         return (
             <div class="row">
-                <h4 style={{ textAlign: "center" }}>Currently Members </h4>
+                <h3 className="header-header" style={{
+                    marginTop: "5rem",
+                    marginBottom: "1rem"
+                }}>
+                    Currently Members </h3>
                 <div className="member-wrapper blue-text">
                     {
                         this.props.members ? this.props.members.map(member => (

@@ -21,7 +21,11 @@ class Settings extends Component {
 
         return (
             <div class="row">
-                <h6> Settings </h6>
+                <h3 className="header-header" style={{
+                    marginTop: "5rem",
+                    marginBottom: "1rem"
+                }}>
+                    Settings </h3>
                 <PasswordPanel />
 
             </div>

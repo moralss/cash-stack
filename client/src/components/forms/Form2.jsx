@@ -44,22 +44,21 @@ class Form2 extends Component {
           placeholder="City"
         />
 
+        <label> Date Of Birth </label>
         <Field
-          name="Id"
-          // showTime={true}
+          type="date"
+          id="start"
           component={renderField}
-          label="Id/Passport"
-          placeholder="Id/Passport"
-        />
+          name="dateOfBirth"
+          label="date of birth"
+          value="1999-07-22"
+          min="1960-01-01" max="2018-12-31" />
         <div>
           <label cName="white-text"
             style={{ marginRight: "2rem" }}
           >Country</label>
           <Select
             native
-            // value={this.state.age}
-            // onChange={(e) => this.handleChange(e)}
-            // placeholder=""
             inputProps={{
               name: 'age',
               id: 'filled-age-native-simple',
@@ -70,7 +69,6 @@ class Form2 extends Component {
               <option value={country}> {country} </option>
             ))}
           </Select>
-
         </div>
         <label cName="white-text">Gender</label>
         <div style={{ display: "flex" }}>
@@ -104,7 +102,6 @@ class Form2 extends Component {
             color="primary">
             Previous
            </Button>
-
         </div>
       </form>
     );

@@ -1,6 +1,7 @@
 var jwt = require("jsonwebtoken");
 let secret = "dbnnf45d";
 
+
 const createToken = async (userId, email, name, refNumber, createdAt) => {
   const timestamp = new Date().getTime();
   return await jwt.sign({

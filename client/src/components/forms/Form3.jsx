@@ -42,13 +42,14 @@ class Form3 extends Component {
       return
     }
 
+    console.log("form info info", this.props.form);
 
     this.props.registerUser({
       ...this.props.form.form1.values,
       ...this.props.form.form2.values,
       ...data
     });
-    history.push("/dashboard");
+    history.push("/account");
   };
 
 

@@ -73,8 +73,7 @@ const sendEmail = app => {
       const pattern = { email: data.email, code: newcode }
       listOfComfirms.push(pattern);
 
-
-      console.log("list", listOfComfirms)
+      console.log(newcode)
       sendMessage(
         "confirmation code",
         `${newcode}`,
@@ -103,7 +102,7 @@ const sendEmail = app => {
 
       // const link = `http://localhost:3000/passwordRecovery/${userId}`;
 
-      console.log(_email, user);
+      // console.log(_email, user);
       // sendMessage(
       //   "confirmation code",
       //   `${newcode}`,

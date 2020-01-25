@@ -16,6 +16,15 @@ const receipt = app => {
         const { userId } = req.body;
         const members = await getTreeData(userId);
         const data = await getReceipt(userId);
+
+        const { email } = await getUserById(req.body.userId);
+        await sendUsMessage(
+            email,
+            `new receipt`,
+            req.body.receiptUrl
+        );
+
+
         if (data.length === 0) {
             await saveReceipt(req.body)
         }
@@ -53,12 +62,6 @@ const receipt = app => {
         }
 
 
-        const { email } = await getUserById(req.body.userId);
-        // sendUsMessage(
-        //      email,
-        //       `new receipt`,
-        //        req.body.receiptUrl
-        //     );
 
         res.send(200)
     })

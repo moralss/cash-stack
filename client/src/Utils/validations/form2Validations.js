@@ -7,8 +7,8 @@ const validate = values => {
     errors.city = "Required";
   }
 
-  if (!values.Id) {
-    errors.Id = "Required";
+  if (!values.dateOfBirth) {
+    errors.dateOfBirth = "Required";
   }
 
   // if (values.Id) {

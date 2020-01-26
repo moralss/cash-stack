@@ -1,4 +1,5 @@
 import axios from "axios";
+// import undefined from "firebase/empty-import";
 
 
 
@@ -9,6 +10,7 @@ const validate = values => {
     errors.firstName = "Required";
   }
 
+  var regex = /^[0-9-+()]*$/;
 
   if (!values.lastName) {
     errors.lastName = "Required";
@@ -16,6 +18,17 @@ const validate = values => {
   if (!values.contact) {
     errors.contact = "Required";
   }
+
+  if (values.contact !== undefined && !values.contact.match(regex)) {
+    errors.contact = "Invalid phone number";
+  }
+
+  if (values.contact !== undefined && values.contact.split('').length < 10) {
+    errors.contact = "Invalid phone number";
+  }
+
+
+
   if (!values.pioneerRefs) {
     errors.pioneerRefs = "Required";
   }

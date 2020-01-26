@@ -5,6 +5,7 @@ import { membersReducer } from './members/membersReducer';
 import { approvalReducer } from './approval/approvalReducer';
 import { systemReducer } from './system/systemReducer';
 import { uiReducer } from './ui/uiReducer';
+import { accountReducer } from './account/accountReducer';
 
 let rootReducer = combineReducers({
   form: formReducer,
@@ -12,7 +13,8 @@ let rootReducer = combineReducers({
   members: membersReducer,
   approval: approvalReducer,
   system: systemReducer,
-  uiReducer: uiReducer
+  uiReducer: uiReducer,
+  account: accountReducer
 });
 
 export default rootReducer;

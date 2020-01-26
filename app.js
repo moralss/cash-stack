@@ -12,11 +12,14 @@ const sendGrid = require("./routes/sendgrid");
 const receipt = require("./routes/receipt");
 const members = require("./routes/members");
 const roles = require("./routes/roles");
+const accountInfo = require("./routes/account");
+
 // const imageUpload = require("./routes/image-upload");
 
 app.use(bodyParser.json());
 app.use(cors());
 
+accountInfo.accountInfo(app);
 sendGrid.sendEmail(app);
 members.memberBoard(app);
 authRoutes.authRoutes(app);

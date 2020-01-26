@@ -11,6 +11,11 @@ const validate = values => {
   if (!values.confirmPassword) {
     errors.confirmPassword = "Required";
   }
+
+  if (values.password !== undefined && values.password.split("").length < 6) {
+    errors.password = "minimun of 6 characters";
+  }
+
   if (!values.password) {
     errors.password = "Required";
   }

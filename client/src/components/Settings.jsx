@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import * as members from '../redux/members/actions/members';
 import history from '../routes/history'
 import PasswordPanel from '../components/PasswordPanel';
+import AccountCapture from '../components/AccountCapture';
+import * as account from '../redux/account/actions/acount';
 
 class Settings extends Component {
     constructor() {
@@ -14,6 +16,7 @@ class Settings extends Component {
     }
     componentWillMount() {
         const { members } = this.props;
+        this.props.getAccountInfo()
     }
 
 
@@ -27,7 +30,7 @@ class Settings extends Component {
                 }}>
                     Settings </h3>
                 <PasswordPanel />
-
+                <AccountCapture />
             </div>
         );
     }
@@ -36,7 +39,8 @@ class Settings extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getMembers: id => dispatch(members.getMembers(id))
+        getMembers: id => dispatch(members.getMembers(id)),
+        getAccountInfo: () => dispatch(account.getAccountInfo())
     };
 }
 

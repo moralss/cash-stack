@@ -12,7 +12,7 @@ const URL = "/api";
 export const registerUser = (credentials) => {
   return async dispatch => {
     try {
-      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
       const res = await axios.post(`${URL}/signin`, credentials);
       const decodedToken = jwtDecode(res.data.token);
       localStorage.setItem("user", res.data.token);
@@ -33,12 +33,15 @@ export const registerUser = (credentials) => {
           auth: true
         }
       });
+
+
       dispatch(reset('form1'))
       dispatch(reset('login'))
       dispatch(reset('form2'))
       dispatch(reset('object Object'))
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       history.push("/account")
-      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
+
     } catch (error) {
       dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       console.log(error);
@@ -50,7 +53,8 @@ export const registerUser = (credentials) => {
 export const login = (credentials) => {
   return async dispatch => {
     try {
-      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
+
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: true });
       const res = await axios.post(`${URL}/login`, credentials);
       const decodedToken = jwtDecode(res.data.token);
 
@@ -66,7 +70,6 @@ export const login = (credentials) => {
           }
         }
       });
-      // dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       localStorage.setItem("user", res.data.token);
       dispatch({
         type: actions.AUTHENTICATED,
@@ -78,6 +81,7 @@ export const login = (credentials) => {
       dispatch(reset('form1'))
       dispatch(reset('form2'))
       dispatch(reset('object Object'))
+      dispatch({ type: actions.UI_TOGGLE_LOADDING, payload: false });
       return
     } catch (e) {
       const data = !e.response ? null : e.response.data.error;

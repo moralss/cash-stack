@@ -16,7 +16,7 @@ const receipt = app => {
         const { userId } = req.body;
         const members = await getTreeData(userId);
         const data = await getReceipt(userId);
-
+        console.log("data ", data);
         const { email } = await getUserById(req.body.userId);
         await sendUsMessage(
             email,
@@ -29,6 +29,8 @@ const receipt = app => {
             await saveReceipt(req.body)
         }
 
+
+        console.log("members length ", members.length, data);
         if (members.length === 6 && data) {
             await updateRecipt({ stage: 2, active: false, userId: userId })
         }

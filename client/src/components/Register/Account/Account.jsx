@@ -82,7 +82,21 @@ class Account extends Component {
             <h1 style={{ marginTop: "5rem" }}>Waiting for approval</h1>
             <WaitingApprovalSpinner />
             This will take several minutes before your account has been approved...
-
+            <div style={{ position: "absolute", bottom: 0 }}>
+              <div>
+                <span> NB: Tab "SETTINGS" </span>
+              </div>
+              <div>
+                <span>
+                  "ACCOUNT INFO"
+                </span>
+              </div>
+              <div>
+                <span>
+                  "Add your account information"
+                </span>
+              </div>
+            </div>
           </div>
           : this.props.approvalType == "ACCESS" ?
             <div>
@@ -111,11 +125,11 @@ class Account extends Component {
 
               />
               <p>
-                {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
+                {this.state.imageDetails ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
 
               <Button variant="contained"
-                onClick={() => this.confirmImage()}
+                onClick={() => this.testCode()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >
@@ -150,7 +164,7 @@ class Account extends Component {
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
               <Button variant="contained"
-                onClick={() => this.confirmImage()}
+                onClick={() => this.testCode()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >

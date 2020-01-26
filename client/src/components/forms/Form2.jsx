@@ -44,7 +44,7 @@ class Form2 extends Component {
           placeholder="City"
         />
 
-        <label> Date Of Birth </label>
+        <label className="white-text"> Date Of Birth </label>
         <Field
           type="date"
           id="start"
@@ -54,7 +54,7 @@ class Form2 extends Component {
           value="1999-07-22"
           min="1960-01-01" max="2018-12-31" />
         <div>
-          <label cName="white-text"
+          <label className="white-text"
             style={{ marginRight: "2rem" }}
           >Country</label>
           <Select
@@ -70,7 +70,7 @@ class Form2 extends Component {
             ))}
           </Select>
         </div>
-        <label cName="white-text">Gender</label>
+        <label className="white-text">Gender</label>
         <div style={{ display: "flex" }}>
           <Field
             name="sex"

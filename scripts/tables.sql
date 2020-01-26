@@ -25,13 +25,24 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS personal_info(
     id serial PRIMARY KEY,
-    user_id INT REFERENCES users(id) NOT NULL
+    user_id INT REFERENCES users(id) NOT NULL,
     contact varchar(255) NOT NULL,
-    date_of_birth varchar(255) NOT NULL,
+    date_of_birth date NOT NULL,
     sex varchar(255) NOT NULL,
     city varchar(255) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
+    updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 ); 
 
+
+CREATE TABLE IF NOT EXISTS account_info(
+    id serial PRIMARY KEY,
+    user_id INT REFERENCES users(id) NOT NULL,
+    account_name varchar(255) NOT NULL,
+    account_number varchar(255) NOT NULL,
+    created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
+    updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
+)
 
 CREATE TABLE IF NOT EXISTS memeber(
     id serial PRIMARY KEY,
@@ -61,12 +72,6 @@ CREATE TABLE IF NOT EXISTS receipts(
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 );
-
-CREATE TABLE IF NOT EXISTS personal_info(
-    id serial PRIMARY KEY,
-    contact varchar(255) NOT NULL,
-    user_id INT REFERENCES users(id) NOT NULL
-); 
 
 
 

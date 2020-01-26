@@ -47,6 +47,7 @@ export const getRugbyStage = (userId) => {
         try {
             const userId = checkId();
             const { data } = await axios.get(`${URL}/rugby-stage/${userId}`);
+            console.log("show me this dddddddddddddddddddddddddddddd" , data)
             if (data.status) {
                 dispatch({
                     type: actions.SAVE_PRODECTED_RUBY_STAGE,
@@ -95,6 +96,9 @@ export const getApprovalType = (userId) => {
                 });
                 // return
             }
+
+            
+            if(data.active == true )
 
             if (data.length == 0) {
                 dispatch({

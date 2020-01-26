@@ -10,6 +10,7 @@ const validate = values => {
     errors.firstName = "Required";
   }
 
+  var letters = /^[0-9a-zA-Z]+$/;
   var regex = /^[0-9-+()]*$/;
 
   if (!values.lastName) {

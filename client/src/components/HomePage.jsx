@@ -139,28 +139,6 @@ class Homepage extends Component {
           <h3 className="header-header">Ruby Stages</h3>
           <CashTable />
         </div>
-        {/* <div style={{ display: "grid", gridTemplateColumns: "repeat(3 , 1fr)" }}>
-          <img class="col 6" src={`${Ranger}`} style={{
-            width: "11rem",
-            height: "10rem",
-            margin: "auto",
-          }} alt="" />
-
-
-          <img class="col 6" src={`${House}`} style={{
-            width: "11rem",
-            margin: "auto",
-            height: "10rem"
-          }} alt="" />
-
-          <img class="col 6" src={`${Package}`} style={{
-            width: "11rem",
-            margin: "auto",
-            height: "10rem"
-          }} alt="" />
-
-        </div> */}
-
         <div>
           <h3 className="header-header">Contact us </h3>
           <div class="contact-grid">

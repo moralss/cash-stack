@@ -447,3 +447,10 @@ p{
 .white-text{
   opacity: 0.6;
 }
+
+.MuiTablePagination-toolbar {
+    display: grid !important;
+    grid-template-columns: repeat(5 , 1fr);
+    padding: 0rem;
+    padding-left: 0rem !important;
+}

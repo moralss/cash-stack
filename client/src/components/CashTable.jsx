@@ -19,6 +19,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import TableContainer from '@material-ui/core/TableContainer';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -92,6 +93,7 @@ function EnhancedTableHead(props) {
   };
 
   return (
+    // <TableContainer component={Paper} >
     <TableHead>
       <TableRow>
         {/* <TableCell padding="checkbox">
@@ -121,6 +123,7 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow>
     </TableHead>
+    // </TableContainer>
   );
 }
 
@@ -132,13 +135,13 @@ const useToolbarStyles = makeStyles(theme => ({
   highlight:
     theme.palette.type === "light"
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85)
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85)
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark
+      },
   title: {
     flex: "1 1 100%"
   }
@@ -294,7 +297,11 @@ export default function CashTable() {
           </Table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          // style={{
+          //   display: "grid",
+          //   gridTemplateColumns: "repeat(5 , 1fr)"
+          // }}
+          rowsPerPageOptions={[5, 10]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

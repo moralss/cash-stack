@@ -52,6 +52,7 @@ export default function AccountCapture() {
             return
         }
 
+
         if (accountInfo.account_name !== undefined) {
             dispatch(account.updateAccountInfo({ accountName, accountNumber }))
             setError({})

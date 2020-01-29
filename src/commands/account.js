@@ -4,7 +4,6 @@ const {
 
 const saveAccountInfo = async data => {
     const client = await getClient();
-
     try {
         const {
             userId,

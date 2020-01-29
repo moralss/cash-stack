@@ -297,10 +297,10 @@ export default function CashTable() {
           </Table>
         </div>
         <TablePagination
-          // style={{
-          //   display: "grid",
-          //   gridTemplateColumns: "repeat(5 , 1fr)"
-          // }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5 , 1fr)"
+          }}
           rowsPerPageOptions={[5, 10]}
           component="div"
           count={rows.length}

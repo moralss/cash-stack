@@ -8,8 +8,6 @@ const updateAccountInfo = async (accountInfo) => {
     const { accountName, accountNumber, userId } = accountInfo;
 
     try {
-
-
         const parameters = [accountName, accountNumber, Number(userId)];
         console.log(parameters);
         let statement = `UPDATE account_info SET account_name = $1 , account_number = $2 WHERE user_id = $3;`

@@ -59,8 +59,7 @@ class LoginForm extends Component {
         <span className="error">
           {authError !== undefined ? authError.error : null}
         </span>
-
-        <span onClick={() => this.recoverPassword()}> password recover </span>
+//        <span onClick={() => this.recoverPassword()}> password recover </span>
         <Button
           variant="contained"
           className="btn-block btn col "

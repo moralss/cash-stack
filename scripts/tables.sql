@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS account_info(
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
 )
 
+
 CREATE TABLE IF NOT EXISTS memeber(
     id serial PRIMARY KEY,
     pioneerRefs varchar(255) NOT NULL,

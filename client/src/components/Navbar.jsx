@@ -228,7 +228,7 @@ const Navbar = () => {
             user.authenticated ?
               < ListItem onClick={() => changeRoute("account")} button key={"account"} >
                 <AccountIcon />
-                <ListItemText primary={"Account"} />
+                <ListItemText primary={` ${user.approvalType !== "WAITING" ? "Account" : "Waiting"} `} />
               </ListItem>
               : null}
           <Divider />

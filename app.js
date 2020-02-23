@@ -13,6 +13,9 @@ const receipt = require("./routes/receipt");
 const members = require("./routes/members");
 const roles = require("./routes/roles");
 const accountInfo = require("./routes/account");
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+// var port = process.env.PORT || 3000;
 
 // const imageUpload = require("./routes/image-upload");
 
@@ -35,7 +38,11 @@ activeAccount.activeAccount(app)
 
 app.get("/api", (req, res) => res.send("Hello World!"));
 
-
+io.on('connection', function (socket) {
+  socket.on('chat message', function (msg) {
+    io.emit('chat message', msg);
+  });
+});
 
 if (process.env.NODE_ENV === "production") {
   //   app.use(express.static(path.join(__dirname, 'client/build')));

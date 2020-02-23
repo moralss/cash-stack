@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import loading from './loading.svg';
 
 class AppLoader extends Component {
-    render() {
+    render () {
         const style = {
             position: 'absolute',
             display: 'flex',
             justifyContent: 'center',
-            height: '100vh',
+            height: '200vh',
             width: '100vw',
             top: 0,
             bottom: 0,
             left: 0,
-            right: 0,
-            backgroundColor: 'white',
+            // right: 0,
+            // backgroundColor: 'white',
         }
 
         return (

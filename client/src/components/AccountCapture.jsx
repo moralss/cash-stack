@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function AccountCapture() {
+export default function AccountCapture () {
     const classes = useStyles();
     const [accountName, setAccountName] = useState()
     const [accountNumber, setAccountNumber] = useState()
@@ -86,7 +86,7 @@ export default function AccountCapture() {
                                     Acount Name :
                             </label>
                                 <span>
-                                    {accountInfo.account_name.split(/(?=[A-Z])/).join(" ")}
+                                    {accountInfo.account_name && accountInfo.account_name.split(/(?=[A-Z])/).join(" ")}
                                 </span>
                             </div>
                             <div>

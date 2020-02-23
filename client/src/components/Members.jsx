@@ -9,12 +9,11 @@ import history from '../routes/history';
 import { Link } from "react-router-dom";
 import Chip from '@material-ui/core/Chip';
 import { textAlign } from "@material-ui/system";
-
+import openSocket from "socket.io-client";
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-
 
 
 class Users extends Component {
@@ -24,18 +23,30 @@ class Users extends Component {
             show: false
         };
     }
-    componentDidMount() {
+    componentDidMount () {
+
+
+        // const socket = openSocket("http://localhost:3001");
+
+        // socket.on("connect", function (socket) {
+        //     console.log("connect", socket);
+        // });
+
+        // socket.on("chat message", function (msg) {
+        //     console.log(msg);
+        // });
+
         this.getMembers();
         var interval = setInterval(() => {
             this.getMembers();
         }, 20000);
     }
 
-    getMembers() {
+    getMembers () {
         this.props.getMembers(this.props.userId);
     }
 
-    showProfile(id) {
+    showProfile (id) {
         const { members } = this.props;
 
         console.log("members icon ", members)
@@ -46,11 +57,10 @@ class Users extends Component {
             }
         }
 
-
         history.push('/memberprofile');
     }
 
-    render() {
+    render () {
         return (
             <div class="row">
                 <h3 className="header-header" style={{
@@ -129,16 +139,14 @@ class Users extends Component {
 
 Users.propTypes = {};
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
     return {
         getMembers: id => dispatch(members.getMembers(id)),
         setNextMembers: data => dispatch(members.setNextMembers(data))
-
-
     };
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
         members: state.members.allMembers,
         userId: state.user.profile.id

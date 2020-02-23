@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 
 class App extends Component {
-  render() {
+  render () {
     console.log("props", this.props.isUiLoading)
     const value = mainRoute();
     return (
@@ -14,7 +14,7 @@ class App extends Component {
         {value}
 
         <div>
-          {this.props.isUiLoading ? <AppLoader /> : null}
+          {/* <AppLoader /> */}
         </div>
       </div>
     );
@@ -31,7 +31,7 @@ App.propTypes = {};
 //   };
 // }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     isUiLoading: state.uiReducer.isUiLoading
   };

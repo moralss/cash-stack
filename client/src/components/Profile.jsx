@@ -12,6 +12,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent'
+import AppLoader from './progessLoader/AppLoader'
 
 class Profile extends Component {
   constructor() {
@@ -21,12 +22,11 @@ class Profile extends Component {
       isLoading: false
     };
   }
-  componentWillMount() {
+  componentWillMount () {
     this.props.getMembers(this.props.profile.id);
-    this.setState({ isLoading: true });
     var interval = setInterval(() => {
       this.props.getMembers(this.props.profile.id);
-      this.setState({ isLoading: false });
+      // this.setState({ isLoading: false });
     }, 4000);
     clearInterval(interval);
     this.props.getApprovalType()
@@ -35,32 +35,38 @@ class Profile extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getRole(this.props.profile.id)
   }
 
-  changeRoute(route) {
+  changeRoute (route) {
     history.push(route);
   }
 
-  submit(value) {
+  submit (value) {
+    this.setState({ isLoading: true });
     if (value === "standAlone") {
       this.props.updateRole(value, this.props.profile.id)
       this.props.getRole(this.props.profile.id)
+      // this.setState({ isLoading: false });
+      return
     }
 
     if (value == "pioneerRefs") {
+      // this.setState({ isLoading: true });
       this.props.saveRefs(this.state.refNumber, this.props.profile.id)
       this.props.updateRole(value, this.props.profile.id);
       this.props.getRole(this.props.profile.id)
+      // this.setState({ isLoading: false });
+      return
     }
   }
 
-  handleChange(e) {
+  handleChange (e) {
     this.setState({ status: e.target.value })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h3 className="header-header" style={{
@@ -121,24 +127,29 @@ class Profile extends Component {
           </Card>
         </div>
 
+        {/* {this.state.isLoading ? <AppLoader /> : <div> */}
+
         {
           !this.props.role ?
             <div style={{ marginLeft: " 2rem" }}>
               <label htmlFor="">Pioneer Ref/Stand Alone </label>
               <br />
-              <Select
-                native
-                value={this.state.age}
-                onChange={(e) => this.handleChange(e)}
-                inputProps={{
-                  name: 'age',
-                  id: 'filled-age-native-simple',
-                }}
-              >
-                <option value={"standAlone"} />
-                <option value={"standAlone"}>Stand alone</option>
-                <option value={"pioneerRefs"}>Pioneer ref</option>
-              </Select>
+              {this.state.isLoading ? <AppLoader /> : <div>
+                <Select
+                  native
+                  value={this.state.age}
+                  onChange={(e) => this.handleChange(e)}
+                  inputProps={{
+                    name: 'age',
+                    id: 'filled-age-native-simple',
+                  }}
+                >
+                  <option value={"standAlone"} />
+                  <option value={"standAlone"}>Stand alone</option>
+                  <option value={"pioneerRefs"}>Pioneer ref</option>
+                </Select>
+              </div>}
+
               {this.state.status == "pioneerRefs" ?
                 <div>
                   <input label="refs" type="text" placeholder="pioneer Refs"
@@ -147,8 +158,8 @@ class Profile extends Component {
                 </div>
                 : this.state.status == "standAlone" ?
                   <div>
-                    stand alone
-            < button onClick={() => this.submit("standAlone")}> submit </button>
+                    <p>stand alone</p>
+                    < button onClick={() => this.submit("standAlone")}> submit </button>
                   </div>
                   : null}
             </div> : null
@@ -160,7 +171,7 @@ class Profile extends Component {
 
 Profile.propTypes = {};
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     getMembers: data => dispatch(members.getMembers(data)),
     getApprovalType: data => dispatch(actions.getApprovalType(data)),
@@ -170,7 +181,7 @@ function mapDispatchToProps(dispatch) {
     getRugbyStage: (userId) => dispatch(actions.getRugbyStage(userId)),
   };
 }
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     profile: state.user.profile,
     memberCount: state.members.memberCount,

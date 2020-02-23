@@ -34,7 +34,7 @@ class LoginForm extends Component {
     }
   }
 
-  render() {
+  render () {
     const { authError } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
@@ -63,7 +63,7 @@ class LoginForm extends Component {
           variant="contained"
           className="btn-block btn col "
           type="submit" color="primary">
-          Send
+          Login
            </Button>
       </form>
     );
@@ -72,14 +72,14 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {};
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     login: data => dispatch(thunks.login(data)),
     recoverPassword: (email) => dispatch(recoverPassword(email))
   };
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     authError: state.user.error,
     auth: state.user.auth,

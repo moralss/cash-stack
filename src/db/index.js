@@ -16,7 +16,7 @@ if (env === 'development') {
     user: 'postgres',
     host: 'localhost',
     database: 'cash_stack',
-    password: 'Moral007',
+    password: 'moral',
   })
 }
 

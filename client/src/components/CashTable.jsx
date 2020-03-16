@@ -21,7 +21,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import TableContainer from '@material-ui/core/TableContainer';
 
-function createData(name, calories, fat, carbs, protein) {
+function createData (name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
@@ -41,10 +41,10 @@ const rows = [
     "32000.00"
   ),
   createData("Ruby Nine", "20000.00", "75%", "90000.00", "110000.00"),
-  createData("Ruby X", "50000.00", "-", "Car Insentive", "150000.00")
+  createData("Ruby X", "50000.00", "-", "Car Incentive", "150000.00")
 ];
 
-function desc(a, b, orderBy) {
+function desc (a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -54,7 +54,7 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
-function stableSort(array, cmp) {
+function stableSort (array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = cmp(a[0], b[0]);
@@ -64,7 +64,7 @@ function stableSort(array, cmp) {
   return stabilizedThis.map(el => el[0]);
 }
 
-function getSorting(order, orderBy) {
+function getSorting (order, orderBy) {
   return order === "desc"
     ? (a, b) => desc(a, b, orderBy)
     : (a, b) => -desc(a, b, orderBy);
@@ -78,7 +78,7 @@ const headCells = [
   { id: "protein", numeric: true, disablePadding: false, label: "T-P " }
 ];
 
-function EnhancedTableHead(props) {
+function EnhancedTableHead (props) {
   const {
     classes,
     onSelectAllClick,
@@ -175,7 +175,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CashTable() {
+export default function CashTable () {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");

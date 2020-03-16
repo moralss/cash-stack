@@ -11,9 +11,9 @@ const accountInfo = app => {
     app.post("/api/account-info", async (req, res) => {
         try {
             const { accountName, accountNumber } = req.body;
-            console.log(req.body);
             const id = await saveAccountInfo(req.body);
-            return res.status(200).json("hello");
+            const accountInfo = await getAccountInfo(req.body.userId);
+            return res.status(200).json(accountInfo[0]);
         } catch (e) {
             console.log(e);
             return res.status(500).json(e);
@@ -23,10 +23,9 @@ const accountInfo = app => {
     app.put("/api/account-info", async (req, res) => {
         try {
             const { accountName, accountNumber } = req.body;
-            console.log(req.body);
             const id = await updateAccountInfo(req.body);
-            console.log(id);
-            return res.status(200).json("hello");
+            const accountInfo = await getAccountInfo(req.body.userId);
+            return res.status(200).json(accountInfo[0]);
         } catch (e) {
             console.log(e);
             return res.status(500).json(e);
@@ -35,9 +34,7 @@ const accountInfo = app => {
 
     app.get("/api/account-info/:userId", async (req, res) => {
         try {
-
             const { userId } = req.params;
-            console.log(userId)
             const accountInfo = await getAccountInfo(userId);
             return res.status(200).json(accountInfo[0]);
         } catch (e) {

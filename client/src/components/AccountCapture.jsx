@@ -59,13 +59,14 @@ export default function AccountCapture () {
             setAccountNumber("")
             setAccountName("")
             dispatch(account.getAccountInfo())
-            return
+            // return
         }
 
         dispatch(account.saveAccountInfo({ accountName, accountNumber }))
         setError({})
         setAccountNumber("")
         setAccountName("")
+        dispatch(account.getAccountInfo())
     }
 
     return (

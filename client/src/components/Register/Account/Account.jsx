@@ -21,7 +21,7 @@ class Account extends Component {
     };
   }
 
-  componentWillMount() {
+  componentWillMount () {
     this.props.getApprovalType()
     this.props.getRugbyStage(this.props.profile.id)
     // if (this.props.approvalType == "ACCESS") {
@@ -33,7 +33,7 @@ class Account extends Component {
 
 
 
-  confirmImage() {
+  confirmImage () {
     const { refNumber, id } = this.props.profile;
     let currentImageName = "firebase-image-" + "/" + refNumber + "/" + new Date().getTime() + "-" + id;
     let folder = "images";
@@ -57,23 +57,23 @@ class Account extends Component {
 
   }
 
-  testCode() {
+  testCode () {
     this.props.saveReceiptUrl("url");
     this.props.getApprovalType()
   }
 
 
-  uploadImage(e) {
+  uploadImage (e) {
     this.setState({ imageDetails: e.target.files[0] });
   }
 
-  cancel() {
+  cancel () {
     this.setState({ imageDetails: '' })
     this.fileInput.value = "";
 
   }
 
-  render() {
+  render () {
     return (
       <div className="image-container" style={{ margin: "0rem 1rem" }}>
 
@@ -129,7 +129,7 @@ class Account extends Component {
               </p>
 
               <Button variant="contained"
-                onClick={() => this.testCode()}
+                onClick={() => this.confirmImage()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >
@@ -164,7 +164,7 @@ class Account extends Component {
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
               <Button variant="contained"
-                onClick={() => this.testCode()}
+                onClick={() => this.confirmImage()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >
@@ -183,7 +183,7 @@ class Account extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     saveReceiptUrl: id => dispatch(saveReceiptUrl(id)),
     getApprovalType: userId => dispatch(getApprovalType(userId)),
@@ -192,7 +192,7 @@ function mapDispatchToProps(dispatch) {
 
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     profile: state.user.profile,
     approvalType: state.approval.approvalType,

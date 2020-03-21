@@ -142,9 +142,9 @@ const Navbar = () => {
             />
             {
               !user.authenticated ?
-                <Button onClick={() => changeRoute("login")}
+                <Button onClick={() => changeRoute("register")}
                   style={{ marginLeft: "auto" }}
-                  color="inherit">Login</Button>
+                  color="inherit">Register</Button>
                 : null}
 
             {
@@ -210,9 +210,9 @@ const Navbar = () => {
           <Divider />
           {
             !user.authenticated ?
-              < ListItem onClick={() => changeRoute("register")} button key={"register"} >
+              < ListItem onClick={() => changeRoute("login")} button key={"login"} >
                 <RegisterIcon />
-                <ListItemText primary={"Register"} />
+                <ListItemText primary={"login"} />
               </ListItem>
               : null}
           <Divider />

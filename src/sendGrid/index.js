@@ -25,7 +25,7 @@ const sendUsMessage = async (email, subject, image) => {
 
   try {
     const msg = {
-      to: "jeramoral@gmail.com",
+      to: "stackcash612@gmail.com",
       from: email,
       subject: subject,
       text: image,

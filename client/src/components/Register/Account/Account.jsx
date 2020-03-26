@@ -164,7 +164,7 @@ class Account extends Component {
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
               <Button variant="contained"
-                onClick={() => this.confirmImage()}
+                onClick={() => this.testCode()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >

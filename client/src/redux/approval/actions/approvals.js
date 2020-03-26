@@ -32,10 +32,18 @@ export const saveReceiptUrl = (receiptUrl, userId) => {
     return async dispatch => {
         try {
             const userId = checkId();
-            await axios.post(`${URL}/receipt`, {
+            const { data } = await axios.post(`${URL}/receipt`, {
                 receiptUrl,
                 userId
             }, setAxiosHeader())
+            console.log("data.messagedata.message", data)
+            if (data.message === "success") {
+                dispatch({
+                    type: actions.CHANGE_APPROVAL,
+                    payload: { approvalType: "WAITING", stage: 1 }
+
+                });
+            }
         } catch (e) {
             console.log(e);
         }
@@ -47,7 +55,7 @@ export const getRugbyStage = (userId) => {
         try {
             const userId = checkId();
             const { data } = await axios.get(`${URL}/rugby-stage/${userId}`);
-            console.log("show me this dddddddddddddddddddddddddddddd" , data)
+            console.log("show me this dddddd", data)
             if (data.status) {
                 dispatch({
                     type: actions.SAVE_PRODECTED_RUBY_STAGE,
@@ -68,9 +76,6 @@ export const getRugbyStage = (userId) => {
 }
 
 
-// send-confirmation
-
-
 export const sendConfirmation = (email) => {
     return async dispatch => {
         try {
@@ -88,6 +93,7 @@ export const getApprovalType = (userId) => {
             const userId = checkId();
             const { data } = await axios.get(`${URL}/receipt/${userId}`, setAxiosHeader())
             console.log("show pres", data.active, data.stage)
+            // console.log("show pres", data)
             if (data.active == false && data.stage == 1) {
                 dispatch({
                     type: actions.CHANGE_APPROVAL,
@@ -97,8 +103,7 @@ export const getApprovalType = (userId) => {
                 // return
             }
 
-            
-            if(data.active == true )
+
 
             if (data.length == 0) {
                 dispatch({

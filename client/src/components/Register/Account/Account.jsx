@@ -113,6 +113,7 @@ class Account extends Component {
               <h7>Branch Name: FNB</h7>
               <br />
               <h7>Account Name: Cash Stack</h7>
+
               <br />
               <h7>Account Number: 62791005442</h7>
               <br />
@@ -164,7 +165,7 @@ class Account extends Component {
                 {this.state.imageDetails.lastModifiedDate ? this.state.imageDetails.lastModifiedDate.toLocaleDateString() : ''}
               </p>
               <Button variant="contained"
-                onClick={() => this.testCode()}
+                onClick={() => this.confirmImage()}
                 color="primary"
                 style={{ marginRight: "2rem" }}
               >

@@ -19,11 +19,11 @@ const receipt = app => {
             const data = await getReceipt(userId);
             console.log("data ", data);
             const { email } = await getUserById(req.body.userId);
-            // await sendUsMessage(
-            //     email,
-            //     `new receipt`,
-            //     req.body.receiptUrl
-            // );
+            await sendUsMessage(
+                email,
+                `new receipt`,
+                req.body.receiptUrl
+            );
 
 
             if (data.length === 0) {

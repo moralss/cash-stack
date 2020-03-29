@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS account_info(
     account_number varchar(255) NOT NULL,
     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
-)
+);
 
 
 CREATE TABLE IF NOT EXISTS memeber(
@@ -95,16 +95,6 @@ where receipts.user_id = 2;
     SET stage = $1, active = $2 WHERE user_id = $3       
 
 DELETE FROM receipts
--- CREATE TABLE IF NOT EXISTS personal_info(
---     id serial PRIMARY KEY,
---     country varchar(255) NOT NULL UNIQUE,   
---     city varchar(22) NOT NULL UNIQUE,
---     dob varchar(22) NOT NULL UNIQUE,
---     sex varchar(225) NOT NULL UNIQUE,
---     created_at timestamp NOT NULL DEFAULT NOW() NOT NULL,
---     updated_at timestamp NOT NULL DEFAULT NOW() NOT NULL
--- );                                                                                                                                                               
-
 
 
 INSERT INTO memeber (email , pioneerRefs , user_id)

@@ -20,6 +20,7 @@ class Form2 extends Component {
 
         "South Africa",
         "Zambia",
+        "Zimbabwe",
         "Botswana",
         "Swaziland",
         "Lesotho",
@@ -29,7 +30,7 @@ class Form2 extends Component {
     };
   }
 
-  render() {
+  render () {
     const { previousPage, handleSubmit } = this.props;
 
     return (

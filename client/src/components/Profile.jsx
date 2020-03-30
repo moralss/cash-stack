@@ -134,21 +134,20 @@ class Profile extends Component {
             <div style={{ marginLeft: " 2rem" }}>
               <label htmlFor="">Pioneer Ref/Stand Alone </label>
               <br />
-              {this.state.isLoading ? <AppLoader /> : <div>
-                <Select
-                  native
-                  value={this.state.age}
-                  onChange={(e) => this.handleChange(e)}
-                  inputProps={{
-                    name: 'age',
-                    id: 'filled-age-native-simple',
-                  }}
-                >
-                  <option value={"standAlone"} />
-                  <option value={"standAlone"}>Stand alone</option>
-                  <option value={"pioneerRefs"}>Pioneer ref</option>
-                </Select>
-              </div>}
+              {/* {this.state.isLoading ? <AppLoader /> : <div> */}
+              <Select
+                native
+                value={this.state.age}
+                onChange={(e) => this.handleChange(e)}
+                inputProps={{
+                  name: 'age',
+                  id: 'filled-age-native-simple',
+                }}
+              >
+                <option value={"standAlone"} />
+                <option value={"standAlone"}>Stand Alone</option>
+                <option value={"pioneerRefs"}>Pioneer Ref</option>
+              </Select>
 
               {this.state.status == "pioneerRefs" ?
                 <div>
@@ -162,6 +161,8 @@ class Profile extends Component {
                     < button onClick={() => this.submit("standAlone")}> submit </button>
                   </div>
                   : null}
+              <br />
+              <label style={{ color: "red" }} htmlFor="">Member's, please add your correct Pioneer's Ref if not Stand Alone </label>
             </div> : null
         }
       </div >

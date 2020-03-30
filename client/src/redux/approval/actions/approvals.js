@@ -21,6 +21,8 @@ export const saveRefs = (pioneerRefs, userId) => {
     return async dispatch => {
         try {
             const res = await axios.post(`${URL}/members`, { pioneerRefs, userId });
+
+            dispatch({ type: actions.SET_ROLE, payload: false })
         } catch (e) {
             console.log(e)
         }
@@ -31,22 +33,34 @@ export const saveRefs = (pioneerRefs, userId) => {
 export const saveReceiptUrl = (receiptUrl, userId) => {
     return async dispatch => {
         try {
+
             const userId = checkId();
             const { data } = await axios.post(`${URL}/receipt`, {
                 receiptUrl,
                 userId
             }, setAxiosHeader())
-            console.log("data.messagedata.message", data)
             if (data.message === "success") {
                 dispatch({
                     type: actions.CHANGE_APPROVAL,
                     payload: { approvalType: "WAITING", stage: 1 }
-
                 });
             }
+            dispatch({
+                type: actions.UI_TOGGLE_LOADDING,
+                payload: false
+            })
+
         } catch (e) {
             console.log(e);
         }
+    }
+}
+
+
+export const changeLoading = (status) => {
+    return {
+        type: actions.UI_TOGGLE_LOADDING,
+        payload: status
     }
 }
 
@@ -100,10 +114,7 @@ export const getApprovalType = (userId) => {
                     payload: { approvalType: "WAITING", stage: 0 }
 
                 });
-                // return
             }
-
-
 
             if (data.length == 0) {
                 dispatch({
@@ -111,7 +122,6 @@ export const getApprovalType = (userId) => {
                     payload: { approvalType: "FIRST_TIME", stage: 0 }
 
                 });
-                // return
             }
 
 

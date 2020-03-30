@@ -23,19 +23,8 @@ class Users extends Component {
             show: false
         };
     }
+
     componentDidMount () {
-
-
-        // const socket = openSocket("http://localhost:3001");
-
-        // socket.on("connect", function (socket) {
-        //     console.log("connect", socket);
-        // });
-
-        // socket.on("chat message", function (msg) {
-        //     console.log(msg);
-        // });
-
         this.getMembers();
         var interval = setInterval(() => {
             this.getMembers();
@@ -48,11 +37,8 @@ class Users extends Component {
 
     showProfile (id) {
         const { members } = this.props;
-
-        console.log("members icon ", members)
         for (var i in members) {
             if (members[i].id == id) {
-                console.log("show me Ids ", members[i].id, id);
                 this.props.setNextMembers(members[i])
             }
         }
@@ -67,16 +53,16 @@ class Users extends Component {
                     marginTop: "5rem",
                     marginBottom: "1rem"
                 }}>
-                    Currently Members </h3>
+                    Current Members </h3>
                 <div className="member-wrapper blue-text">
                     {
-                        this.props.members ? this.props.members.map(member => (
+                        this.props.members.length !== 0 ? this.props.members.map(member => (
                             <div className="col err card memeber-item"
                                 style={
                                     {
                                         margin: "0rem",
                                         width: "100%",
-                                        padding: "1rem"
+                                        padding: "1rem",
                                     }
                                 }>
                                 <Card >
@@ -130,7 +116,13 @@ class Users extends Component {
                                     </CardActions>
                                 </Card>
                             </div>
-                        )) : null
+                        )) : <div>
+                                <p> You have no current members. </p>
+                                <p>Register members for them to appear here here. </p>
+                                <p> Pioneers, give your members your ref number after they have registered.</p>
+                                <p>Members, ask for your Pioneer's ref number</p>
+
+                            </div>
                     } </div>
             </div>
         );

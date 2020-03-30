@@ -14,13 +14,13 @@ class Settings extends Component {
             show: false
         };
     }
-    componentWillMount() {
+    componentWillMount () {
         const { members } = this.props;
         this.props.getAccountInfo()
     }
 
 
-    render() {
+    render () {
 
         return (
             <div class="row">
@@ -31,20 +31,20 @@ class Settings extends Component {
                     Settings </h3>
                 <PasswordPanel />
                 <AccountCapture />
-            </div>
+            </div >
         );
     }
 }
 
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
     return {
         getMembers: id => dispatch(members.getMembers(id)),
         getAccountInfo: () => dispatch(account.getAccountInfo())
     };
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
         nextMembers: state.members.nextMembers,
         userId: state.user.profile.id

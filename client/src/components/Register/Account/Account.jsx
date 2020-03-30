@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import DefaultImg from "../../../images/index";
 import axios from "axios";
 import { storage } from "../../../firebase";
-import { saveReceiptUrl, getApprovalType, getRugbyStage } from '../../../redux/approval/actions/approvals';
+import { saveReceiptUrl, changeLoading, getApprovalType, getRugbyStage } from '../../../redux/approval/actions/approvals';
 import history from '../../../routes/history';
 import CustomButton from '../../button/CustomButton';
 import CashTable from "../../CashTable";
@@ -24,6 +24,13 @@ class Account extends Component {
   componentWillMount () {
     this.props.getApprovalType()
     this.props.getRugbyStage(this.props.profile.id)
+    var internal = setInterval(() => {
+      this.props.getApprovalType()
+    }, 10000);
+
+    if (this.props.approvalType == "ACCESS") {
+      clearInterval(internal)
+    }
     // if (this.props.approvalType == "ACCESS") {
     //   console.log("dfsdfdfs", history)
     //   history.push("/dashboard");
@@ -37,6 +44,7 @@ class Account extends Component {
     const { refNumber, id } = this.props.profile;
     let currentImageName = "firebase-image-" + "/" + refNumber + "/" + new Date().getTime() + "-" + id;
     let folder = "images";
+    this.props.changeLoading(true)
     storage
       .ref(folder + "/" + currentImageName)
       .put(this.state.imageDetails)
@@ -44,17 +52,17 @@ class Account extends Component {
         res.ref.getDownloadURL().then(url => {
           this.props.saveReceiptUrl(url)
           this.props.getApprovalType()
-          console.log("show me mmmmmmmmmmmmmmmmmmmmmmmmmmmme", url);
+          this.props.changeLoading(false)
         });
       })
       .catch(err => {
+        this.props.changeLoading(false)
         console.log(err);
       });
 
+    this.props.getApprovalType()
     this.setState({ imageDetails: '' })
     this.fileInput.value = "";
-    this.props.getApprovalType()
-
   }
 
   testCode () {
@@ -76,7 +84,6 @@ class Account extends Component {
   render () {
     return (
       <div className="image-container" style={{ margin: "0rem 1rem" }}>
-
         {this.props.approvalType === "WAITING" ?
           <div>
             <h1 style={{ marginTop: "5rem" }}>Waiting for approval</h1>
@@ -188,9 +195,9 @@ function mapDispatchToProps (dispatch) {
   return {
     saveReceiptUrl: id => dispatch(saveReceiptUrl(id)),
     getApprovalType: userId => dispatch(getApprovalType(userId)),
-    getRugbyStage: userId => dispatch(getRugbyStage(userId))
-  };
-
+    getRugbyStage: userId => dispatch(getRugbyStage(userId)),
+    changeLoading: (status) => dispatch(changeLoading(status))
+  }
 }
 
 function mapStateToProps (state) {
@@ -198,7 +205,7 @@ function mapStateToProps (state) {
     profile: state.user.profile,
     approvalType: state.approval.approvalType,
     prodectedStage: state.approval.prodectedStage,
-    stage: state.approval.stage
+    stage: state.approval.stage,
   };
 }
 

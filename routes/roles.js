@@ -1,22 +1,21 @@
 const { saveRole } = require("../src/commands/roles");
 const { getRole } = require("../src/queries/roles")
+const { compareRefNumber } = require("../src/queries/user");
 
 const roles = app => {
-
     app.post("/api/role", async (req, res) => {
-        if (req.body.userId) {
-
-            const id = await saveRole(req.body);
-            if (id) {
-                res.send(req.body.role);
-            }
-            else {
-                res.send({ user_role: null })
-            }
+        // const id = await compareRefNumber(req.body.role);
+        // if (value) {
+        const id = await saveRole(req.body);
+        if (id) {
+            res.send(req.body.role);
+            // }
+        }
+        else {
+            res.send({ user_role: null })
         }
 
         console.log(req.body);
-
     });
 
 

@@ -14,6 +14,7 @@ export const updateRole = (role, userId) => {
             }
             return dispatch({ type: actions.SET_ROLE, payload: true })
         } catch (e) {
+            // dispatch({ type: actions.SET_ROLE, payload: false })
             console.log(e)
         }
     }
@@ -25,11 +26,13 @@ export const getRole = (userId) => {
     return async dispatch => {
         try {
             const { data } = await axios.get(`${URL}/role` + query);
+            console.log("show me this ", data.user_role)
             if (data.user_role === null) {
                 return dispatch({ type: actions.SET_ROLE, payload: false })
             }
             return dispatch({ type: actions.SET_ROLE, payload: true })
         } catch (e) {
+            // dispatch({ type: actions.SET_ROLE, payload: false })
             console.log(e)
         }
     }

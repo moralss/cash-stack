@@ -31,25 +31,27 @@ const memberBoard = app => {
         try {
             if (pioneerRefs) {
                 const value = await compareRefNumber(pioneerRefs.trim())
-                const members = await getAllMembers(value.id);
-                if (members.length == 6) {
-                    const id = value.id
-                    updateStage({ stage: 2, userId: id })
+                if (value) {
+                    const members = await getAllMembers(value.id);
+                    if (members.length == 6) {
+                        const id = value.id
+                        updateStage({ stage: 2, userId: id })
 
-                }
+                    }
 
 
-                if (value && members.length !== 6) {
-                    const {
-                        id: pioneerId,
-                        ref_number
-                    } = value;
+                    if (value && members.length !== 6) {
+                        const {
+                            id: pioneerId,
+                            ref_number
+                        } = value;
 
-                    const savedId = await saveMember({
-                        pioneerId,
-                        userId,
-                        ref_number
-                    })
+                        const savedId = await saveMember({
+                            pioneerId,
+                            userId,
+                            ref_number
+                        })
+                    }
                 }
 
                 return res.status(200).json({

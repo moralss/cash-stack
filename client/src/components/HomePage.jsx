@@ -18,16 +18,16 @@ import WhatsApp from '../assets/icons/whatsapp.svg'
 import Gmail from '../assets/icons/gmail.svg'
 
 class Homepage extends Component {
-  componentDidMount() {
+  componentDidMount () {
     checkAuth();
   }
 
-  sendMesage() {
+  sendMesage () {
     console.log("state state", this.state);
     axios.post("http://localhost:3001/send-email", this.state);
   }
 
-  render() {
+  render () {
     return (
       <div className="custom-container">
         <div className="hero-wrapper"
@@ -142,13 +142,13 @@ class Homepage extends Component {
         <div>
           <h3 className="header-header">Contact us </h3>
           <div class="contact-grid">
-            <div class="contact-item">
+            {/* <div class="contact-item">
               <img class="contact-img" src={`${Gmail}`} style={{
                 width: "2rem",
                 height: "1rem",
               }} alt="" />
               <h6 >stackcash612@gmail.com</h6>
-            </div>
+            </div> */}
             <div class="contact-item">
 
               <a href="https://chat.whatsapp.com/D2YgZdV4r2079QiIYuzMiy"
@@ -160,6 +160,8 @@ class Homepage extends Component {
                 }} alt="" />
 
               </a>
+
+              <h6>Join WhatsApp Group</h6>
             </div>
             <div class="contact-item">
               <img class="contact-img" src={`${Phone}`} style={{

@@ -14,7 +14,7 @@ class App extends Component {
         {value}
 
         <div>
-          {/* <AppLoader /> */}
+          {this.props.isUiLoading ? <AppLoader /> : null}
         </div>
       </div>
     );
@@ -23,7 +23,7 @@ class App extends Component {
 
 App.propTypes = {};
 
-// function mapDispatchToProps(dispatch) {
+// function mapDispatchToProps (dispatch) {
 //   return {
 //     saveReceiptUrl: id => dispatch(saveReceiptUrl(id)),
 //     getApprovalType: userId => dispatch(getApprovalType(userId)),

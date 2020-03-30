@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useSelector, useDispatch } from 'react-redux';
 import * as account from '../redux/account/actions/acount'
 import Select from '@material-ui/core/Select'
-
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -34,6 +34,7 @@ export default function AccountCapture () {
         setAccountName(e.target.value)
         // console.log("option for account name", e.target.value)
     }
+
     const submitAccountInfo = () => {
         setError({})
         setAccountNumber("")
@@ -141,14 +142,23 @@ export default function AccountCapture () {
                                 <option value={"ubank"}>Ubank</option>
                                 <option value={"SasfinBank"}>Sasfin Bank</option>
                             </Select>
-                            <div>
+                            <br />
+                            <div style={{ marginTop: "1rem" }}>
                                 <input placeholder="Account Number"
                                     onChange={e => setAccountNumber(e.target.value)}
                                     value={accountNumber} type="text" />
                                 <div style={{ color: "red" }}> {errors.accountNumber} </div>
                             </div>
                         </div>
-                        <button onClick={() => submitAccountInfo()} className="btn"> Submit </button>
+                        <Button
+                            onClick={
+                                () => submitAccountInfo()
+                            }
+                            style={{ marginTop: "1rem" }}
+                            variant="contained" color="primary">
+                            Save
+                                    </Button>
+                        {/* <button onClick={() => submitAccountInfo()} className="btn"> Submit </button> */}
                     </Typography>
                 </ExpansionPanelDetails>
             </ExpansionPanel>

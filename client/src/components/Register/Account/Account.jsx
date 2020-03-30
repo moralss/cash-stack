@@ -31,11 +31,6 @@ class Account extends Component {
     if (this.props.approvalType == "ACCESS") {
       clearInterval(internal)
     }
-    // if (this.props.approvalType == "ACCESS") {
-    //   console.log("dfsdfdfs", history)
-    //   history.push("/dashboard");
-    //   // this.props.history.push("/dashboard")
-    // }
   }
 
 

@@ -118,7 +118,7 @@ class Users extends Component {
                             </div>
                         )) : <div>
                                 <p> You have no current members. </p>
-                                <p>Register members for them to appear here here. </p>
+                                <p>Register members for them to appear here. </p>
                                 <p> Pioneers, give your members your ref number after they have registered.</p>
                                 <p>Members, ask for your Pioneer's ref number</p>
 

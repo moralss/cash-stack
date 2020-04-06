@@ -14,7 +14,7 @@ class App extends Component {
         {value}
 
         <div>
-          {this.props.isUiLoading ? <AppLoader /> : null}
+          {/* {this.props.isUiLoading ? <AppLoader /> : null} */}
         </div>
       </div>
     );

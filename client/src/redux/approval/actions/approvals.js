@@ -39,16 +39,18 @@ export const saveReceiptUrl = (receiptUrl, userId) => {
                 receiptUrl,
                 userId
             }, setAxiosHeader())
+            console.log("data message", data.message)
             if (data.message === "success") {
                 dispatch({
                     type: actions.CHANGE_APPROVAL,
                     payload: { approvalType: "WAITING", stage: 1 }
                 });
             }
-            dispatch({
-                type: actions.UI_TOGGLE_LOADDING,
-                payload: false
-            })
+
+            // dispatch({
+            //     type: actions.UI_TOGGLE_LOADDING,
+            //     payload: false
+            // })
 
         } catch (e) {
             console.log(e);

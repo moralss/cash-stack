@@ -39,7 +39,7 @@ class Account extends Component {
     const { refNumber, id } = this.props.profile;
     let currentImageName = "firebase-image-" + "/" + refNumber + "/" + new Date().getTime() + "-" + id;
     let folder = "images";
-    this.props.changeLoading(true)
+    // this.props.changeLoading(true)
     storage
       .ref(folder + "/" + currentImageName)
       .put(this.state.imageDetails)
@@ -47,11 +47,13 @@ class Account extends Component {
         res.ref.getDownloadURL().then(url => {
           this.props.saveReceiptUrl(url)
           this.props.getApprovalType()
-          this.props.changeLoading(false)
+          // this.props.changeLoading(false)
+        }).catch(e => {
+          console.log(e)
         });
       })
       .catch(err => {
-        this.props.changeLoading(false)
+        // this.props.changeLoading(false)
         console.log(err);
       });
 
